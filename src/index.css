@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+input:-webkit-autofill {
+  background-color: #FAFFBD !important;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.swiper--after:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom,
+  rgba(255, 255, 255, 0),
+  rgba(255, 255, 255, 1) 100%);
+  width: 100%;
+  height: 25%;
+}
+
+
+.liquid {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 400px;
+  background: #e77810;
+  transition: 0.7s;
+}
+
+button:hover .liquid {
+  top: -60px;
+}
+
+button .liquid:before, button .liquid:after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -1370px;
+  left: 50%;
+  transform: translate(-50%, -75%);
+}
+
+.liquid:before {
+  border-radius: 45%;
+  background: #edf2f7;
+  animation: animate 5s linear infinite;
+}
+
+.liquid:after {
+  border-radius: 40%;
+  background: rgb(237, 242, 247, 0.3);
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(-50%, 75%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, 75%) rotate(360deg);
+  }
+}
+
+#mySidenav a {
+  position: absolute; /* Position them relative to the browser window */
+  left: -30px; /* Position them outside of the screen */
+  transition: 0.3s; /* Add transition on hover */
+  padding: 15px; /* 15px padding */
+  width: auto; /* Set a specific width */
+  text-decoration: none; /* Remove underline */
+  font-size: 20px; /* Increase font size */
+  color: white; /* White text color */
+  border-radius: 5px 0 0 5px; /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav a:hover {
+  left: -130px; /* On mouse-over, make the elements appear as they should */
+}
+
+.sidebar {
+  position: fixed;
+  top: 50vh;
+  right: 50px;
+  z-index: 2;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .sidebar {
+    display: block;
+  }
+}
