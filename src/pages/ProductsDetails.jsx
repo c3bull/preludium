@@ -21,10 +21,15 @@ function Page() {
             columns: 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5',
             color: 'via-red-100',
         },
-        bogus: {
+        'bogus': {
             link: 'bogus',
             columns: 'sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3',
             color: 'via-orange-100',
+        },
+        'herbata': {
+            link: 'tea',
+            columns: 'sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3',
+            color: 'via-green-100',
         },
         'woda-zrodlana': {
             link: 'water',

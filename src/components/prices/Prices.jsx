@@ -71,14 +71,14 @@ export function Prices({title, color, category, classes}) {
                                         <div className="flex w-full justify-center pt-2">
                                             <p>Cena brutto:</p>
                                             <p className="pl-2 font-bold text-primary">
-                                                {item.price.toFixed(2)} zł
+                                                {item.price.toFixed(2)/100} zł
                                             </p>
                                         </div>
 
                                         <div className="flex w-full justify-center pt-1">
                                             <p>Cena netto:</p>
                                             <p className="pl-2 font-bold text-primary">
-                                                {item.netPrice.toFixed(2)} zł
+                                                {item.netPrice.toFixed(2)/100} zł
                                             </p>
                                         </div>
                                     </div>

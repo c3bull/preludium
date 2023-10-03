@@ -29,9 +29,9 @@ export function BasketModal(props) {
                                 W przypadku zniszczenia opakowania, <br/>
                                 zobowiązuje się Pan/Pani zapłacić za szkody.
                                 <br/>
-                                Zniszczenie skrzynki - 25.00 zł
+                                Zniszczenie skrzynki - 26.00 zł
                                 <br/>
-                                Zniszczenie butelki - 0.70 zł
+                                Zniszczenie butelki - 1.00 zł
                             </p>
                         </div>
                     )}

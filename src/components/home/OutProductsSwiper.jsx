@@ -1,6 +1,6 @@
 import 'swiper/css';
 import shuffle from 'lodash/shuffle';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Autoplay} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SectionHeader from "../common/SectionHeader";
@@ -48,7 +48,7 @@ export default function OurProductsSwiper({goToProducts}) {
                                     src={imageUrl(`bottles/${item.bottle}.png`)}
                                     onClick={goToProducts}
                                     alt="butelka"
-                                    className="cursor-pointer"
+                                    className="cursor-pointer h-full"
                                 />
                             </SwiperSlide>
                         );

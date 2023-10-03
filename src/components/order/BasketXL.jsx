@@ -105,9 +105,9 @@ export default function BasketXL({
                             W przypadku zniszczenia opakowania, <br/>
                             zobowiązuje się Pan/Pani zapłacić za szkody.
                             <br/>
-                            Zniszczenie skrzynki - 25.00 zł
+                            Zniszczenie skrzynki - 26.00 zł
                             <br/>
-                            Zniszczenie butelki - 0.70 zł
+                            Zniszczenie butelki - 1.00 zł
                         </p>
                     </div>
                 )}
@@ -164,7 +164,7 @@ export default function BasketXL({
                 <div className="flex flex w-full pt-5">
                     <div className="flex w-1/2 items-center justify-center text-xl">
                         <div className="mr-2">Suma:</div>
-                        <p className="font-semibold">{finalPrice().toFixed(2)} zł</p>
+                        <p className="font-semibold">{finalPrice()} zł</p>
                     </div>
                     <button
                         type="button"

@@ -75,13 +75,13 @@ export function OrderCategoryLayout(props) {
                                         <div>
                                             <div className="flex justify-center">
                                                 <p className="font-bold text-primary">
-                                                    {item.price.toFixed(2)} zł
+                                                    {item.price.toFixed(2) / 100} zł
                                                 </p>
                                                 <p className="pl-2"> / butelka</p>
                                             </div>
                                             <div className="flex justify-center whitespace-nowrap">
                                                 <p className="font-bold text-primary">
-                                                    {(item.price * 24).toFixed(2)} zł
+                                                    {(item.price * 24).toFixed(2) / 100} zł
                                                 </p>
                                                 <p className="pl-2"> / skrzynka</p>
                                             </div>

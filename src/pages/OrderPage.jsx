@@ -22,7 +22,7 @@ function emptyArray(size) {
 }
 
 const Order = () => {
-    const [selectedProductsAmount, setSelectedProductsAmount] = useState(emptyArray(33));
+    const [selectedProductsAmount, setSelectedProductsAmount] = useState(emptyArray(38));
     const [refresh, serRefresh] = useState(false);
     const [showBasket, setShowBasket] = useState(false);
     const [showModal, setShowModal] = useState(-1);
@@ -134,6 +134,7 @@ const Order = () => {
     };
 
     function bottleAmount() {
+        console.log('sap ', selectedProductsAmount)
         return selectedProductsAmount.reduce((partialSum, a) => partialSum + a, 0);
     }
 
@@ -141,8 +142,10 @@ const Order = () => {
         let finalPrice = 0;
         for (let i = 0; i < data.product.length; i++) {
             const productData = data.product[i];
+            console.log(productData)
             const amount = selectedProductsAmount[i];
-            finalPrice += amount * productData.price;
+            console.log('a ',amount)
+            finalPrice += amount * (productData.price / 100);
         }
         return finalPrice;
     }
