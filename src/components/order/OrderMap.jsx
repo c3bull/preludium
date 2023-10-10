@@ -10,6 +10,9 @@ export default function OrderMap() {
                     <p className="text-center text-2xl font-semibold uppercase text-red-600">
                         rozwozimy produkty w promieniu 250 km od Krakowa
                     </p>
+                    <p className="text-center text-md font-semibold uppercase text-red-600">
+                        wyłączając rejon południowy (Zakopane, Nowy Targ, Myślenice, Nowy Sącz i okolice - w te miejsca produkty rozwozi producent)
+                    </p>
                     <Collapsible
                         trigger="Kliknij, aby zobaczyć obszar"
                         triggerWhenOpen="Kliknij, aby zwinąć"

@@ -21,7 +21,7 @@ const PricesPage = () => {
 
             <div className="flex justify-center">
                 <div className="flex w-2/3 flex-col justify-center">
-                    <div className="grid gap-6 pt-32 pb-16">
+                    <div className="grid gap-6 pt-14 pb-16">
                         <Prices
                             category="non_carb_drink"
                             title="napoje niegazowane"

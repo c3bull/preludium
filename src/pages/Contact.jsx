@@ -22,7 +22,7 @@ const Contact = () => {
                                 alt='wyślij email'
                             />
                         </div>}
-                        href='mailto:syklykbis.krakow@gmail.com'
+                        href='mailto:napojefantic.krakow@gmail.com'
                         target='_blank'
                     />
                     <ContactIconsSm
@@ -59,9 +59,9 @@ const Contact = () => {
                     </p>
 
                     <ContactWays
-                        href='mailto:syklykbis.krakow@gmail.com'
+                        href='mailto:napojefantic.krakow@gmail.com'
                         title='Email'
-                        name='syklykbis.krakow@gmail.com'
+                        name='napojefantic.krakow@gmail.com'
                         icon={<div className='flex items-center p-0.5'>
                             <img
                                 src={imageUrl('icons/MdOutgoingMail.png')}

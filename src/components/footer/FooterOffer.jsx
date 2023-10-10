@@ -13,6 +13,7 @@ export default function FooterOffer() {
                 />
                 <FooterLinks href="/produkty/soki-i-nektary" name="SOKI I NEKTARY" />
                 <FooterLinks href="/produkty/bogus" name="BOGUŚ" />
+                <FooterLinks href="/produkty/herbata" name="HERBATA" />
                 <FooterLinks href="/produkty/woda-zrodlana" name="WODA ŹRÓDLANA" />
             </ul>
         </div>

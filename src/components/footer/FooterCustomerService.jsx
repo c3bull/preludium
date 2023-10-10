@@ -11,30 +11,27 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/ImLocation.png')}
-                            width='16px'
-                            height='16px'
+                            className='w-4 max-w-[16px] h-auto'
                             alt='adres'
                         />
                     </div>
-                    ul. Chopina 16, 32-020 Wieliczka
+                    ul. Pod Pomnikiem 14, 30-898 Kraków
                 </div>
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/ImLocation.png')}
-                            width='16px'
-                            height='16px'
+                            className='w-4 max-w-[16px] h-auto'
                             alt='adres2'
                         />
                     </div>
-                    ul. Sołtysowska 37A, 31-589 Kraków
+                    ul. Blokowa 9, 31-752 Kraków
                 </div>
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/AiFillPhone.png')}
-                            width='15px'
-                            height='15px'
+                            className='w-4 max-w-[16px] h-auto'
                             alt='numer telefonu'
                         />
                     </div>
@@ -44,8 +41,7 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/AiFillPhone.png')}
-                            width='15px'
-                            height='15px'
+                            className='w-4 max-w-[16px] h-auto'
                             alt='numer telefonu 2'
                         />
                     </div>
@@ -55,8 +51,7 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/AiFillPhone.png')}
-                            width='15px'
-                            height='15px'
+                            className='w-4 max-w-[16px] h-auto'
                             alt='numer telefonu 3'
                         />
                     </div>
@@ -66,31 +61,8 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/IoMdMail.png')}
-                            width='14px'
-                            height='14px'
+                            className='w-4 max-w-[16px] h-auto'
                             alt='email'
-                        />
-                    </div>
-                    syklykbis.biuro@gmail.com
-                </div>
-                <div className="flex items-center">
-                    <div className='mr-2 flex items-center'>
-                        <img
-                            src={imageUrl('icons/IoMdMail.png')}
-                            width='14px'
-                            height='14px'
-                            alt='email 2'
-                        />
-                    </div>
-                    syklykbis.krakow@gmail.com
-                </div>
-                <div className="flex items-center">
-                    <div className='mr-2 flex items-center'>
-                        <img
-                            src={imageUrl('icons/IoMdMail.png')}
-                            width='14px'
-                            height='14px'
-                            alt='email 3'
                         />
                     </div>
                     preludium.sg@gmail.com
@@ -99,9 +71,18 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/IoMdMail.png')}
-                            width='14px'
-                            height='14px'
-                            alt='email 4'
+                            className='w-4 max-w-[16px] h-auto'
+                            alt='email 2'
+                        />
+                    </div>
+                    napojefantic.krakow@gmail.com
+                </div>
+                <div className="flex items-center">
+                    <div className='mr-2 flex items-center'>
+                        <img
+                            src={imageUrl('icons/IoMdMail.png')}
+                            className='w-4 max-w-[16px] h-auto'
+                            alt='email 3'
                         />
                     </div>
                     elixirium.am@gmail.com
@@ -110,8 +91,7 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/MdOutlineAccessTimeFilled.png')}
-                            width='14px'
-                            height='14px'
+                            className='w-4 max-w-[16px] h-auto'
                             alt='godziny pracy'
                         />
                     </div>

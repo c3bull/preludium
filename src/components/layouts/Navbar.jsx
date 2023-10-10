@@ -75,10 +75,10 @@ export default function Navbar() {
                             <div className='flex flex-1 items-center justify-center sm:text-center'>
                                 <div className='flex shrink-0 items-center'>
                                     <Link to={'/'}>
-                                        <a className='cursor-pointer border-hidden'>
+                                        <a className='cursor-pointer border-hidden '>
                                             <img
-                                                className='block px-2 h-16 w-auto lg:hidden'
-                                                src={imageUrl('syklykbis.png')}
+                                                className='block px-2 h-16 w-auto lg:hidden p-2'
+                                                src={imageUrl('preludium2.png')}
                                                 alt='Logo'
                                             />
                                         </a>
@@ -86,8 +86,8 @@ export default function Navbar() {
                                     <Link to={'/'}>
                                         <a className='cursor-pointer border-hidden'>
                                             <img
-                                                className='hidden h-16 w-auto lg:block'
-                                                src={imageUrl('syklykbis.png')}
+                                                className='hidden h-16 w-auto lg:block p-1'
+                                                src={imageUrl('preludium2.png')}
                                                 alt='Logo'
                                             />
                                         </a>

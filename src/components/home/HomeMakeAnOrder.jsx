@@ -33,9 +33,9 @@ export default function HomeMakeAndOrder({goToOrder}) {
                     <div className="flex flex-1 flex-col gap-2 text-lg uppercase">
                         <div className="flex justify-center p-2 ">
                             <img
-                                className="h-auto w-48 bg-cover md:w-56"
-                                src={imageUrl('/skrzynka.png')}
-                                alt="skrzynka"
+                                className="h-auto w-48 bg-cover md:w-60"
+                                src={imageUrl('/kontener.png')}
+                                alt="kontener"
                             />
                         </div>
                         <div className="flex flex-1 flex-col items-center justify-center gap-2 text-black ">
@@ -49,7 +49,7 @@ export default function HomeMakeAndOrder({goToOrder}) {
                                     return (
                                         <div key={line} className="w-auto">
                                             <div className="flex lg:text-md ml-1 text-xs leading-7 xl:text-lg">
-                                                <div className="inline-block pr-2 pt-0.5">
+                                                <div className="inline-block pr-2 pt-1.5">
                                                     <img
                                                         src={imageUrl('icons/AiOutlineCheckCircle.png')}
                                                         width='16px'

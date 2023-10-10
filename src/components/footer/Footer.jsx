@@ -17,9 +17,9 @@ const Footer = () => {
                 <FooterCustomerService />
             </div>
             <div className="flex flex-col items-center justify-center">
-                <div className="relative h-12 w-12 sm:h-24 sm:w-24">
+                <div className="relative h-32 w-32 sm:h-40 sm:w-40">
                     <img
-                        src={imageUrl('syklykbis.png')}
+                        src={imageUrl('preludium.png')}
                         alt="logo"
                     />
                 </div>
@@ -30,7 +30,7 @@ const Footer = () => {
                         height='16px'
                         alt='copyright'
                     />
-                    <p className="pb-0.5 pl-1">Syk łyk bis</p>
+                    <p className="pb-0.5 pl-1">Preludium</p>
                     <div className='pt-0.5'>
                         <img
                             src={imageUrl('icons/BsDot.png')}
