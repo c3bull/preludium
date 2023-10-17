@@ -14,12 +14,16 @@ export function BottleModal(props) {
                     src={imageUrl(`bottles/${data.bottle}.png`)}
                     alt="butelka"
                 />
-                <div className="ml-4 mr-6 flex items-center whitespace-nowrap py-2 text-sm">
+                <div className="ml-4 mr-6 flex flex-col items-center whitespace-nowrap py-2 text-sm">
                     <div className="flex overflow-hidden rounded-md border border-black">
                         <BottleModalTableLabels bottleData={data}/>
-                        <BottleModalTableValues bottleData={data} />
+                        <BottleModalTableValues bottleData={data}/>
                     </div>
+                    {data.tableValues.witaminaC &&
+                        <p className='pt-5'>*Referencyjna wartość spożycia dla przeciętnej <br/>
+                            osoby dorosłej (8 400 kJ/2 000 kcal)</p>}
                 </div>
+
             </div>
             <div className="flex justify-end">
                 <button

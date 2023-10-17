@@ -27,6 +27,7 @@ function ProductsLayout({categoryUrl, className, color}) {
         wTymCukry
         bialko
         sol
+        witaminaC
         kationy
         wapniowy
         magnezowy
@@ -48,6 +49,7 @@ function ProductsLayout({categoryUrl, className, color}) {
         wTymCukry
         bialko
         sol
+        witaminaC
         kationy
         wapniowy
         magnezowy
