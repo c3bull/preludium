@@ -61,7 +61,7 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/IoMdMail.png')}
-                            className='w-4 max-w-[16px] h-auto'
+                            className='w-4 max-w-[16px] h-auto pt-0.5'
                             alt='email'
                         />
                     </div>
@@ -71,7 +71,7 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/IoMdMail.png')}
-                            className='w-4 max-w-[16px] h-auto'
+                            className='w-4 max-w-[16px] h-auto pt-0.5'
                             alt='email 2'
                         />
                     </div>
@@ -81,7 +81,7 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/IoMdMail.png')}
-                            className='w-4 max-w-[16px] h-auto'
+                            className='w-4 max-w-[16px] h-auto pt-0.5'
                             alt='email 3'
                         />
                     </div>
@@ -91,7 +91,7 @@ export default function FooterCustomerService() {
                     <div className='mr-2 flex items-center'>
                         <img
                             src={imageUrl('icons/MdOutlineAccessTimeFilled.png')}
-                            className='w-4 max-w-[16px] h-auto'
+                            className='w-4 max-w-[16px] h-auto pt-0.5'
                             alt='godziny pracy'
                         />
                     </div>

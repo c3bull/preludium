@@ -9,6 +9,7 @@ export default function BasketXL({
                                      selectedProductsAmount,
                                      confirmOrder,
                                      finalPrice,
+                                     discount
                                  }) {
     const {user} = useAuth0();
     const GET_ALL_PRODUCTS = gql`
@@ -70,6 +71,17 @@ export default function BasketXL({
                     width='16px'
                     height='16px'
                     alt='boguś'
+                />
+            </div>
+        },
+        '[HERBATA]': {
+            icon: <div
+                className='flex w-4 h-4 mt-0.5'>
+                <img
+                    src={imageUrl('icons/FaTeapot.png')}
+                    width='16px'
+                    height='16px'
+                    alt='Boguś'
                 />
             </div>
         },
@@ -161,10 +173,10 @@ export default function BasketXL({
                 })}
             </div>
             {bottleAmount() > 0 && (
-                <div className="flex flex w-full pt-5">
+                <div className="flex w-full pt-5">
                     <div className="flex w-1/2 items-center justify-center text-xl">
                         <div className="mr-2">Suma:</div>
-                        <p className="font-semibold">{finalPrice()} zł</p>
+                        <p className="font-semibold">{((finalPrice() - discount()) / 100).toFixed(2)} zł</p>
                     </div>
                     <button
                         type="button"

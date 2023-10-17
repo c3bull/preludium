@@ -1,11 +1,11 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import {useAuth0} from "@auth0/auth0-react";
 import {useState} from 'react';
 
 import {NotLoggedModal} from "../components/modals/NotLoggedModal";
 import {Prices} from "../components/prices/Prices";
 
 const PricesPage = () => {
-    const {user,loginWithRedirect} = useAuth0();
+    const {user, loginWithRedirect} = useAuth0();
     const [showModal, setShowModal] = useState(-1);
     return (
         <div>
@@ -40,7 +40,16 @@ const PricesPage = () => {
                             color="via-red-100"
                             classes="xl:grid-cols-4"
                         />
-                        <Prices category="bogus" title="boguś" color="via-orange-100"/>
+                        <Prices
+                            category="bogus"
+                            title="boguś"
+                            color="via-orange-100"
+                        />
+                        <Prices
+                            category="tea"
+                            title="herbata"
+                            color="via-orange-100"
+                        />
                         <Prices
                             category="water"
                             title="woda źródlana"

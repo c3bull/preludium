@@ -58,6 +58,19 @@ export default function PricesSideButtons() {
                     </a>
                 </div>
                 <div>
+                    <a href={'#tea'}>
+                        <div
+                            className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
+                            <img
+                                src={imageUrl('icons/FaTeapot.png')}
+                                width='32px'
+                                height='32px'
+                                alt='przewiń do Bogusiów'
+                            />
+                        </div>
+                    </a>
+                </div>
+                <div>
                     <a href={'#water'}>
                         <div
                             className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>

@@ -109,6 +109,17 @@ const Order = () => {
                 />
             </div>
         },
+        '[HERBATA]': {
+            icon: <div
+                className='flex w-4 h-4 mt-0.5'>
+                <img
+                    src={imageUrl('icons/FaTeapot.png')}
+                    width='16px'
+                    height='16px'
+                    alt='Boguś'
+                />
+            </div>
+        },
         '[WODA]': {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
@@ -134,7 +145,6 @@ const Order = () => {
     };
 
     function bottleAmount() {
-        console.log('sap ', selectedProductsAmount)
         return selectedProductsAmount.reduce((partialSum, a) => partialSum + a, 0);
     }
 
@@ -142,12 +152,76 @@ const Order = () => {
         let finalPrice = 0;
         for (let i = 0; i < data.product.length; i++) {
             const productData = data.product[i];
-            console.log(productData)
+            // console.log(productData.category)
             const amount = selectedProductsAmount[i];
-            console.log('a ',amount)
-            finalPrice += amount * (productData.price / 100);
+            // console.log('a ',selectedProductsAmount[i])
+            finalPrice += amount * (productData.price);
+            // discount()
         }
         return finalPrice;
+    }
+
+    function discount() {
+        let discount = 0;
+        let allNonCarbDrinks = 0;
+        let nonCarbDrinksDiscount = 0;
+        let allCarbDrinks = 0;
+        let carbDrinksDiscount = 0;
+        let allTea = 0;
+        let teaDiscount = 0;
+        let allJuices = 0;
+        let juicesDiscount = 0;
+        let allBogus = 0;
+        let bogusDiscount = 0;
+        let allWater = 0;
+        let waterDiscount = 0;
+        for (let i = 0; i < data.product.length; i++) {
+            const productData = data.product[i];
+            // console.log('sap ', productData)
+
+            const amount = selectedProductsAmount[i];
+            if (productData.category === "non_carb_drink") {
+                let times = 0;
+                allNonCarbDrinks += amount;
+                times = Math.floor(allNonCarbDrinks / 24)
+                nonCarbDrinksDiscount = times * 8
+            }
+            if (productData.category === "carb_drink") {
+                let times = 0;
+                allCarbDrinks += amount;
+                times = Math.floor(allCarbDrinks / 24)
+                carbDrinksDiscount = times * 4
+            }
+            if (productData.category === "tea") {
+                let times = 0;
+                allTea += amount;
+                times = Math.floor(allTea / 24)
+                teaDiscount = times * 8
+            }
+            if (productData.category === "juices") {
+                let times = 0;
+                allJuices += amount;
+                times = Math.floor(allJuices / 24)
+                juicesDiscount = -1 * (times * 8)
+            }
+            if (productData.category === "bogus") {
+                let times = 0;
+                allBogus += amount;
+                times = Math.floor(allBogus / 24)
+                bogusDiscount = -1 * (times * 8)
+            }
+            if (productData.category === "water") {
+                let times = 0;
+                allWater += amount;
+                times = Math.floor(allWater / 24)
+                waterDiscount = -1 * (times * 4)
+            }
+            // console.log('a ', amount)
+            // discount += amount * (productData.price / 100);
+        }
+        discount = nonCarbDrinksDiscount + carbDrinksDiscount + teaDiscount + juicesDiscount + bogusDiscount + waterDiscount;
+        console.log('disc ', discount)
+        return discount;
     }
 
     const saveOrderToDb = async () => {
@@ -171,7 +245,7 @@ const Order = () => {
             variables: {
                 "orderedProducts": orderedProducts,
                 "placementDate": format(new Date(), 'dd/MM/yyyy'),
-                "totalPrice": finalPrice().toFixed(2),
+                "totalPrice": ((finalPrice() + discount()) / 100).toFixed(2),
                 "email": user.email,
             }
         })
@@ -198,7 +272,7 @@ const Order = () => {
                                 <div className='mx-3 flex border-b border-black' key={item.id}>
                                     <div>
                                         <div
-                                            className='flex items-center overflow-x-auto whitespace-nowrap whitespace-nowrap uppercase scrollbar-thin scrollbar-thumb-gray-400 sm:w-full'>
+                                            className='flex items-center overflow-x-auto whitespace-nowrap uppercase scrollbar-thin scrollbar-thumb-gray-400 sm:w-full'>
                                             <p className='pl-1 pb-0.5'>
                                                 {iconRemap[item.hint]?.icon}
                                             </p>
@@ -215,13 +289,14 @@ const Order = () => {
                         })
                     ]}
                     bottleAmount={bottleAmount()}
-                    finalPrice={finalPrice()}
+                    finalPrice={() => finalPrice()}
                     onClick={() => {
                         setShowBasket(false);
                     }}
                     confirmOrder={() => {
                         confirmOrder();
                     }}
+                    discount={() => discount()}
                 />
             )}
 
@@ -277,7 +352,7 @@ const Order = () => {
                                 name
                             };
                         })}
-                    sum={finalPrice()}
+                    sum={((finalPrice() + discount()) / 100)}
                     showThanks={() => {
                         setShowThanksModal(1);
                     }}
@@ -316,6 +391,7 @@ const Order = () => {
                         selectedProductsAmount={selectedProductsAmount}
                         finalPrice={() => finalPrice()}
                         confirmOrder={() => confirmOrder()}
+                        discount={() => discount()}
                     />
                     <div/>
 
@@ -361,6 +437,25 @@ const Order = () => {
                         title='boguś'
                         category='bogus'
                         alt='butelka bogus'
+                        appendProductAmount={appendProductAmount}
+                        selectedProductsAmount={selectedProductsAmount}
+                        classes='lg:grid-cols-3'
+                        icon={<div
+                            className='flex items-center'>
+                            <img
+                                src={imageUrl('icons/FaCarrot.png')}
+                                width='19px'
+                                height='19px'
+                                alt='Bogusie'
+                            />
+                        </div>}
+                    />
+                    <div/>
+
+                    <OrderCategoryLayout
+                        title='herbata'
+                        category='tea'
+                        alt='butelka herbata'
                         appendProductAmount={appendProductAmount}
                         selectedProductsAmount={selectedProductsAmount}
                         classes='lg:grid-cols-3'

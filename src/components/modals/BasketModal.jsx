@@ -4,7 +4,7 @@ import React from 'react';
 import {useAuth0} from "@auth0/auth0-react";
 
 export function BasketModal(props) {
-    const {data, onClick, bottleAmount, finalPrice, confirmOrder} = props;
+    const {data, onClick, bottleAmount, finalPrice, confirmOrder, discount} = props;
     const {user} = useAuth0();
     return (
         <Modal
@@ -66,7 +66,7 @@ export function BasketModal(props) {
                     <div className="flex w-full pt-5">
                         <div className="flex w-1/2 items-center justify-center">
                             <div className="mr-2">Suma:</div>
-                            <p className="font-semibold">{finalPrice.toFixed(2)} zł</p>
+                            <p className="font-semibold">{((finalPrice() + discount()) / 100).toFixed(2)} zł</p>
                         </div>
                         <button
                             type="button"

@@ -1,8 +1,8 @@
 import OrderCategoryLayoutActionButtons from "./OrderCategoryLayoutActionButtons";
 import PricesSideButtons from "../prices/PricesSideButtons";
 import {getProductsByCategoryFetched} from "../../data/allProducts";
-import { imageUrl} from "../utils/Image";
-import { ClassNames} from "../utils/UtilFunctions";
+import {imageUrl} from "../utils/Image";
+import {ClassNames} from "../utils/UtilFunctions";
 import {gql, useQuery} from "@apollo/client";
 import {useAuth0} from "@auth0/auth0-react";
 
@@ -36,10 +36,25 @@ export function OrderCategoryLayout(props) {
 `;
 
     const {data} = useQuery(GET_PRODUCTS_BY_CATEGORY);
+    const itemCategory = (category) => {
+        if (category === "non_carb_drink") {
+            return 40;
+        } else if (category === "carb_drink") {
+            return 35;
+        } else if (category === "tea") {
+            return 40;
+        } else if (category === "juices") {
+            return 50;
+        } else if (category === "bogus") {
+            return 50;
+        } else if (category === "water") {
+            return 25;
+        }
+    };
 
     return (
         <>
-            <PricesSideButtons />
+            <PricesSideButtons/>
             <section id={category}>
                 <h2 className="flex items-center justify-center py-6 pt-16 text-center text-lg font-semibold uppercase">
                     {title}
@@ -81,7 +96,7 @@ export function OrderCategoryLayout(props) {
                                             </div>
                                             <div className="flex justify-center whitespace-nowrap">
                                                 <p className="font-bold text-primary">
-                                                    {(item.price * 24).toFixed(2) / 100} zł
+                                                    {itemCategory(item.category).toFixed(2)} zł
                                                 </p>
                                                 <p className="pl-2"> / skrzynka</p>
                                             </div>

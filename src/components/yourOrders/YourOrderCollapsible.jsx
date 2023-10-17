@@ -50,6 +50,17 @@ export default function YourOrderCollapsible({index, item}) {
                 />
             </div>
         },
+        '[HERBATA]': {
+            icon: <div
+                className='flex w-4 h-4 mt-0.5'>
+                <img
+                    src={imageUrl('icons/FaTeapot.png')}
+                    width='16px'
+                    height='16px'
+                    alt='Boguś'
+                />
+            </div>
+        },
         '[WODA]': {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>

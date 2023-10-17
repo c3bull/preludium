@@ -7,7 +7,7 @@ function Sidebar() {
             <div className="sidebar">
                 <div id="mySidenav">
                     <a
-                        href="https://www.facebook.com/syklykbis"
+                        href="https://www.facebook.com/preludiumFacebook"
                         target="_blank"
                         className="flex items-center gap-4 border-hidden bg-primary shadow-lg"
                         rel="noreferrer"

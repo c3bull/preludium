@@ -96,7 +96,7 @@ function ProductsLayout({categoryUrl, className, color}) {
     }
 
     return (
-        <div className='flex h-auto items-center justify-center pt-16 pb-24 md:pt-24 lg:pt-36'>
+        <div className='flex h-auto items-center justify-center pt-16 pb-24 md:pt-24 lg:pt-36 w-full'>
             {bottleIndex !== -1 && (
                 <BottleModal
                     data={data.product[bottleIndex]}
@@ -105,13 +105,26 @@ function ProductsLayout({categoryUrl, className, color}) {
                     }}
                 />
             )}
-            <div
-                className={ClassNames('grid grid-cols-1', className, 'gap-1 sm:gap-6')}
-            >
-                {data && getProductsByCategoryFetched(data.product, categoryUrl).map(({id, bottle, name}, index) => (
-                    <BottleDisplay id={id} bottle={bottle} name={name} key={id} index={index}/>
-                ))}
-            </div>
+            {data ? <div
+                    className={ClassNames('grid grid-cols-1', className, 'gap-1 sm:gap-6')}
+                >
+                    {getProductsByCategoryFetched(data.product, categoryUrl).map(({id, bottle, name}, index) => (
+                        <BottleDisplay id={id} bottle={bottle} name={name} key={id} index={index}/>
+                    ))}
+                </div> :
+                <div className='w-full flex justify-center items-center'>
+                    <h1 className='w-fit animate-spin '>
+                        <div className='w-14 h-14 flex items-center'>
+                            <img
+                                src={imageUrl('icons/CgSpinner.png')}
+                                width='68px'
+                                height='68px'
+                                alt='loader'
+                            />
+                        </div>
+                    </h1>
+                </div>
+            }
         </div>
     );
 }
