@@ -45,9 +45,9 @@ export default function OurProductsSwiper({goToProducts}) {
                         return (
                             <SwiperSlide key={item.id}>
                                 <img
-                                    src={imageUrl(`bottles/${item.bottle}.png`)}
+                                    src={imageUrl(`bottles/${item.bottle}.webp`)}
                                     onClick={goToProducts}
-                                    alt="butelka"
+                                    alt={item.bottle}
                                     className="cursor-pointer h-full"
                                 />
                             </SwiperSlide>

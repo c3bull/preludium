@@ -11,7 +11,7 @@ export function BottleModal(props) {
             <div className="flex flex-col items-center justify-center md:flex-row md:py-5">
                 <img
                     className="h-auto w-20 md:w-28 xl:w-36"
-                    src={imageUrl(`bottles/${data.bottle}.png`)}
+                    src={imageUrl(`bottles/${data.bottle}.webp`)}
                     alt="butelka"
                 />
                 <div className="ml-4 mr-6 flex flex-col items-center whitespace-nowrap py-2 text-sm">

@@ -53,7 +53,7 @@ export function BasketModal(props) {
                     ilość butelek: {bottleAmount}
                 </p>
                 <p className="pb-8 text-center uppercase">
-                    ilość skrzynek: {Math.ceil(bottleAmount / 20)}
+                    ilość skrzynek: {Math.ceil(bottleAmount / 24)}
                 </p>
                 <div className="flex justify-center">
                     <div

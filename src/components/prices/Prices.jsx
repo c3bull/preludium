@@ -58,7 +58,7 @@ export function Prices({title, color, category, classes}) {
                                     </div>
                                 </div>
                                 <img
-                                    src={imageUrl(`bottles/${item.bottle}.png`)}
+                                    src={imageUrl(`bottles/${item.bottle}.webp`)}
                                     className="h-auto w-20"
                                     alt="butelka"
                                 />

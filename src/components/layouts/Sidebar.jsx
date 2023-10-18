@@ -18,7 +18,7 @@ function Sidebar() {
                                 src={imageUrl('icons/FaFacebook.png')}
                                 width='50px'
                                 height='50px'
-                                alt='Facebook'
+                                alt='Facebook icon'
                             />
                         </div>
                         <p className="pr-2">Facebook</p>

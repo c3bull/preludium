@@ -1,7 +1,8 @@
 import {ClassNames} from "../utils/UtilFunctions";
 import {imageUrl} from "../utils/Image";
-import React from 'react';
+import React, {useState} from 'react';
 import {gql, useMutation} from "@apollo/client";
+import {CancelOrderModal} from "../modals/CancelOrderModal";
 
 
 const DELETE_ORDER = gql`
@@ -18,8 +19,12 @@ export default function YourOrdersColumn({
                                              copySign,
                                              idClasses,
                                              onClickDelete,
+                                             item,
+                                             price,
+                                             date
                                          }) {
     const [deleteOrder, {error}] = useMutation(DELETE_ORDER)
+    const [showCancelConfirmation, setShowCancelConfirmation] = useState(false)
 
     return (
         <div className="my-1 flex items-center border border-gray-800 lg:my-0 lg:justify-center">
@@ -58,13 +63,14 @@ export default function YourOrdersColumn({
                     <div
                         className="cursor-pointer "
                         onClick={() => {
-                            {
-                                deleteOrder({
-                                    variables: {
-                                        "id": value
-                                    }
-                                }).then(r => window.location.reload(false))
-                            }
+                            setShowCancelConfirmation(true)
+                            // {
+                            //     deleteOrder({
+                            //         variables: {
+                            //             "id": value
+                            //         }
+                            //     }).then(r => window.location.reload(false))
+                            // }
                         }}
                     >
                         <div className='w-4 h-4 flex items-center duration-100 hover:scale-110 active:border'>
@@ -72,11 +78,69 @@ export default function YourOrdersColumn({
                                 src={imageUrl('icons/faTimes.png')}
                                 width='16px'
                                 height='16px'
-                                alt='kopiuj'
+                                alt='usun'
                             />
                         </div>
                     </div>
                 )}
+
+                {showCancelConfirmation && (
+                    <CancelOrderModal
+                        onClickClose={() => {
+                            // setShowBasket(false);
+                            setShowCancelConfirmation(false);
+                        }}
+                        onClickCancel={() => {
+                            {
+                                deleteOrder({
+                                    variables: {
+                                        "id": value
+                                    }
+                                }).then(r => window.location.reload(false))
+                            }
+                            // saveOrderToDb();
+                        }}
+                        item={item}
+                        identificator={value}
+                        price={price}
+                        date={date}
+                        // products={data.product.map((item, index) => {
+                        //     const amount = selectedProductsAmount[index];
+                        //
+                        //     if (!amount) {
+                        //         return <React.Fragment key={item.id}/>;
+                        //     }
+                        //
+                        //     return (
+                        //         <div className='flex border-b border-black' key={item.id}>
+                        //             <div className='flex whitespace-nowrap uppercase'>
+                        //                 <div className='pr-2 pt-0.5'>
+                        //                     {iconRemap[item.hint]?.icon}
+                        //                 </div>
+                        //                 <p> {item.name}</p>
+                        //             </div>
+                        //             <p className='flex w-full justify-end px-2 font-semibold'>
+                        //                 {amount}
+                        //             </p>
+                        //         </div>
+                        //     );
+                        // })}
+                        // productsToSave={data.product
+                        //     .filter((pd) => {
+                        //         return selectedProductsAmount[pd.number];
+                        //     })
+                        //     .map((pd) => {
+                        //         const {number, name, hint} = pd;
+                        //         return {
+                        //             amount: selectedProductsAmount[number],
+                        //             hint,
+                        //             name
+                        //         };
+                        //     })}
+                        // sum={((finalPrice() + discount()) / 100)}
+                    />
+                )}
+
             </div>
         </div>
     );

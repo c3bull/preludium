@@ -70,11 +70,11 @@ export function OrderCategoryLayout(props) {
                         return (
                             <div
                                 className="flex h-auto w-auto flex-col items-center rounded border border-gray-400 from-transparent
-              via-gray-200 to-transparent px-8 pt-10 text-center duration-150 ease-in-out hover:scale-105 hover:bg-gradient-to-t hover:bg-gradient-to-t hover:shadow-lg"
+              via-gray-200 to-transparent px-8 pt-10 text-center duration-150 ease-in-out hover:scale-105 hover:bg-gradient-to-t hover:shadow-lg"
                                 key={item.id}
                             >
                                 <img
-                                    src={imageUrl(`bottles/${item.bottle}.png`)}
+                                    src={imageUrl(`bottles/${item.bottle}.webp`)}
                                     className="h-auto w-20"
                                     alt={alt}
                                 />

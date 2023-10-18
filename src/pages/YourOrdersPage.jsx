@@ -184,6 +184,9 @@ const YourOrdersPage = () => {
                                                 value={item.id}
                                                 onClickDelete
                                                 classes='font-medium'
+                                                item={item}
+                                                price={item.totalPrice}
+                                                date={item.placementDate}
                                             />
                                         </div>
                                     </div>

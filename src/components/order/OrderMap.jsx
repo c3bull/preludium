@@ -24,9 +24,9 @@ export default function OrderMap() {
                         }}
                     >
                         <img
-                            src={imageUrl('obszar_dowozu.png')}
+                            src={imageUrl('obszar_dowozu.webp')}
                             className="w-full rounded-2xl pb-5"
-                            alt="obszar dowozu"
+                            alt="obszar dowozu w postaci graficznej"
                         />
                     </Collapsible>
                 </div>

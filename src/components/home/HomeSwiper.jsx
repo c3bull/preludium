@@ -19,7 +19,7 @@ export default function HomeSwiper() {
             <SwiperSlide>
                 <div className="aspect-video w-full">
                     <img
-                        src={imageUrl('slides/slide1.jpg')}
+                        src={imageUrl('slides/slide1.webp')}
                         alt='slide 1'
                     />
                 </div>
@@ -27,7 +27,7 @@ export default function HomeSwiper() {
             <SwiperSlide>
                 <div className="aspect-video w-full">
                     <img
-                        src={imageUrl('slides/slide2.jpg')}
+                        src={imageUrl('slides/slide2.webp')}
                         alt='slide 2'
                     />
                 </div>
@@ -35,7 +35,7 @@ export default function HomeSwiper() {
             <SwiperSlide>
                 <div className="aspect-video w-full">
                     <img
-                        src={imageUrl('slides/slide3.jpg')}
+                        src={imageUrl('slides/slide3.webp')}
                         alt='slide 3'
                     />
                 </div>
@@ -43,7 +43,7 @@ export default function HomeSwiper() {
             <SwiperSlide>
                 <div className="aspect-video w-full">
                     <img
-                        src={imageUrl('slides/slide4.jpg')}
+                        src={imageUrl('slides/slide4.webp')}
                         alt='slide 4'
                     />
                 </div>
@@ -51,7 +51,7 @@ export default function HomeSwiper() {
             <SwiperSlide>
                 <div className="aspect-video w-full">
                     <img
-                        src={imageUrl('slides/slide5.jpg')}
+                        src={imageUrl('slides/slide5.webp')}
                         alt='slide 5'
                     />
                 </div>
@@ -59,7 +59,7 @@ export default function HomeSwiper() {
             <SwiperSlide>
                 <div className="aspect-video w-full">
                     <img
-                        src={imageUrl('slides/slide6.jpg')}
+                        src={imageUrl('slides/slide6.webp')}
                         alt='slide 6'
                     />
                 </div>
@@ -67,7 +67,7 @@ export default function HomeSwiper() {
             <SwiperSlide>
                 <div className="aspect-video w-full">
                     <img
-                        src={imageUrl('slides/slide7.jpg')}
+                        src={imageUrl('slides/slide7.webp')}
                         alt='slide 7'
                     />
                 </div>
@@ -75,7 +75,7 @@ export default function HomeSwiper() {
             <SwiperSlide>
                 <div className="aspect-video w-full">
                     <img
-                        src={imageUrl('slides/slide8.jpg')}
+                        src={imageUrl('slides/slide8.webp')}
                         alt='slide 8'
                     />
                 </div>

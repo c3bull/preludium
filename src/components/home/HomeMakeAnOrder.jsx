@@ -25,7 +25,7 @@ export default function HomeMakeAndOrder({goToOrder}) {
                 <div
                     className="hidden h-auto w-96 bg-cover md:block"
                     style={{
-                        backgroundImage: `url(${imageUrl('order_bg_img.png')})`,
+                        backgroundImage: `url(${imageUrl('order_bg_img.webp')})`,
                     }}
                 >
                 </div>
@@ -34,8 +34,8 @@ export default function HomeMakeAndOrder({goToOrder}) {
                         <div className="flex justify-center p-2 ">
                             <img
                                 className="h-auto w-48 bg-cover md:w-60"
-                                src={imageUrl('/kontener.png')}
-                                alt="kontener"
+                                src={imageUrl('/kontener.webp')}
+                                alt="zdjęcie kontenera"
                             />
                         </div>
                         <div className="flex flex-1 flex-col items-center justify-center gap-2 text-black ">
@@ -81,7 +81,7 @@ export default function HomeMakeAndOrder({goToOrder}) {
                 <div
                     className="hidden h-auto w-96 bg-cover md:block"
                     style={{
-                        backgroundImage: `url(${imageUrl('order_bg_img.png')})`,
+                        backgroundImage: `url(${imageUrl('order_bg_img.webp')})`,
                     }}
                 />
             </div>

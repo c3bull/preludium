@@ -86,7 +86,7 @@ function ProductsLayout({categoryUrl, className, color}) {
                         )}
                     >
                         <img
-                            src={imageUrl(`bottles/${bottle}.png`)}
+                            src={imageUrl(`bottles/${bottle}.webp`)}
                             alt={name}
                             className='h-auto w-32 py-2 px-6 duration-300 hover:rotate-2 sm:w-44'
                         />

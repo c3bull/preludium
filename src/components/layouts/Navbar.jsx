@@ -1,4 +1,4 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import {useAuth0} from "@auth0/auth0-react";
 import {Disclosure, Menu, Transition} from '@headlessui/react';
 import React, {Fragment} from 'react';
 
@@ -6,7 +6,7 @@ import {imageUrl} from "../utils/Image";
 import {Link} from "react-router-dom";
 
 export default function Navbar() {
-    const {user, loginWithRedirect, logout } = useAuth0();
+    const {user, loginWithRedirect, logout} = useAuth0();
     const links = [
         {
             id: 1,
@@ -75,34 +75,27 @@ export default function Navbar() {
                             <div className='flex flex-1 items-center justify-center sm:text-center'>
                                 <div className='flex shrink-0 items-center'>
                                     <Link to={'/'}>
-                                        <a className='cursor-pointer border-hidden '>
-                                            <img
-                                                className='block px-2 h-16 w-auto lg:hidden p-2'
-                                                src={imageUrl('preludium2.png')}
-                                                alt='Logo'
-                                            />
-                                        </a>
+                                        <img
+                                            className='block px-2 h-16 w-auto lg:hidden p-2'
+                                            src={imageUrl('preludium2.webp')}
+                                            alt='Logo'
+                                        />
                                     </Link>
                                     <Link to={'/'}>
-                                        <a className='cursor-pointer border-hidden'>
-                                            <img
-                                                className='hidden h-16 w-auto lg:block p-1'
-                                                src={imageUrl('preludium2.png')}
-                                                alt='Logo'
-                                            />
-                                        </a>
+                                        <img
+                                            className='hidden h-16 w-auto lg:block p-1'
+                                            src={imageUrl('preludium2.webp')}
+                                            alt='Logo'
+                                        />
                                     </Link>
                                 </div>
                                 <div className='hidden md:ml-6 sm:block'>
                                     <div className='flex md:space-x-4'>
                                         {links.map((item) => (
-                                            <Link key={item.id} to={item.link}>
-                                                <a
-                                                    className='whitespace-nowrap h-full flex items-center rounded-md border-hidden px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-                                                    aria-current={item.current ? 'page' : undefined}
-                                                >
-                                                    {item.name}
-                                                </a>
+                                            <Link key={item.id} to={item.link}
+                                                  className='whitespace-nowrap h-full flex items-center rounded-md border-hidden px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                                                  aria-current={item.current ? 'page' : undefined}>
+                                                {item.name}
                                             </Link>
                                         ))}
                                     </div>
@@ -112,7 +105,7 @@ export default function Navbar() {
                                 className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
                                 {/* Profile dropdown */}
                                 {!user ? (
-                                    <a
+                                    <div
                                         className='cursor-pointer flex items-center rounded border-hidden px-3 py-1.5 text-white hover:bg-gray-700'
                                         onClick={loginWithRedirect}
                                     >
@@ -125,12 +118,12 @@ export default function Navbar() {
                                             />
                                         </div>
                                         <p className='pl-1 font-semibold'>Zaloguj</p>
-                                    </a>
+                                    </div>
                                 ) : (
                                     <Menu as='div' className='relative ml-3'>
                                         <div>
                                             <Menu.Button
-                                                className='flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
+                                                className='flex rounded-full bg-gray-800 text-sm focus:outline-none active:ring-2 active:ring-white active:ring-offset-2 active:ring-offset-gray-800'>
                                                 <span className='sr-only'>Open user menu</span>
                                                 <img
                                                     className='h-auto w-12 rounded-full'
@@ -171,10 +164,10 @@ export default function Navbar() {
                                                     </Link>
                                                 </Menu.Item>
                                                 <Menu.Item>
-                                                    <a
+                                                    <div
                                                         className='cursor-pointer block rounded border-hidden px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                                                         onClick={() => {
-                                                            logout({ returnTo: window.location.origin });
+                                                            logout({returnTo: window.location.origin});
                                                         }}
                                                     >
                                                         <div className='flex items-center'>
@@ -186,11 +179,12 @@ export default function Navbar() {
                                                                     alt='wyloguj'
                                                                 />
                                                             </div>
-                                                            <a className='block border-hidden pl-1 text-sm font-medium text-gray-700'>
+                                                            <div
+                                                                className='block border-hidden pl-1 text-sm font-medium text-gray-700'>
                                                                 Wyloguj
-                                                            </a>
+                                                            </div>
                                                         </div>
-                                                    </a>
+                                                    </div>
                                                 </Menu.Item>
                                             </Menu.Items>
                                         </Transition>

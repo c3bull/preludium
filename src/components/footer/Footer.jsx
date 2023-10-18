@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="flex flex-col items-center justify-center">
                 <div className="relative h-32 w-32 sm:h-40 sm:w-40">
                     <img
-                        src={imageUrl('preludium.png')}
+                        src={imageUrl('preludium.webp')}
                         alt="logo"
                     />
                 </div>

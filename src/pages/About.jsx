@@ -22,12 +22,12 @@ const About = () => {
                         </div>
                         <div className='flex flex-col lg:flex-row gap-10'>
                             <img
-                                src={imageUrl('Fantic-logo.png')}
-                                alt="fantic"
+                                src={imageUrl('Fantic-logo.webp')}
+                                alt="fantic logo"
                                 className="flex h-auto w-48 md:w-64 self-center"
                             />
                             <img
-                                src={imageUrl('elixirium.png')}
+                                src={imageUrl('elixirium.webp')}
                                 alt="fantic"
                                 className="flex h-auto w-48 md:w-64 self-center"
                             />
@@ -36,12 +36,12 @@ const About = () => {
                         <div className="flex flex-row items-center justify-center gap-6">
                             <img
                                 className="aspect-square h-auto w-28"
-                                src={imageUrl('recyclable.png')}
-                                alt="recyclable"
+                                src={imageUrl('recyclable.webp')}
+                                alt="recyclable logo"
                             />
                             <img
                                 className="aspect-square h-auto w-28"
-                                src={imageUrl('polski_producent.png')}
+                                src={imageUrl('polski_producent.webp')}
                                 alt="pl"
                             />
                         </div>
