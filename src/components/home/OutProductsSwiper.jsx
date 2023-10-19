@@ -26,7 +26,7 @@ export default function OurProductsSwiper({goToProducts}) {
             <div className="flex w-2/3 flex-col items-center pb-10">
                 <SectionHeader
                     icon={<img
-                        src={imageUrl('icons/IoWaterOutline.png')}
+                        src={imageUrl('icons/IoWaterOutline.webp')}
                         width='50px'
                         height='50px'
                         alt='nasze produkty'

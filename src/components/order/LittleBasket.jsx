@@ -11,7 +11,7 @@ export default function LittleBasket({setShowBasket}) {
             <div
                 className='h-16 w-16 px-1 pt-1 w-full items-center text-center justify-center'>
                 <img
-                    src={imageUrl('icons/RiShoppingBasket2LineWhite.png')}
+                    src={imageUrl('icons/RiShoppingBasket2LineWhite.webp')}
                     width='60px'
                     height='60px'
                     alt='otwórz koszyk'

@@ -21,33 +21,43 @@ const GET_YOUR_ORDERS = gql`
         totalPrice
         placementDate
         email
+        name
+        phone
+        zip
+        address
+        status
         }
     }
 `;
 
 const YourOrdersPage = () => {
     const [myOrders, setMyOrders] = useState([]);
+    const [refresh, setRefresh] = useState(false)
     const [noOrders, setNoOrders] = useState(false);
     const [noOrdersSpinner, setNoOrdersSpinner] = useState(true);
     const {user} = useAuth0();
-    const {loading, data: yourOrders} = useQuery(GET_YOUR_ORDERS, {
+    const {loading, error, data: yourOrders, refetch} = useQuery(GET_YOUR_ORDERS, {
         variables: {email: user?.email},
     });
 
     useEffect(() => {
-        yourOrders && setMyOrders(yourOrders.order)
-    }, [yourOrders]);
+        console.log("refresh")
+        !loading && setMyOrders(yourOrders.order)
+        if (yourOrders) {
+            refetch()
+        }
+    }, [yourOrders, refresh]);
 
     return (
         <div>
             <div
                 className='mx-4 flex h-auto min-h-[50vh] flex-col items-center pt-32 pb-12 md:px-10 lg:pt-32 lg:pb-16 xl:pt-48 xl:pb-32'>
-                <div className='hidden lg:grid lg:grid-cols-[50px_150px_450px_100px_120px_80px] lg:gap-2'>
+                <div className='hidden lg:grid lg:grid-cols-[50px_150px_450px_100px_120px_95px] lg:gap-2'>
                     <YourOrdersHeader
                         title='Lp.'
                         icon={<div className='w-4 h-4 flex items-center'>
                             <img
-                                src={imageUrl('icons/AiOutlineNumber.png')}
+                                src={imageUrl('icons/AiOutlineNumber.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='Lp.'
@@ -58,7 +68,7 @@ const YourOrdersPage = () => {
                         title='Identyfikator'
                         icon={<div className='w-4 h-4 flex items-center'>
                             <img
-                                src={imageUrl('icons/AiOutlineNumber.png')}
+                                src={imageUrl('icons/AiOutlineNumber.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='identyfikator zamówienia'
@@ -69,7 +79,7 @@ const YourOrdersPage = () => {
                         title='Zamówione produkty'
                         icon={<div className='w-4 h-4 flex items-center'>
                             <img
-                                src={imageUrl('icons/GiBottleCap.png')}
+                                src={imageUrl('icons/GiBottleCap.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='zamówione produkty'
@@ -80,7 +90,7 @@ const YourOrdersPage = () => {
                         title='Cena'
                         icon={<div className='w-4 h-4 flex items-center'>
                             <img
-                                src={imageUrl('icons/ImPriceTag.png')}
+                                src={imageUrl('icons/ImPriceTag.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='cena zamówienia'
@@ -91,7 +101,7 @@ const YourOrdersPage = () => {
                         title='Data'
                         icon={<div className='w-4 h-4 flex items-center'>
                             <img
-                                src={imageUrl('icons/MdDateRange.png')}
+                                src={imageUrl('icons/MdDateRange.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='data zamówienia'
@@ -99,10 +109,10 @@ const YourOrdersPage = () => {
                         </div>}
                     />
                     <YourOrdersHeader
-                        title='Usuń'
+                        title='Anuluj'
                         icon={<div className='w-4 h-4 flex items-center'>
                             <img
-                                src={imageUrl('icons/MdDateRange.png')}
+                                src={imageUrl('icons/cancel.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='data zamówienia'
@@ -115,17 +125,18 @@ const YourOrdersPage = () => {
                         {myOrders && myOrders.length > 0 ? (
                             myOrders.slice(0).reverse().map((item, index) => {
                                 return (
-                                    <div className='my-3 flex lg:my-0' key={index}>
+                                    // <div className='my-3 flex lg:my-0' key={index}>
+                                    <div className={`my-3 flex gap-2 ${item.status === "canceled" && 'opacity-20'}`} key={index}>
                                         <div
                                             className={ClassNames(
-                                                'w-full lg:grid lg:grid-cols-[50px_150px_450px_100px_120px_80px] lg:gap-2 lg:mt-2',
+                                                'w-full lg:grid lg:grid-cols-[50px_150px_450px_100px_120px_95px] lg:gap-2',
                                                 `${index % 2 === 0 && 'bg-neutral-100'}`
                                             )}
                                         >
                                             <YourOrdersColumn
                                                 icon={<div className='w-4 h-4 flex items-center'>
                                                     <img
-                                                        src={imageUrl('icons/AiOutlineNumber.png')}
+                                                        src={imageUrl('icons/AiOutlineNumber.webp')}
                                                         width='16px'
                                                         height='16px'
                                                         alt='Lp.'
@@ -136,7 +147,7 @@ const YourOrdersPage = () => {
                                             <YourOrdersColumn
                                                 icon={<div className='w-4 h-4 flex items-center'>
                                                     <img
-                                                        src={imageUrl('icons/AiOutlineNumber.png')}
+                                                        src={imageUrl('icons/AiOutlineNumber.webp')}
                                                         width='16px'
                                                         height='16px'
                                                         alt='identyfikator zamówienia'
@@ -151,7 +162,7 @@ const YourOrdersPage = () => {
                                             <YourOrdersColumn
                                                 icon={<div className='w-4 h-4 flex items-center'>
                                                     <img
-                                                        src={imageUrl('icons/ImPriceTag.png')}
+                                                        src={imageUrl('icons/ImPriceTag.webp')}
                                                         width='16px'
                                                         height='16px'
                                                         alt='cena zamówienia'
@@ -163,7 +174,7 @@ const YourOrdersPage = () => {
                                             <YourOrdersColumn
                                                 icon={<div className='w-4 h-4 flex items-center'>
                                                     <img
-                                                        src={imageUrl('icons/MdDateRange.png')}
+                                                        src={imageUrl('icons/MdDateRange.webp')}
                                                         width='16px'
                                                         height='16px'
                                                         alt='data zamówienia'
@@ -175,10 +186,10 @@ const YourOrdersPage = () => {
                                             <YourOrdersColumn
                                                 icon={<div className='w-4 h-4 flex items-center'>
                                                     <img
-                                                        src={imageUrl('icons/MdDateRange.png')}
+                                                        src={imageUrl('icons/cancel.webp')}
                                                         width='16px'
                                                         height='16px'
-                                                        alt='data zamówienia'
+                                                        alt='anuluj zamówienie'
                                                     />
                                                 </div>}
                                                 value={item.id}
@@ -187,6 +198,7 @@ const YourOrdersPage = () => {
                                                 item={item}
                                                 price={item.totalPrice}
                                                 date={item.placementDate}
+                                                refresh={setRefresh}
                                             />
                                         </div>
                                     </div>
@@ -211,7 +223,7 @@ const YourOrdersPage = () => {
                                     <h1 className='w-fit animate-spin'>
                                         <div className='w-14 h-14 flex items-center'>
                                             <img
-                                                src={imageUrl('icons/CgSpinner.png')}
+                                                src={imageUrl('icons/CgSpinner.webp')}
                                                 width='68px'
                                                 height='68px'
                                                 alt='loader'
@@ -227,7 +239,7 @@ const YourOrdersPage = () => {
                         <h1 className='animate-spin'>
                             <div className='w-14 h-14 flex items-center'>
                                 <img
-                                    src={imageUrl('icons/CgSpinner.png')}
+                                    src={imageUrl('icons/CgSpinner.webp')}
                                     width='68px'
                                     height='68px'
                                     alt='loader'

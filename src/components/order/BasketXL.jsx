@@ -34,7 +34,7 @@ export default function BasketXL({
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/GiWaterSplash.png')}
+                    src={imageUrl('icons/GiWaterSplash.webp')}
                     width='16px'
                     height='16px'
                     alt='napój niegazowany'
@@ -45,7 +45,7 @@ export default function BasketXL({
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/RiBubbleChartLine.png')}
+                    src={imageUrl('icons/RiBubbleChartLine.webp')}
                     width='16px'
                     height='16px'
                     alt='napój gazowany'
@@ -56,7 +56,7 @@ export default function BasketXL({
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/GiManualJuicer.png')}
+                    src={imageUrl('icons/GiManualJuicer.webp')}
                     width='16px'
                     height='16px'
                     alt='sok / nektar'
@@ -67,7 +67,7 @@ export default function BasketXL({
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/FaCarrot.png')}
+                    src={imageUrl('icons/FaCarrot.webp')}
                     width='16px'
                     height='16px'
                     alt='boguś'
@@ -78,7 +78,7 @@ export default function BasketXL({
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/FaTeapot.png')}
+                    src={imageUrl('icons/FaTeapot.webp')}
                     width='16px'
                     height='16px'
                     alt='Boguś'
@@ -89,7 +89,7 @@ export default function BasketXL({
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/MdWaterDrop.png')}
+                    src={imageUrl('icons/MdWaterDrop.webp')}
                     width='16px'
                     height='16px'
                     alt='woda źródlana'
@@ -107,7 +107,7 @@ export default function BasketXL({
                         <div
                             className='w-full flex items-center text-center justify-center'>
                             <img
-                                src={imageUrl('icons/ImInfo.png')}
+                                src={imageUrl('icons/ImInfo.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='informacje'
@@ -126,7 +126,7 @@ export default function BasketXL({
                 <div
                     className='mt-2 w-full flex items-center text-center justify-center'>
                     <img
-                        src={imageUrl('icons/RiShoppingBasket2Line.png')}
+                        src={imageUrl('icons/RiShoppingBasket2Line.webp')}
                         width='30px'
                         height='30px'
                         alt='koszyk'

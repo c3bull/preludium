@@ -19,7 +19,7 @@ export function BasketModal(props) {
                             <div
                                 className='w-full flex items-center text-center justify-center'>
                                 <img
-                                    src={imageUrl('icons/ImInfo.png')}
+                                    src={imageUrl('icons/ImInfo.webp')}
                                     width='16px'
                                     height='16px'
                                     alt='informacje'
@@ -38,7 +38,7 @@ export function BasketModal(props) {
                     <div
                         className='mt-2 w-full flex items-center text-center justify-center'>
                         <img
-                            src={imageUrl('icons/RiShoppingBasket2Line.png')}
+                            src={imageUrl('icons/RiShoppingBasket2Line.webp')}
                             width='30px'
                             height='30px'
                             alt='koszyk'
@@ -66,7 +66,7 @@ export function BasketModal(props) {
                     <div className="flex w-full pt-5">
                         <div className="flex w-1/2 items-center justify-center">
                             <div className="mr-2">Suma:</div>
-                            <p className="font-semibold">{((finalPrice() + discount()) / 100).toFixed(2)} zł</p>
+                            <p className="font-semibold">{((finalPrice() - discount()) / 100).toFixed(2)} zł</p>
                         </div>
                         <button
                             type="button"

@@ -23,7 +23,7 @@ export default function OrderCategoryLayoutActionButtons(props) {
                             onClick={() => user && appendProductAmount(item.number, -1)}>
                             <div className='w-full h-full flex items-center justify-center'>
                                 <img
-                                    src={imageUrl('icons/AiFillMinusSquare.png')}
+                                    src={imageUrl('icons/AiFillMinusSquare.webp')}
                                     width='16px'
                                     height='16px'
                                     alt='odejmij butelkę'
@@ -49,7 +49,7 @@ export default function OrderCategoryLayoutActionButtons(props) {
                             onClick={() => user && appendProductAmount(item.number, 1)}>
                             <div className='w-full h-full flex items-center justify-center'>
                                 <img
-                                    src={imageUrl('icons/AiFillPlusSquare.png')}
+                                    src={imageUrl('icons/AiFillPlusSquare.webp')}
                                     width='16px'
                                     height='16px'
                                     alt='dodaj butelkę'
@@ -76,7 +76,7 @@ export default function OrderCategoryLayoutActionButtons(props) {
                 <div
                     className='flex items-center m-0.5'>
                     <img
-                        src={imageUrl('icons/GoInbox.png')}
+                        src={imageUrl('icons/GoInbox.webp')}
                         width='52px'
                         height='52px'
                         alt='skrzynka'

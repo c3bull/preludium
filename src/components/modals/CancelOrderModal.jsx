@@ -5,20 +5,31 @@ import {imageUrl} from "../utils/Image";
 import React from 'react';
 import {useAuth0} from "@auth0/auth0-react";
 import {ClassNames} from "../utils/UtilFunctions";
+import {gql, useMutation} from "@apollo/client";
+
+const UPDATE_STATUS = gql`
+    mutation updateStatus($id: String!, $status: String!) {
+        updateStatus(id: $id, status: $status) {
+            id
+            status
+        }
+    }`
 
 export function CancelOrderModal(props) {
     const {
-        onClickCancel,
         onClickClose,
         item,
         identificator,
         price,
-        date
+        date,
+        refresh
     } = props;
+    // const [deleteOrder, {error}] = useMutation(DELETE_ORDER)
 
+    const [updateStatus, {error}] = useMutation(UPDATE_STATUS)
     const {user} = useAuth0();
 
-    const sendEmail = (values) => {
+    const sendEmail = () => {
         emailjs.send(
             'service_4iq6nqv',
             'template_39zfjjs',
@@ -26,6 +37,10 @@ export function CancelOrderModal(props) {
                 subject: 'Anulowanie zamówienia',
                 id: identificator,
                 email: user.email,
+                name: item.name,
+                phone: item.phone,
+                zip: item.zip,
+                address: item.address,
                 productsToCancel: item.orderedProducts.map((product) => {
                     return product.hint
                         ? ` ${product.hint} ${product.name}: ${product.amount}`
@@ -43,7 +58,7 @@ export function CancelOrderModal(props) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/GiWaterSplash.png')}
+                    src={imageUrl('icons/GiWaterSplash.webp')}
                     width='16px'
                     height='16px'
                     alt='napój niegazowany'
@@ -54,7 +69,7 @@ export function CancelOrderModal(props) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/RiBubbleChartLine.png')}
+                    src={imageUrl('icons/RiBubbleChartLine.webp')}
                     width='16px'
                     height='16px'
                     alt='napój gazowany'
@@ -65,7 +80,7 @@ export function CancelOrderModal(props) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/GiManualJuicer.png')}
+                    src={imageUrl('icons/GiManualJuicer.webp')}
                     width='16px'
                     height='16px'
                     alt='sok / nektar'
@@ -76,7 +91,7 @@ export function CancelOrderModal(props) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/FaCarrot.png')}
+                    src={imageUrl('icons/FaCarrot.webp')}
                     width='16px'
                     height='16px'
                     alt='boguś'
@@ -87,7 +102,7 @@ export function CancelOrderModal(props) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/FaTeapot.png')}
+                    src={imageUrl('icons/FaTeapot.webp')}
                     width='16px'
                     height='16px'
                     alt='Boguś'
@@ -98,7 +113,7 @@ export function CancelOrderModal(props) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/MdWaterDrop.png')}
+                    src={imageUrl('icons/MdWaterDrop.webp')}
                     width='16px'
                     height='16px'
                     alt='woda źródlana'
@@ -121,9 +136,17 @@ export function CancelOrderModal(props) {
                     address: '',
                 }}
                 // validationSchema={formSchema}
-                onSubmit={(values) => {
-                    sendEmail(values);
-                    onClickCancel();
+                onSubmit={ (values) => {
+                    sendEmail();
+                    updateStatus({
+                        variables: {
+                            "id": identificator,
+                            "status": "canceled"
+                        }
+                    })
+
+                    refresh(prevState => !prevState)
+                    // onClickCancel();
                     onClickClose();
                 }}
             >
@@ -201,7 +224,7 @@ export function CancelOrderModal(props) {
                                 >
                                     <div className="inline-block mt-1">
                                         <img
-                                            src={imageUrl('icons/AiOutlineCheckCircleWhite.png')}
+                                            src={imageUrl('icons/AiOutlineCheckCircleWhite.webp')}
                                             width='15px'
                                             height='15px'
                                             alt='anuluj zamówienie'
@@ -217,7 +240,7 @@ export function CancelOrderModal(props) {
                                     <div
                                         className='inline-block mt-1'>
                                         <img
-                                            src={imageUrl('icons/AiOutlineCloseCircle.png')}
+                                            src={imageUrl('icons/AiOutlineCloseCircle.webp')}
                                             width='15px'
                                             height='15px'
                                             alt='Cofnij'

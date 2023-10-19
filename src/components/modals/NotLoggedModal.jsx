@@ -23,7 +23,7 @@ export function NotLoggedModal(props) {
                         <div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/IoLogInOutline.png')}
+                                src={imageUrl('icons/IoLogInOutline.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='zaloguj się'
@@ -38,7 +38,7 @@ export function NotLoggedModal(props) {
                         <div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/AiOutlineCloseCircle.png')}
+                                src={imageUrl('icons/AiOutlineCloseCircle.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='zamknij'

@@ -10,7 +10,6 @@ import LittleBasket from "../components/order/LittleBasket";
 import {OrderCategoryLayout} from "../components/order/OrderCategoryLayout";
 import OrderMap from "../components/order/OrderMap";
 import {imageUrl} from "../components/utils/Image";
-import {format} from 'date-fns';
 import {gql, useMutation, useQuery} from "@apollo/client";
 
 function emptyArray(size) {
@@ -47,29 +46,13 @@ const Order = () => {
   }
 `;
 
-    const MAKE_ORDER = gql`
-    mutation makeOrder($orderedProducts: [OrderedProductsInputType!], $placementDate: String!, $totalPrice: String!, $email: String!) {
-        makeOrder(orderedProducts: $orderedProducts, placementDate: $placementDate, totalPrice: $totalPrice, email: $email) {
-            orderedProducts {
-                amount
-                hint
-                name
-                productId
-            }
-        placementDate
-        totalPrice
-        email
-        }
-    }`
-
     const {data} = useQuery(GET_ALL_PRODUCTS);
-    const [makeOrder, {error}] = useMutation(MAKE_ORDER)
     const iconRemap = {
         '[NIEGAZ]': {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/GiWaterSplash.png')}
+                    src={imageUrl('icons/GiWaterSplash.webp')}
                     width='16px'
                     height='16px'
                     alt='napój niegazowany'
@@ -80,7 +63,7 @@ const Order = () => {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/RiBubbleChartLine.png')}
+                    src={imageUrl('icons/RiBubbleChartLine.webp')}
                     width='16px'
                     height='16px'
                     alt='napój gazowany'
@@ -91,7 +74,7 @@ const Order = () => {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/GiManualJuicer.png')}
+                    src={imageUrl('icons/GiManualJuicer.webp')}
                     width='16px'
                     height='16px'
                     alt='sok / nektar'
@@ -102,7 +85,7 @@ const Order = () => {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/FaCarrot.png')}
+                    src={imageUrl('icons/FaCarrot.webp')}
                     width='16px'
                     height='16px'
                     alt='Boguś'
@@ -113,7 +96,7 @@ const Order = () => {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/FaTeapot.png')}
+                    src={imageUrl('icons/FaTeapot.webp')}
                     width='16px'
                     height='16px'
                     alt='Boguś'
@@ -124,7 +107,7 @@ const Order = () => {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/MdWaterDrop.png')}
+                    src={imageUrl('icons/MdWaterDrop.webp')}
                     width='16px'
                     height='16px'
                     alt='woda źródlana'
@@ -224,32 +207,35 @@ const Order = () => {
         return discount;
     }
 
-    const saveOrderToDb = async () => {
-
-        const orderedProducts = data.product
-            .filter((pd) => {
-                // odfiltrowanie niezamowionych produktow
-                return selectedProductsAmount[pd.number];
-            })
-            .map((pd) => {
-                const {name, hint, number} = pd;
-                return {
-                    "amount": selectedProductsAmount[number],
-                    "hint": hint,
-                    "name": name,
-                    "productId": number
-                };
-            });
-
-        makeOrder({
-            variables: {
-                "orderedProducts": orderedProducts,
-                "placementDate": format(new Date(), 'dd/MM/yyyy'),
-                "totalPrice": ((finalPrice() + discount()) / 100).toFixed(2),
-                "email": user.email,
-            }
-        })
-    };
+    // const saveOrderToDb = async () => {
+    //
+    //     const orderedProducts = data.product
+    //         .filter((pd) => {
+    //             // odfiltrowanie niezamowionych produktow
+    //             return selectedProductsAmount[pd.number];
+    //         })
+    //         .map((pd) => {
+    //             const {name, hint, number} = pd;
+    //             return {
+    //                 "amount": selectedProductsAmount[number],
+    //                 "hint": hint,
+    //                 "name": name,
+    //                 "productId": number
+    //             };
+    //         });
+    //
+    //     makeOrder({
+    //         variables: {
+    //             "orderedProducts": orderedProducts,
+    //             "placementDate": format(new Date(), 'dd/MM/yyyy'),
+    //             "totalPrice": ((finalPrice() - discount()) / 100).toFixed(2),
+    //             "email": user.email,
+    //             "name": user.email,
+    //             "phone": user.email,
+    //             "zip": user.email,
+    //         }
+    //     })
+    // };
 
     const confirmOrder = () => {
         setShowConfirmModal(1);
@@ -316,9 +302,6 @@ const Order = () => {
                         setShowBasket(false);
                         setShowConfirmModal(-1);
                     }}
-                    onClickOrder={() => {
-                        saveOrderToDb();
-                    }}
                     products={data.product.map((item, index) => {
                         const amount = selectedProductsAmount[index];
 
@@ -340,6 +323,21 @@ const Order = () => {
                             </div>
                         );
                     })}
+
+                    orderedProducts={data.product.filter((pd) => {
+                        // odfiltrowanie niezamowionych produktow
+                        return selectedProductsAmount[pd.number];
+                    })
+                        .map((pd) => {
+                            const {name, hint, number} = pd;
+                            return {
+                                "amount": selectedProductsAmount[number],
+                                "hint": hint,
+                                "name": name,
+                                "productId": number
+                            };
+                        })}
+                    totalPrice={((finalPrice() - discount()) / 100).toFixed(2)}
                     productsToSave={data.product
                         .filter((pd) => {
                             return selectedProductsAmount[pd.number];
@@ -352,7 +350,7 @@ const Order = () => {
                                 name
                             };
                         })}
-                    sum={((finalPrice() + discount()) / 100)}
+                    sum={((finalPrice() - discount()) / 100)}
                     showThanks={() => {
                         setShowThanksModal(1);
                     }}
@@ -377,7 +375,7 @@ const Order = () => {
                         icon={<div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/GiWaterSplash.png')}
+                                src={imageUrl('icons/GiWaterSplash.webp')}
                                 width='17px'
                                 height='17px'
                                 alt='napoje niegazowane'
@@ -405,7 +403,7 @@ const Order = () => {
                         icon={<div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/RiBubbleChartLine.png')}
+                                src={imageUrl('icons/RiBubbleChartLine.webp')}
                                 width='17px'
                                 height='17px'
                                 alt='napoje gazowane'
@@ -424,7 +422,7 @@ const Order = () => {
                         icon={<div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/GiManualJuicer.png')}
+                                src={imageUrl('icons/GiManualJuicer.webp')}
                                 width='17px'
                                 height='17px'
                                 alt='soki i nektary'
@@ -443,7 +441,7 @@ const Order = () => {
                         icon={<div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/FaCarrot.png')}
+                                src={imageUrl('icons/FaCarrot.webp')}
                                 width='19px'
                                 height='19px'
                                 alt='Bogusie'
@@ -462,7 +460,7 @@ const Order = () => {
                         icon={<div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/FaCarrot.png')}
+                                src={imageUrl('icons/FaCarrot.webp')}
                                 width='19px'
                                 height='19px'
                                 alt='Bogusie'
@@ -481,7 +479,7 @@ const Order = () => {
                         icon={<div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/MdWaterDrop.png')}
+                                src={imageUrl('icons/MdWaterDrop.webp')}
                                 width='17px'
                                 height='17px'
                                 alt='wody źródlane'

@@ -10,7 +10,7 @@ export default function YourOrderCollapsible({index, item}) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/GiWaterSplash.png')}
+                    src={imageUrl('icons/GiWaterSplash.webp')}
                     width='16px'
                     height='16px'
                     alt='napój niegazowany'
@@ -21,7 +21,7 @@ export default function YourOrderCollapsible({index, item}) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/RiBubbleChartLine.png')}
+                    src={imageUrl('icons/RiBubbleChartLine.webp')}
                     width='16px'
                     height='16px'
                     alt='napój gazowany'
@@ -32,7 +32,7 @@ export default function YourOrderCollapsible({index, item}) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/GiManualJuicer.png')}
+                    src={imageUrl('icons/GiManualJuicer.webp')}
                     width='16px'
                     height='16px'
                     alt='sok / nektar'
@@ -43,7 +43,7 @@ export default function YourOrderCollapsible({index, item}) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/FaCarrot.png')}
+                    src={imageUrl('icons/FaCarrot.webp')}
                     width='16px'
                     height='16px'
                     alt='Boguś'
@@ -54,7 +54,7 @@ export default function YourOrderCollapsible({index, item}) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/FaTeapot.png')}
+                    src={imageUrl('icons/FaTeapot.webp')}
                     width='16px'
                     height='16px'
                     alt='Boguś'
@@ -65,7 +65,7 @@ export default function YourOrderCollapsible({index, item}) {
             icon: <div
                 className='flex w-4 h-4 mt-0.5'>
                 <img
-                    src={imageUrl('icons/MdWaterDrop.png')}
+                    src={imageUrl('icons/MdWaterDrop.webp')}
                     width='16px'
                     height='16px'
                     alt='woda źródlana'
@@ -79,7 +79,7 @@ export default function YourOrderCollapsible({index, item}) {
             <div className='flex items-center border border-gray-800 bg-orange-50 p-2 lg:hidden lg:justify-center'>
                 <div className='w-4 h-4 flex items-center'>
                     <img
-                        src={imageUrl('icons/GiBottleCap.png')}
+                        src={imageUrl('icons/GiBottleCap.webp')}
                         width='16px'
                         height='16px'
                         alt='zamówione produkty'

@@ -25,15 +25,15 @@ const Footer = () => {
                 </div>
                 <div className="hidden flex-row items-center justify-center pb-5 pr-2 text-lg font-medium uppercase text-black sm:flex">
                     <img
-                        src={imageUrl('icons/BiCopyright.png')}
+                        src={imageUrl('icons/BiCopyright.webp')}
                         width='16px'
                         height='16px'
                         alt='copyright'
                     />
                     <p className="pb-0.5 pl-1">Preludium</p>
-                    <div className='pt-0.5'>
+                    <div className='pb-0.5'>
                         <img
-                            src={imageUrl('icons/BsDot.png')}
+                            src={imageUrl('icons/BsDot.webp')}
                             width='16px'
                             height='16px'
                             alt='kropka'

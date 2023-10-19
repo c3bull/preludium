@@ -9,17 +9,39 @@ import {imageUrl} from "../utils/Image";
 import React from 'react';
 import {format} from 'date-fns';
 import {useAuth0} from "@auth0/auth0-react";
+import {gql, useMutation} from "@apollo/client";
 
 export function ConfirmModal(props) {
     const {
-        onClickOrder,
         onClickClose,
         products,
         sum,
         showThanks,
         productsToSave,
+        orderedProducts,
+        totalPrice
     } = props;
 
+    const MAKE_ORDER = gql`
+    mutation makeOrder($orderedProducts: [OrderedProductsInputType!], $placementDate: String!, $totalPrice: String!, $email: String!, $name: String!, $phone: String!, $zip: String!, $address: String!, $status: String!) {
+        makeOrder(orderedProducts: $orderedProducts, placementDate: $placementDate, totalPrice: $totalPrice, email: $email, name: $name, phone: $phone, zip: $zip, address: $address, status: $status) {
+            orderedProducts {
+                amount
+                hint
+                name
+                productId
+            }
+        placementDate
+        totalPrice
+        email
+        name
+        phone
+        zip
+        address
+        }
+    }`
+
+    const [makeOrder, {error}] = useMutation(MAKE_ORDER)
     const {user} = useAuth0();
     const formSchema = Yup.object().shape({
         name: Yup.string().required('Pole obowiązkowe'),
@@ -57,6 +79,7 @@ export function ConfirmModal(props) {
         );
     };
 
+
     return (
         <Modal
             classes="pt-16 md:items-center overflow-auto"
@@ -72,8 +95,21 @@ export function ConfirmModal(props) {
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
+                    console.log('vals ',values)
                     sendEmail(values);
-                    onClickOrder();
+                    makeOrder({
+                        variables: {
+                            "orderedProducts": orderedProducts,
+                            "placementDate": format(new Date(), 'dd/MM/yyyy'),
+                            "totalPrice": totalPrice,
+                            "email": user.email,
+                            "name": values.name,
+                            "phone": values.phone,
+                            "zip": values.zipcode,
+                            "address": values.address,
+                            "status": "in-progress",
+                        }
+                    })
                     onClickClose();
                     showThanks();
                     setTimeout(() => window.location.href = '/twoje-zamowienia', 3000);
@@ -113,9 +149,9 @@ export function ConfirmModal(props) {
                                     type="submit"
                                     className="flex w-full items-center justify-center rounded bg-primary p-2 font-semibold uppercase text-white sm:w-full sm:px-10 sm:py-4"
                                 >
-                                    <div className="inline-block mt-1">
+                                    <div className="inline-block mt-0.5">
                                         <img
-                                            src={imageUrl('icons/AiOutlineCheckCircleWhite.png')}
+                                            src={imageUrl('icons/AiOutlineCheckCircleWhite.webp')}
                                             width='15px'
                                             height='15px'
                                             alt='potwierdź zamówienie'
@@ -128,9 +164,9 @@ export function ConfirmModal(props) {
                                     onClick={onClickClose}
                                 >
                                     <div
-                                        className='inline-block mt-1'>
+                                        className='inline-block mt-0.5'>
                                         <img
-                                            src={imageUrl('icons/AiOutlineCloseCircle.png')}
+                                            src={imageUrl('icons/AiOutlineCloseCircle.webp')}
                                             width='15px'
                                             height='15px'
                                             alt='anuluj zamówienie'

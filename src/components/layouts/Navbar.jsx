@@ -54,7 +54,7 @@ export default function Navbar() {
                                     {open ? (
                                         <div className='flex items-center' aria-hidden='true'>
                                             <img
-                                                src={imageUrl('icons/FaTimes.png')}
+                                                src={imageUrl('icons/faTimes.webp')}
                                                 width='21px'
                                                 height='21px'
                                                 alt='zamknij nawigację'
@@ -63,7 +63,7 @@ export default function Navbar() {
                                     ) : (
                                         <div className='flex items-center' aria-hidden='true'>
                                             <img
-                                                src={imageUrl('icons/FaBars.png')}
+                                                src={imageUrl('icons/FaBars.webp')}
                                                 width='21px'
                                                 height='21px'
                                                 alt='rozwiń nawigację'
@@ -111,7 +111,7 @@ export default function Navbar() {
                                     >
                                         <div className='flex items-center' aria-hidden='true'>
                                             <img
-                                                src={imageUrl('icons/IoLogInOutline.png')}
+                                                src={imageUrl('icons/IoLogInOutline.webp')}
                                                 width='16px'
                                                 height='16px'
                                                 alt='zaloguj'
@@ -150,7 +150,7 @@ export default function Navbar() {
                                                             <div className='flex items-center'>
                                                                 <div className='flex items-center' aria-hidden='true'>
                                                                     <img
-                                                                        src={imageUrl('icons/RiShoppingBasket2Line.png')}
+                                                                        src={imageUrl('icons/RiShoppingBasket2Line.webp')}
                                                                         width='13px'
                                                                         height='13px'
                                                                         alt='twoje zamówienia'
@@ -173,7 +173,7 @@ export default function Navbar() {
                                                         <div className='flex items-center'>
                                                             <div className='flex items-center' aria-hidden='true'>
                                                                 <img
-                                                                    src={imageUrl('icons/RiLogoutCircleRLine.png')}
+                                                                    src={imageUrl('icons/RiLogoutCircleRLine.webp')}
                                                                     width='13px'
                                                                     height='13px'
                                                                     alt='wyloguj'

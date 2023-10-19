@@ -118,7 +118,7 @@ function ProductsLayout({categoryUrl, className, color}) {
                     <h1 className='w-fit animate-spin '>
                         <div className='w-14 h-14 flex items-center'>
                             <img
-                                src={imageUrl('icons/CgSpinner.png')}
+                                src={imageUrl('icons/CgSpinner.webp')}
                                 width='68px'
                                 height='68px'
                                 alt='loader'

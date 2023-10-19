@@ -10,7 +10,7 @@ export default function PricesSideButtons() {
                         <div
                             className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
                             <img
-                                src={imageUrl('icons/GiWaterSplash.png')}
+                                src={imageUrl('icons/GiWaterSplash.webp')}
                                 width='32px'
                                 height='32px'
                                 alt='przewiń do niegazowanych'
@@ -23,7 +23,7 @@ export default function PricesSideButtons() {
                         <div
                             className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
                             <img
-                                src={imageUrl('icons/RiBubbleChartLine.png')}
+                                src={imageUrl('icons/RiBubbleChartLine.webp')}
                                 width='32px'
                                 height='32px'
                                 alt='przewiń do gazowanych'
@@ -36,7 +36,7 @@ export default function PricesSideButtons() {
                         <div
                             className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
                             <img
-                                src={imageUrl('icons/GiManualJuicer.png')}
+                                src={imageUrl('icons/GiManualJuicer.webp')}
                                 width='32px'
                                 height='32px'
                                 alt='przewiń do soków'
@@ -49,7 +49,7 @@ export default function PricesSideButtons() {
                         <div
                             className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
                             <img
-                                src={imageUrl('icons/FaCarrot.png')}
+                                src={imageUrl('icons/FaCarrot.webp')}
                                 width='32px'
                                 height='32px'
                                 alt='przewiń do Bogusiów'
@@ -62,7 +62,7 @@ export default function PricesSideButtons() {
                         <div
                             className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
                             <img
-                                src={imageUrl('icons/FaTeapot.png')}
+                                src={imageUrl('icons/FaTeapot.webp')}
                                 width='32px'
                                 height='32px'
                                 alt='przewiń do Bogusiów'
@@ -75,7 +75,7 @@ export default function PricesSideButtons() {
                         <div
                             className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
                             <img
-                                src={imageUrl('icons/MdWaterDrop.png')}
+                                src={imageUrl('icons/MdWaterDrop.webp')}
                                 width='32px'
                                 height='32px'
                                 alt='przewiń do wody'

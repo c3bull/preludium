@@ -10,7 +10,7 @@ export default function FooterCustomerService() {
                 <div className="flex">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/ImLocation.png')}
+                            src={imageUrl('icons/ImLocation.webp')}
                             className='w-4 max-w-[16px] h-auto'
                             alt='adres'
                         />
@@ -20,7 +20,7 @@ export default function FooterCustomerService() {
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/ImLocation.png')}
+                            src={imageUrl('icons/ImLocation.webp')}
                             className='w-4 max-w-[16px] h-auto'
                             alt='adres2'
                         />
@@ -30,7 +30,7 @@ export default function FooterCustomerService() {
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/AiFillPhone.png')}
+                            src={imageUrl('icons/AiFillPhone.webp')}
                             className='w-4 max-w-[16px] h-auto'
                             alt='numer telefonu'
                         />
@@ -40,7 +40,7 @@ export default function FooterCustomerService() {
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/AiFillPhone.png')}
+                            src={imageUrl('icons/AiFillPhone.webp')}
                             className='w-4 max-w-[16px] h-auto'
                             alt='numer telefonu 2'
                         />
@@ -50,7 +50,7 @@ export default function FooterCustomerService() {
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/AiFillPhone.png')}
+                            src={imageUrl('icons/AiFillPhone.webp')}
                             className='w-4 max-w-[16px] h-auto'
                             alt='numer telefonu 3'
                         />
@@ -60,7 +60,7 @@ export default function FooterCustomerService() {
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/IoMdMail.png')}
+                            src={imageUrl('icons/IoMdMail.webp')}
                             className='w-4 max-w-[16px] h-auto pt-0.5'
                             alt='email'
                         />
@@ -70,7 +70,7 @@ export default function FooterCustomerService() {
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/IoMdMail.png')}
+                            src={imageUrl('icons/IoMdMail.webp')}
                             className='w-4 max-w-[16px] h-auto pt-0.5'
                             alt='email 2'
                         />
@@ -80,7 +80,7 @@ export default function FooterCustomerService() {
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/IoMdMail.png')}
+                            src={imageUrl('icons/IoMdMail.webp')}
                             className='w-4 max-w-[16px] h-auto pt-0.5'
                             alt='email 3'
                         />
@@ -90,7 +90,7 @@ export default function FooterCustomerService() {
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
                         <img
-                            src={imageUrl('icons/MdOutlineAccessTimeFilled.png')}
+                            src={imageUrl('icons/MdOutlineAccessTimeFilled.webp')}
                             className='w-4 max-w-[16px] h-auto pt-0.5'
                             alt='godziny pracy'
                         />

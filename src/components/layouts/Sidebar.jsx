@@ -15,7 +15,7 @@ function Sidebar() {
                         <div
                             className='flex items-center w-12 h-12 ml-0.5'>
                             <img
-                                src={imageUrl('icons/FaFacebook.png')}
+                                src={imageUrl('icons/FaFacebook.webp')}
                                 width='50px'
                                 height='50px'
                                 alt='Facebook icon'

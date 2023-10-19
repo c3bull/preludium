@@ -16,7 +16,7 @@ const Contact = () => {
                         title='Email'
                         icon={<div className='flex items-center p-0.5'>
                             <img
-                                src={imageUrl('icons/MdOutgoingMail.png')}
+                                src={imageUrl('icons/MdOutgoingMail.webp')}
                                 width='30px'
                                 height='30px'
                                 alt='wyślij email'
@@ -29,7 +29,7 @@ const Contact = () => {
                         title='Messenger'
                         icon={<div className='flex items-center p-0.5'>
                             <img
-                                src={imageUrl('icons/RiMessengerLine.png')}
+                                src={imageUrl('icons/RiMessengerLine.webp')}
                                 width='30px'
                                 height='30px'
                                 alt='napisz na Messenegrze'
@@ -42,7 +42,7 @@ const Contact = () => {
                         title='Telefon'
                         icon={<div className='flex items-center p-0.5'>
                             <img
-                                src={imageUrl('icons/AiOutlinePhone.png')}
+                                src={imageUrl('icons/AiOutlinePhone.webp')}
                                 width='30px'
                                 height='30px'
                                 alt='zadzwoń'
@@ -64,7 +64,7 @@ const Contact = () => {
                         name='napojefantic.krakow@gmail.com'
                         icon={<div className='flex items-center p-0.5'>
                             <img
-                                src={imageUrl('icons/MdOutgoingMail.png')}
+                                src={imageUrl('icons/MdOutgoingMail.webp')}
                                 width='30px'
                                 height='30px'
                                 alt='wyślij email'
@@ -78,7 +78,7 @@ const Contact = () => {
                         name='Preludium'
                         icon={<div className='flex items-center p-0.5'>
                             <img
-                                src={imageUrl('icons/RiMessengerLine.png')}
+                                src={imageUrl('icons/RiMessengerLine.webp')}
                                 width='30px'
                                 height='30px'
                                 alt='napisz na Messengerze'
@@ -93,7 +93,7 @@ const Contact = () => {
                         name2='500 776 150'
                         icon={<div className='flex items-center p-0.5'>
                             <img
-                                src={imageUrl('icons/AiOutlinePhone.png')}
+                                src={imageUrl('icons/AiOutlinePhone.webp')}
                                 width='30px'
                                 height='30px'
                                 alt='zadzwoń'

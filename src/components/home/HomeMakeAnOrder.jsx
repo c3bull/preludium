@@ -11,7 +11,7 @@ export default function HomeMakeAndOrder({goToOrder}) {
                 <div className="flex flex-col items-center">
                     <SectionHeader
                         icon={<img
-                            src={imageUrl('icons/RiShoppingBasket2Line.png')}
+                            src={imageUrl('icons/RiShoppingBasket2Line.webp')}
                             width='50px'
                             height='50px'
                             alt='złóż zamówienie'
@@ -51,7 +51,7 @@ export default function HomeMakeAndOrder({goToOrder}) {
                                             <div className="flex lg:text-md ml-1 text-xs leading-7 xl:text-lg">
                                                 <div className="inline-block pr-2 pt-1.5">
                                                     <img
-                                                        src={imageUrl('icons/AiOutlineCheckCircle.png')}
+                                                        src={imageUrl('icons/AiOutlineCheckCircle.webp')}
                                                         width='16px'
                                                         height='16px'
                                                         alt='check'

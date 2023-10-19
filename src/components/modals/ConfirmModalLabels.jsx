@@ -10,7 +10,7 @@ export default function ConfirmModalLabels() {
                 icon={<div
                     className='pt-1'>
                     <img
-                        src={imageUrl('icons/FaUserAlt.png')}
+                        src={imageUrl('icons/FaUserAlt.webp')}
                         width='16px'
                         height='16px'
                         alt='imię i nazwisko'
@@ -22,7 +22,7 @@ export default function ConfirmModalLabels() {
                 icon={<div
                     className='pt-1'>
                     <img
-                        src={imageUrl('icons/AiFillPhone.png')}
+                        src={imageUrl('icons/AiFillPhone.webp')}
                         width='16px'
                         height='16px'
                         alt='numer telefonu'
@@ -34,7 +34,7 @@ export default function ConfirmModalLabels() {
                 icon={<div
                     className='pt-1'>
                     <img
-                        src={imageUrl('icons/GiPostStamp.png')}
+                        src={imageUrl('icons/GiPostStamp.webp')}
                         width='16px'
                         height='16px'
                         alt='kod pocztowy'
@@ -46,7 +46,7 @@ export default function ConfirmModalLabels() {
                 icon={<div
                     className='pt-1'>
                     <img
-                        src={imageUrl('icons/MdLocationPin.png')}
+                        src={imageUrl('icons/MdLocationPin.webp')}
                         width='16px'
                         height='16px'
                         alt='adres'

@@ -21,13 +21,14 @@ export default function YourOrdersColumn({
                                              onClickDelete,
                                              item,
                                              price,
-                                             date
+                                             date,
+                                             refresh
                                          }) {
     const [deleteOrder, {error}] = useMutation(DELETE_ORDER)
     const [showCancelConfirmation, setShowCancelConfirmation] = useState(false)
 
     return (
-        <div className="my-1 flex items-center border border-gray-800 lg:my-0 lg:justify-center">
+        <div className={` my-1 flex items-center border border-gray-800 lg:my-0 lg:justify-center`}>
             <div className="flex items-center border-r border-gray-800 bg-orange-50 p-2 lg:hidden lg:justify-center">
                 {icon}
             </div>
@@ -51,7 +52,7 @@ export default function YourOrdersColumn({
                     >
                         <div className='w-4 h-4 flex items-center mb-1 duration-100 hover:scale-110 active:border'>
                             <img
-                                src={imageUrl('icons/AiOutlineCopy.png')}
+                                src={imageUrl('icons/AiOutlineCopy.webp')}
                                 width='16px'
                                 height='16px'
                                 alt='kopiuj'
@@ -60,27 +61,20 @@ export default function YourOrdersColumn({
                     </div>
                 )}
                 {onClickDelete && (
-                    <div
-                        className="cursor-pointer "
-                        onClick={() => {
-                            setShowCancelConfirmation(true)
-                            // {
-                            //     deleteOrder({
-                            //         variables: {
-                            //             "id": value
-                            //         }
-                            //     }).then(r => window.location.reload(false))
-                            // }
-                        }}
-                    >
-                        <div className='w-4 h-4 flex items-center duration-100 hover:scale-110 active:border'>
+                    <div>
+                        {item.status === "canceled" ?
+                            <div>anulowane</div> :
                             <img
-                                src={imageUrl('icons/faTimes.png')}
+                                className='cursor-pointer'
+                                src={imageUrl('icons/cancel.webp')}
                                 width='16px'
                                 height='16px'
-                                alt='usun'
+                                alt='anuluj zamówienie'
+                                onClick={() => {
+                                    setShowCancelConfirmation(true)
+                                }}
                             />
-                        </div>
+                        }
                     </div>
                 )}
 
@@ -104,6 +98,7 @@ export default function YourOrdersColumn({
                         identificator={value}
                         price={price}
                         date={date}
+                        refresh={refresh}
                         // products={data.product.map((item, index) => {
                         //     const amount = selectedProductsAmount[index];
                         //
