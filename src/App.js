@@ -16,6 +16,8 @@ import ScrollToTop from "./components/utils/ScrollToTop";
 import Sidebar from "./components/layouts/Sidebar";
 import {client} from "./ApolloClient/client";
 import {ApolloProvider} from '@apollo/client';
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
     return (
@@ -35,6 +37,8 @@ function App() {
                             <Route path='/produkty' element={<Products/>}/>
                             <Route path='/cennik' element={<PricesPage/>}/>
                             <Route path='/zamow' element={<OrderPage/>}/>
+                            <Route path='/zaloguj' element={<Login/>}/>
+                            <Route path='/rejestracja' element={<Register/>}/>
                             <Route path='/produkty/:category' element={<ProductsDetails/>}/>
                             <Route path='/twoje-zamowienia' element={<YourOrdersPage/>}/>
                         </Routes>

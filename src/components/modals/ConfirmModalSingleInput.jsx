@@ -8,20 +8,25 @@ export function ConfirmModalSingleInput({
                                             width,
                                             placeholder,
                                             errors,
+                                            showErrors,
+                                            fieldType,
                                         }) {
     return (
         <div className="flex items-center">
             <Field
                 name={name}
+                type={fieldType ? fieldType : "text"}
                 className={ClassNames(
                     width,
-                    'border-b-2 border-primary bg-transparent p-2 text-black'
+                    'border-b-2 border-primary bg-transparent p-2 text-black',
+                    `${!showErrors && 'mr-4'}`
                 )}
                 placeholder={placeholder}
             />
-            <div>
-                {errors && <div className="ml-2 h-3 w-3 rounded-full bg-red-600"/>}
-            </div>
+            {showErrors && <div>
+                {errors ? <div className="ml-2 h-3 w-3 rounded-full bg-red-600 mr-1"/> :
+                    <div className="ml-2 h-3 w-3 rounded-full bg-green-600 mr-1"/>}
+            </div>}
         </div>
     );
 }

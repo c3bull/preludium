@@ -3,9 +3,15 @@ import {Disclosure, Menu, Transition} from '@headlessui/react';
 import React, {Fragment} from 'react';
 
 import {imageUrl} from "../utils/Image";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function Navbar() {
+
+    const navigate = useNavigate();
+    const goToLogin = () => {
+        navigate("/zaloguj");
+    };
+
     const {user, loginWithRedirect, logout} = useAuth0();
     const links = [
         {
@@ -72,7 +78,7 @@ export default function Navbar() {
                                     )}
                                 </Disclosure.Button>
                             </div>
-                            <div className='flex flex-1 items-center justify-center sm:text-center'>
+                            <div className='flex flex-1 items-center justify-center md:pl-2 sm:text-center'>
                                 <div className='flex shrink-0 items-center'>
                                     <Link to={'/'}>
                                         <img
@@ -106,18 +112,20 @@ export default function Navbar() {
                                 {/* Profile dropdown */}
                                 {!user ? (
                                     <div
-                                        className='cursor-pointer flex items-center rounded border-hidden px-3 py-1.5 text-white hover:bg-gray-700'
+                                        className='cursor-pointer flex items-center rounded border-hidden md:px-3 py-1.5 text-white hover:bg-gray-700'
+                                        // onClick={goToLogin}
                                         onClick={loginWithRedirect}
                                     >
                                         <div className='flex items-center' aria-hidden='true'>
                                             <img
                                                 src={imageUrl('icons/IoLogInOutline.webp')}
-                                                width='16px'
-                                                height='16px'
+                                                className='w-10 h-10 max-w-[40px]'
+                                                // width='16px'
+                                                // height='16px'
                                                 alt='zaloguj'
                                             />
                                         </div>
-                                        <p className='pl-1 font-semibold'>Zaloguj</p>
+                                        <p className='pl-1 font-semibold hidden md:block'>Zaloguj</p>
                                     </div>
                                 ) : (
                                     <Menu as='div' className='relative ml-3'>
