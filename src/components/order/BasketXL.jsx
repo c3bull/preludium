@@ -1,7 +1,7 @@
 import React from 'react';
 import {imageUrl} from "../utils/Image";
-import {useAuth0} from "@auth0/auth0-react";
 import {gql, useQuery} from "@apollo/client";
+import {isExpired} from "react-jwt";
 
 
 export default function BasketXL({
@@ -11,7 +11,8 @@ export default function BasketXL({
                                      finalPrice,
                                      discount
                                  }) {
-    const {user} = useAuth0();
+
+    const isExp = isExpired(localStorage.getItem('token'))
     const GET_ALL_PRODUCTS = gql`
   query GetProducts {
     product {
@@ -102,7 +103,7 @@ export default function BasketXL({
         <div
             className="fixed right-28 top-[15%] hidden w-96 flex-col items-center justify-center rounded-lg border border-gray-400 bg-white px-5 pb-5 drop-shadow-2xl 2xl:flex">
             <div className="mt-4 flex w-full flex-col justify-center rounded-md border border-gray-400 p-2">
-                {user && (
+                {!isExp && (
                     <div>
                         <div
                             className='w-full flex items-center text-center justify-center'>

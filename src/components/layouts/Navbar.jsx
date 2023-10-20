@@ -1,4 +1,3 @@
-import {useAuth0} from "@auth0/auth0-react";
 import {Disclosure, Menu, Transition} from '@headlessui/react';
 import React, {Fragment} from 'react';
 
@@ -23,8 +22,6 @@ export default function Navbar() {
     const usersurname = !isExp && decodeToken(localStorage.getItem('token')).surname;
     const userId = !isExp && decodeToken(localStorage.getItem('token')).userId;
 
-    console.log(decodeToken(localStorage.getItem('token')).email)
-
     const navigate = useNavigate();
 
     const goToLogin = () => {
@@ -35,7 +32,6 @@ export default function Navbar() {
         navigate("/");
     };
 
-    const {user, loginWithRedirect, logout} = useAuth0();
     const links = [
         {
             id: 1,
@@ -155,12 +151,6 @@ export default function Navbar() {
                                         <div>
                                             <Menu.Button
                                                 className='flex rounded-full bg-gray-800 text-sm focus:outline-none active:ring-2 active:ring-white active:ring-offset-2 active:ring-offset-gray-800'>
-                                                {/*<span className='sr-only'>Open user menu</span>*/}
-                                                {/*<img*/}
-                                                {/*    className='h-auto w-12 rounded-full'*/}
-                                                {/*    src={`${user.picture}`}*/}
-                                                {/*    alt='profil'*/}
-                                                {/*/>*/}
                                                 <div
                                                     className='pb-0.5 font-semibold h-12 w-12 rounded-full bg-primary text-white flex justify-center items-center text-2xl'>
                                                     {username[0]}{usersurname[0]}

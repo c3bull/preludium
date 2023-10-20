@@ -1,4 +1,3 @@
-import {useAuth0} from "@auth0/auth0-react";
 import React, {useEffect, useState} from 'react';
 import YourOrderCollapsible from "../components/yourOrders/YourOrderCollapsible";
 import YourOrdersColumn from "../components/yourOrders/YourOrdersColumn";
@@ -6,6 +5,7 @@ import YourOrdersHeader from "../components/yourOrders/YourOrdersHeader";
 import {ClassNames} from "../components/utils/UtilFunctions";
 import {imageUrl} from "../components/utils/Image";
 import {gql, useQuery} from "@apollo/client";
+import {decodeToken, isExpired} from "react-jwt";
 
 
 const GET_YOUR_ORDERS = gql`
@@ -35,9 +35,11 @@ const YourOrdersPage = () => {
     const [refresh, setRefresh] = useState(false)
     const [noOrders, setNoOrders] = useState(false);
     const [noOrdersSpinner, setNoOrdersSpinner] = useState(true);
-    const {user} = useAuth0();
+    const isExp = isExpired(localStorage.getItem('token'))
+    const userEmail = !isExp && decodeToken(localStorage.getItem('token')).email;
+
     const {loading, error, data: yourOrders, refetch} = useQuery(GET_YOUR_ORDERS, {
-        variables: {email: user?.email},
+        variables: {email: userEmail},
     });
 
     useEffect(() => {
@@ -120,7 +122,7 @@ const YourOrdersPage = () => {
                         </div>}
                     />
                 </div>
-                {user && user.email ? (
+                {!isExp && userEmail ? (
                     <div>
                         {myOrders && myOrders.length > 0 ? (
                             myOrders.slice(0).reverse().map((item, index) => {

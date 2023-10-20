@@ -1,10 +1,16 @@
 import Modal from "./Modal";
 import {imageUrl} from "../utils/Image";
 import React from 'react';
+import {useNavigate} from "react-router-dom";
 
 
 export function NotLoggedModal(props) {
-    const {onClickLogin, onClickClose, message} = props;
+    const {onClickClose, message} = props;
+
+    const navigate = useNavigate();
+    const goToLogin = () => {
+        navigate("/zaloguj");
+    };
     return (
         <Modal
             classes='pt-16 items-center overflow-auto w-full'
@@ -18,7 +24,7 @@ export function NotLoggedModal(props) {
                 <div className='mt-3 flex justify-end gap-2'>
                     <button
                         className='flex w-full items-center justify-center rounded bg-primary px-6 py-4 font-semibold uppercase text-white'
-                        onClick={onClickLogin}
+                        onClick={goToLogin}
                     >
                         <div
                             className='flex items-center'>

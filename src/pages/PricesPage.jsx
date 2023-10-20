@@ -1,20 +1,26 @@
-import {useAuth0} from "@auth0/auth0-react";
 import {useState} from 'react';
 
 import {NotLoggedModal} from "../components/modals/NotLoggedModal";
 import {Prices} from "../components/prices/Prices";
+import {isExpired} from "react-jwt";
+import {useNavigate} from "react-router-dom";
 
 const PricesPage = () => {
-    const {user, loginWithRedirect} = useAuth0();
+    const isExp = isExpired(localStorage.getItem('token'))
     const [showModal, setShowModal] = useState(-1);
+    const navigate = useNavigate();
+
+    const goToLogin = () => {
+        navigate("/zaloguj");
+    };
     return (
         <div>
-            {!user && showModal === -1 && (
+            {isExp && showModal === -1 && (
                 <NotLoggedModal
                     onClickClose={() => {
                         setShowModal(1);
                     }}
-                    onClickLogin={loginWithRedirect}
+                    onClickLogin={goToLogin}
                     message="Aby móc zobaczyć ceny, musisz się zalogować"
                 />
             )}

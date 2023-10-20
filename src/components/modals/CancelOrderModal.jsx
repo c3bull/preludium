@@ -3,9 +3,9 @@ import {Form, Formik} from 'formik';
 import Modal from "./Modal";
 import {imageUrl} from "../utils/Image";
 import React from 'react';
-import {useAuth0} from "@auth0/auth0-react";
 import {ClassNames} from "../utils/UtilFunctions";
 import {gql, useMutation} from "@apollo/client";
+import {decodeToken, isExpired} from "react-jwt";
 
 const UPDATE_STATUS = gql`
     mutation updateStatus($id: String!, $status: String!) {
@@ -27,7 +27,9 @@ export function CancelOrderModal(props) {
     // const [deleteOrder, {error}] = useMutation(DELETE_ORDER)
 
     const [updateStatus, {error}] = useMutation(UPDATE_STATUS)
-    const {user} = useAuth0();
+
+    const isExp = isExpired(localStorage.getItem('token'))
+    const userEmail = !isExp && decodeToken(localStorage.getItem('token')).email;
 
     const sendEmail = () => {
         emailjs.send(
@@ -36,7 +38,7 @@ export function CancelOrderModal(props) {
             {
                 subject: 'Anulowanie zamówienia',
                 id: identificator,
-                email: user.email,
+                email: userEmail,
                 name: item.name,
                 phone: item.phone,
                 zip: item.zip,

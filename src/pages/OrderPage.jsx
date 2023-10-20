@@ -1,4 +1,3 @@
-import {useAuth0} from "@auth0/auth0-react";
 import React, {useState} from 'react';
 
 import {BasketModal} from "../components/modals/BasketModal";
@@ -10,7 +9,9 @@ import LittleBasket from "../components/order/LittleBasket";
 import {OrderCategoryLayout} from "../components/order/OrderCategoryLayout";
 import OrderMap from "../components/order/OrderMap";
 import {imageUrl} from "../components/utils/Image";
-import {gql, useMutation, useQuery} from "@apollo/client";
+import {gql, useQuery} from "@apollo/client";
+import {isExpired} from "react-jwt";
+import {useNavigate} from "react-router-dom";
 
 function emptyArray(size) {
     const arr = [];
@@ -26,10 +27,14 @@ const Order = () => {
     const [showBasket, setShowBasket] = useState(false);
     const [showModal, setShowModal] = useState(-1);
     const [showConfirmModal, setShowConfirmModal] = useState(-1);
-    const {loginWithRedirect} = useAuth0();
     const [showThanksModal, setShowThanksModal] = useState(-1);
 
-    const {user} = useAuth0();
+    const navigate = useNavigate();
+    const isExp = isExpired(localStorage.getItem('token'))
+    const goToLogin = () => {
+        navigate("/zaloguj");
+    };
+
     const GET_ALL_PRODUCTS = gql`
   query GetProducts {
     product {
@@ -207,36 +212,6 @@ const Order = () => {
         return discount;
     }
 
-    // const saveOrderToDb = async () => {
-    //
-    //     const orderedProducts = data.product
-    //         .filter((pd) => {
-    //             // odfiltrowanie niezamowionych produktow
-    //             return selectedProductsAmount[pd.number];
-    //         })
-    //         .map((pd) => {
-    //             const {name, hint, number} = pd;
-    //             return {
-    //                 "amount": selectedProductsAmount[number],
-    //                 "hint": hint,
-    //                 "name": name,
-    //                 "productId": number
-    //             };
-    //         });
-    //
-    //     makeOrder({
-    //         variables: {
-    //             "orderedProducts": orderedProducts,
-    //             "placementDate": format(new Date(), 'dd/MM/yyyy'),
-    //             "totalPrice": ((finalPrice() - discount()) / 100).toFixed(2),
-    //             "email": user.email,
-    //             "name": user.email,
-    //             "phone": user.email,
-    //             "zip": user.email,
-    //         }
-    //     })
-    // };
-
     const confirmOrder = () => {
         setShowConfirmModal(1);
         setShowBasket(false);
@@ -286,12 +261,12 @@ const Order = () => {
                 />
             )}
 
-            {!user && showModal === -1 && (
+            {isExp && showModal === -1 && (
                 <NotLoggedModal
                     onClickClose={() => {
                         setShowModal(1);
                     }}
-                    onClickLogin={loginWithRedirect}
+                    onClickLogin={goToLogin}
                     message='Aby móc złożyć zamówienie, musisz się zalogować'
                 />
             )}

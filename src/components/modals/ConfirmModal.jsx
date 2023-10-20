@@ -8,8 +8,8 @@ import Modal from "./Modal";
 import {imageUrl} from "../utils/Image";
 import React from 'react';
 import {format} from 'date-fns';
-import {useAuth0} from "@auth0/auth0-react";
 import {gql, useMutation} from "@apollo/client";
+import {decodeToken, isExpired} from "react-jwt";
 
 export function ConfirmModal(props) {
     const {
@@ -42,7 +42,9 @@ export function ConfirmModal(props) {
     }`
 
     const [makeOrder, {error}] = useMutation(MAKE_ORDER)
-    const {user} = useAuth0();
+
+    const isExp = isExpired(localStorage.getItem('token'))
+    const userEmail = !isExp && decodeToken(localStorage.getItem('token')).email;
     const formSchema = Yup.object().shape({
         name: Yup.string().required('Pole obowiązkowe'),
         phone: Yup.string()
@@ -63,7 +65,7 @@ export function ConfirmModal(props) {
             {
                 subject: 'Zamówienie',
                 name: values.name,
-                email: user.email,
+                email: userEmail,
                 phone: values.phone,
                 zipcode: values.zipcode,
                 address: values.address,
@@ -102,7 +104,7 @@ export function ConfirmModal(props) {
                             "orderedProducts": orderedProducts,
                             "placementDate": format(new Date(), 'dd/MM/yyyy'),
                             "totalPrice": totalPrice,
-                            "email": user.email,
+                            "email": userEmail,
                             "name": values.name,
                             "phone": values.phone,
                             "zip": values.zipcode,

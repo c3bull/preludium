@@ -3,10 +3,10 @@ import {getProductsByCategoryFetched} from "../../data/allProducts";
 import {imageUrl} from "../utils/Image";
 import {ClassNames} from "../utils/UtilFunctions";
 import {gql, useQuery} from "@apollo/client";
-import {useAuth0} from "@auth0/auth0-react";
+import {isExpired} from "react-jwt";
 
 export function Prices({title, color, category, classes}) {
-    const {user} = useAuth0();
+    const isExp = isExpired(localStorage.getItem('token'))
     const GET_PRODUCTS_BY_CATEGORY = gql`
   query GetProducts {
     product(category: "${category}") {
@@ -65,20 +65,20 @@ export function Prices({title, color, category, classes}) {
                                 <p className="w-full border-b border-gray-400 pt-3 pb-6 uppercase lg:h-16 xl:h-auto">
                                     {item.name}
                                 </p>
-                                {user ? (
+                                {!isExp ? (
                                     <div
                                         className="flex w-full flex-col items-center justify-center bg-gray-100 pb-4 pt-2">
                                         <div className="flex w-full justify-center pt-2">
                                             <p>Cena brutto:</p>
                                             <p className="pl-2 font-bold text-primary">
-                                                {item.price.toFixed(2)/100} zł
+                                                {item.price.toFixed(2) / 100} zł
                                             </p>
                                         </div>
 
                                         <div className="flex w-full justify-center pt-1">
                                             <p>Cena netto:</p>
                                             <p className="pl-2 font-bold text-primary">
-                                                {item.netPrice.toFixed(2)/100} zł
+                                                {item.netPrice.toFixed(2) / 100} zł
                                             </p>
                                         </div>
                                     </div>
