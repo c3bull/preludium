@@ -21,6 +21,10 @@ export default function Login() {
     const goToRegister = () => {
         navigate("/rejestracja");
     };
+
+    const goToOrder = () => {
+        navigate("/zamow");
+    };
     const formSchema = Yup.object().shape({
         email: Yup.string().required('Pole obowiązkowe').matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
     });
@@ -52,7 +56,7 @@ export default function Login() {
                                     }
                                 }).then((response) => {
                                     localStorage.setItem('token', response.data.loginUser.token);
-                                })
+                                }).then(goToOrder)
                             }}
                         >
                             {({errors}) => (

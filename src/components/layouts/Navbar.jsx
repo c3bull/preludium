@@ -4,12 +4,35 @@ import React, {Fragment} from 'react';
 
 import {imageUrl} from "../utils/Image";
 import {Link, useNavigate} from "react-router-dom";
+import {isExpired, decodeToken} from "react-jwt";
+import {gql, useMutation} from "@apollo/client";
 
 export default function Navbar() {
 
+    const LOGOUT_USER = gql`
+    mutation logoutUser($userId: String!) {
+        logoutUser(userId: $userId) {
+       userId
+        }
+    }`
+
+    const [logoutUser, {error}] = useMutation(LOGOUT_USER)
+
+    const isExp = isExpired(localStorage.getItem('token'))
+    const username = !isExp && decodeToken(localStorage.getItem('token')).name;
+    const usersurname = !isExp && decodeToken(localStorage.getItem('token')).surname;
+    const userId = !isExp && decodeToken(localStorage.getItem('token')).userId;
+
+    console.log(decodeToken(localStorage.getItem('token')).email)
+
     const navigate = useNavigate();
+
     const goToLogin = () => {
         navigate("/zaloguj");
+    };
+
+    const goToHome = () => {
+        navigate("/");
     };
 
     const {user, loginWithRedirect, logout} = useAuth0();
@@ -110,11 +133,11 @@ export default function Navbar() {
                             <div
                                 className='absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0'>
                                 {/* Profile dropdown */}
-                                {!user ? (
+                                {isExp ? (
                                     <div
                                         className='cursor-pointer flex items-center rounded border-hidden md:px-3 py-1.5 text-white hover:bg-gray-700'
-                                        // onClick={goToLogin}
-                                        onClick={loginWithRedirect}
+                                        onClick={goToLogin}
+                                        // onClick={loginWithRedirect}
                                     >
                                         <div className='flex items-center' aria-hidden='true'>
                                             <img
@@ -132,12 +155,16 @@ export default function Navbar() {
                                         <div>
                                             <Menu.Button
                                                 className='flex rounded-full bg-gray-800 text-sm focus:outline-none active:ring-2 active:ring-white active:ring-offset-2 active:ring-offset-gray-800'>
-                                                <span className='sr-only'>Open user menu</span>
-                                                <img
-                                                    className='h-auto w-12 rounded-full'
-                                                    src={`${user.picture}`}
-                                                    alt='profil'
-                                                />
+                                                {/*<span className='sr-only'>Open user menu</span>*/}
+                                                {/*<img*/}
+                                                {/*    className='h-auto w-12 rounded-full'*/}
+                                                {/*    src={`${user.picture}`}*/}
+                                                {/*    alt='profil'*/}
+                                                {/*/>*/}
+                                                <div
+                                                    className='pb-0.5 font-semibold h-12 w-12 rounded-full bg-primary text-white flex justify-center items-center text-2xl'>
+                                                    {username[0]}{usersurname[0]}
+                                                </div>
                                             </Menu.Button>
                                         </div>
                                         <Transition
@@ -175,7 +202,12 @@ export default function Navbar() {
                                                     <div
                                                         className='cursor-pointer block rounded border-hidden px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'
                                                         onClick={() => {
-                                                            logout({returnTo: window.location.origin});
+                                                            logoutUser({
+                                                                variables: {
+                                                                    "userId": userId,
+                                                                }
+                                                            }).then(() => localStorage.removeItem('token')).then(goToHome)
+                                                            // logout({returnTo: window.location.origin});
                                                         }}
                                                     >
                                                         <div className='flex items-center'>
