@@ -17,6 +17,8 @@ import {client} from "./ApolloClient/client";
 import {ApolloProvider} from '@apollo/client';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AdminPanel from "./pages/AdminPanel";
+import AdminOrders from "./pages/AdminOrders";
 
 function App() {
     return (
@@ -36,6 +38,8 @@ function App() {
                         <Route path='/rejestracja' element={<Register/>}/>
                         <Route path='/produkty/:category' element={<ProductsDetails/>}/>
                         <Route path='/twoje-zamowienia' element={<YourOrdersPage/>}/>
+                        <Route path='/administrator' element={<AdminPanel/>}/>
+                        <Route path='/administrator/zamowienia' element={<AdminOrders/>}/>
                     </Routes>
                 </ScrollToTop>
                 <Footer/>

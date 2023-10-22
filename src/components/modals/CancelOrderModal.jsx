@@ -139,7 +139,7 @@ export function CancelOrderModal(props) {
                 }}
                 // validationSchema={formSchema}
                 onSubmit={ (values) => {
-                    sendEmail();
+                    // sendEmail();
                     updateStatus({
                         variables: {
                             "id": identificator,

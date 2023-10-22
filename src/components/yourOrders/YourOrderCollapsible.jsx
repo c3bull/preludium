@@ -87,14 +87,15 @@ export default function YourOrderCollapsible({index, item}) {
                 </div>
             </div>
             <div
-                className='flex w-full items-center justify-center border-y border-r border-gray-800 p-2 lg:my-0 lg:border-l'>
+                className='flex w-full h-full items-center justify-center border-y border-r border-gray-800 p-2 lg:my-0 lg:border-l'>
                 <Collapsible
                     trigger='Kliknij, aby rozwinąć'
                     triggerWhenOpen='Kliknij, aby zwinąć'
                     triggerStyle={{
                         display: 'flex',
                         justifyContent: 'center',
-                        width: '100%'
+                        width: '100%',
+                        height: '100%'
                     }}
                     key={index}
                 >

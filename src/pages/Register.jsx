@@ -10,12 +10,13 @@ import {RegistrationModal} from "../components/modals/RegistrationModal";
 
 export default function Register() {
     const REGISTER_USER = gql`
-    mutation registerUser($email: String!, $name: String!, $surname: String!, $password: String!) {
-        registerUser(email: $email, name: $name, surname: $surname, password: $password) {
+    mutation registerUser($email: String!, $name: String!, $surname: String!, $password: String!, $role: String!) {
+        registerUser(email: $email, name: $name, surname: $surname, password: $password, role: $role) {
         email
         name
         surname
         password
+        role
         }
     }`
 
@@ -64,6 +65,7 @@ export default function Register() {
                                         "name": values.name,
                                         "surname": values.surname,
                                         "password": values.password,
+                                        "role": "client",
                                     }
                                 })
                                 setShowRegistrationModal(1)

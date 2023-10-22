@@ -23,8 +23,8 @@ export function ConfirmModal(props) {
     } = props;
 
     const MAKE_ORDER = gql`
-    mutation makeOrder($orderedProducts: [OrderedProductsInputType!], $placementDate: String!, $totalPrice: String!, $email: String!, $name: String!, $phone: String!, $zip: String!, $address: String!, $status: String!) {
-        makeOrder(orderedProducts: $orderedProducts, placementDate: $placementDate, totalPrice: $totalPrice, email: $email, name: $name, phone: $phone, zip: $zip, address: $address, status: $status) {
+    mutation makeOrder($orderedProducts: [OrderedProductsInputType!], $placementDate: String!, $dateInMs: String!, $totalPrice: String!, $email: String!, $name: String!, $phone: String!, $zip: String!, $address: String!, $status: String!) {
+        makeOrder(orderedProducts: $orderedProducts, placementDate: $placementDate, dateInMs: $dateInMs, totalPrice: $totalPrice, email: $email, name: $name, phone: $phone, zip: $zip, address: $address, status: $status) {
             orderedProducts {
                 amount
                 hint
@@ -32,6 +32,7 @@ export function ConfirmModal(props) {
                 productId
             }
         placementDate
+        dateInMs
         totalPrice
         email
         name
@@ -97,12 +98,14 @@ export function ConfirmModal(props) {
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
+                    console.log('date ', parseInt(Date.now().toString()))
                     console.log('vals ',values)
-                    sendEmail(values);
+                    // sendEmail(values);
                     makeOrder({
                         variables: {
                             "orderedProducts": orderedProducts,
-                            "placementDate": format(new Date(), 'dd/MM/yyyy'),
+                            "placementDate": format(new Date(), 'dd/MM/yyyy, H:mm:ss'),
+                            "dateInMs": Date.now().toString(),
                             "totalPrice": totalPrice,
                             "email": userEmail,
                             "name": values.name,
@@ -112,9 +115,9 @@ export function ConfirmModal(props) {
                             "status": "in-progress",
                         }
                     })
-                    onClickClose();
-                    showThanks();
-                    setTimeout(() => window.location.href = '/twoje-zamowienia', 3000);
+                    // onClickClose();
+                    // showThanks();
+                    // setTimeout(() => window.location.href = '/twoje-zamowienia', 3000);
                 }}
             >
                 {({errors}) => (
