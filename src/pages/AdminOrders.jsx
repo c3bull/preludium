@@ -39,7 +39,6 @@ export default function AdminOrders() {
         }
     }, [allOrders, refresh]);
 
-    console.log('moje zamowienia', myOrders)
     return (
         <div className='flex flex-col items-center pt-20 md:pt-32 px-4 lg:px-20'>
             <Breadcrumbs/>

@@ -5,3 +5,8 @@ export const statuses = {
     "sent": "Wysłane",
     "completed": "Dostarczone",
 }
+export const roles = {
+    "client": "Klient",
+    "admin": "Administrator",
+    "blocked": "Zablokowany",
+}

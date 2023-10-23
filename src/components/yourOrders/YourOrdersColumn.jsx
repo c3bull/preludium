@@ -43,7 +43,7 @@ export default function YourOrdersColumn({
                 {!onClickDelete && <div className={ClassNames(`${idClasses}`)}>{value}</div>}
                 {copySign && (
                     <div
-                        className="cursor-pointer "
+                        className="cursor-pointer pt-1"
                         onClick={() => {
                             {
                                 if (typeof value === 'string') {

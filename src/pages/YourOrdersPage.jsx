@@ -43,7 +43,6 @@ const YourOrdersPage = () => {
     });
 
     useEffect(() => {
-        console.log("refresh")
         !loading && setMyOrders(yourOrders.order)
         if (yourOrders) {
             refetch()
@@ -53,7 +52,7 @@ const YourOrdersPage = () => {
     return (
         <div>
             <div
-                className='mx-4 flex h-auto min-h-[50vh] flex-col items-center pt-32 pb-12 md:px-10 lg:pt-32 lg:pb-16 xl:pt-48 xl:pb-32'>
+                className='mx-4 flex h-auto min-h-[50vh] flex-col items-center pt-20 pb-12 md:px-10 lg:pt-32 lg:pb-16 xl:pt-48 xl:pb-32'>
                 <div className='hidden lg:grid lg:grid-cols-[50px_150px_420px_100px_120px_125px] lg:gap-2'>
                     <YourOrdersHeader
                         title='Lp.'
@@ -157,7 +156,7 @@ const YourOrdersPage = () => {
                                                 </div>}
                                                 value={item.id.toString()}
                                                 copySign
-                                                classes='px-4'
+                                                classes='px-2 md:px-4'
                                                 idClasses='lg:w-52 lg:truncate pr-2'
                                             />
                                             <YourOrderCollapsible index={index} item={item}/>
@@ -188,7 +187,7 @@ const YourOrdersPage = () => {
                                             <YourOrdersColumn
                                                 icon={<div className='w-4 h-4 flex items-center'>
                                                     <img
-                                                        src={imageUrl('icons/cancel.webp')}
+                                                        src={imageUrl('icons/GrStatusUnknown.png')}
                                                         width='16px'
                                                         height='16px'
                                                         alt='anuluj zamówienie'

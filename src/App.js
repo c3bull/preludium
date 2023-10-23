@@ -19,6 +19,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminPanel from "./pages/AdminPanel";
 import AdminOrders from "./pages/AdminOrders";
+import AdminUsers from "./pages/AdminUsers";
 
 function App() {
     return (
@@ -40,6 +41,7 @@ function App() {
                         <Route path='/twoje-zamowienia' element={<YourOrdersPage/>}/>
                         <Route path='/administrator' element={<AdminPanel/>}/>
                         <Route path='/administrator/zamowienia' element={<AdminOrders/>}/>
+                        <Route path='/administrator/uzytkownicy' element={<AdminUsers/>}/>
                     </Routes>
                 </ScrollToTop>
                 <Footer/>
