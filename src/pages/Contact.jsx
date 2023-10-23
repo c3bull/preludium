@@ -53,7 +53,7 @@ const Contact = () => {
                 </div>
 
                 <div className='hidden max-w-2xl flex-col gap-6 sm:flex sm:w-2/3 '>
-                    <p className='text-center font-medium uppercase'>
+                    <p className='hidden text-center font-medium uppercase'>
                         Kliknij na odpowiednią ikonę, aby przejść do interesującej cię formy
                         kontaktu.
                     </p>

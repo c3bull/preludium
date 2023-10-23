@@ -56,13 +56,13 @@ export function OrderCategoryLayout(props) {
         <>
             <PricesSideButtons/>
             <section id={category}>
-                <h2 className="flex items-center justify-center py-6 pt-16 text-center text-lg font-semibold uppercase">
+                <h2 className="flex items-center justify-center py-6 sm:pt-16 text-center text-lg font-semibold uppercase">
                     {title}
                     <div className="pl-2">{icon}</div>
                 </h2>
                 <div
                     className={ClassNames(
-                        'grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 mx-8',
+                        'grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 mx-6 sm:mx-8',
                         classes
                     )}
                 >

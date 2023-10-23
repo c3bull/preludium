@@ -21,6 +21,7 @@ export default function OrderMap() {
                             justifyContent: 'center',
                             width: '100%',
                             padding: '3px',
+                            textAlign: 'center'
                         }}
                     >
                         <img

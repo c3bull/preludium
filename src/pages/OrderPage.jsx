@@ -10,8 +10,9 @@ import {OrderCategoryLayout} from "../components/order/OrderCategoryLayout";
 import OrderMap from "../components/order/OrderMap";
 import {imageUrl} from "../components/utils/Image";
 import {gql, useQuery} from "@apollo/client";
-import {isExpired} from "react-jwt";
+import {decodeToken, isExpired} from "react-jwt";
 import {useNavigate} from "react-router-dom";
+import {BlockedModal} from "../components/modals/BlockedModal";
 
 function emptyArray(size) {
     const arr = [];
@@ -31,6 +32,7 @@ const Order = () => {
 
     const navigate = useNavigate();
     const isExp = isExpired(localStorage.getItem('token'))
+    const userRole = !isExp && decodeToken(localStorage.getItem('token')).role;
     const goToLogin = () => {
         navigate("/zaloguj");
     };
@@ -271,6 +273,16 @@ const Order = () => {
                 />
             )}
 
+            {!isExp && userRole === "blocked" && showModal === -1 && (
+                <BlockedModal
+                    onClickClose={() => {
+                        setShowModal(1);
+                    }}
+                    onClickLogin={goToLogin}
+                    message='Wykryliśmy problem z Twoim kontem'
+                />
+            )}
+
             {data && showConfirmModal === 1 && (
                 <ConfirmModal
                     onClickClose={() => {
@@ -435,7 +447,7 @@ const Order = () => {
                         icon={<div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/FaCarrot.webp')}
+                                src={imageUrl('icons/FaTeapot.webp')}
                                 width='19px'
                                 height='19px'
                                 alt='Bogusie'
