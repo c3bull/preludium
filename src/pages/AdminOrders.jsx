@@ -1,6 +1,7 @@
 import {gql, useQuery} from "@apollo/client";
 import {useEffect, useState} from "react";
 import AdminSingleOrder from "../components/admin/AdminSingleOrder";
+import Breadcrumbs from "../components/common/Breadcrumbs";
 
 const GET_ALL_ORDERS = gql`
   query GetAllOrders {
@@ -41,6 +42,7 @@ export default function AdminOrders() {
     console.log('moje zamowienia', myOrders)
     return (
         <div className='flex flex-col items-center pt-20 md:pt-32 px-4 lg:px-20'>
+            <Breadcrumbs/>
             {myOrders && myOrders.map((item, index) => (
                 // console.log("hej")
                     <AdminSingleOrder
@@ -55,6 +57,7 @@ export default function AdminOrders() {
                         totalPrice={item.totalPrice}
                         status={item.status}
                         index={index}
+                        refresh={setRefresh}
                     />
                 )
             )}

@@ -115,9 +115,9 @@ export function ConfirmModal(props) {
                             "status": "in-progress",
                         }
                     })
-                    // onClickClose();
-                    // showThanks();
-                    // setTimeout(() => window.location.href = '/twoje-zamowienia', 3000);
+                    onClickClose();
+                    showThanks();
+                    setTimeout(() => window.location.href = '/twoje-zamowienia', 3000);
                 }}
             >
                 {({errors}) => (
@@ -137,7 +137,7 @@ export function ConfirmModal(props) {
                             <div className="flex justify-center">
                                 <div className="flex w-fit flex-row items-center py-10">
                                     <ConfirmModalLabels/>
-                                    <ConfirmModalInputs errors={errors}/>
+                                    <ConfirmModalInputs errors={errors} showErrors={true}/>
                                 </div>
                             </div>
                             <div className="flex flex-col items-center justify-center">

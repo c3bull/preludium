@@ -1,6 +1,17 @@
 import {ClassNames} from "../utils/UtilFunctions";
 import React from "react";
 import {imageUrl} from "../utils/Image";
+import {remapStatuses} from "../common/remap";
+import {statuses} from "../common/statuses";
+import {gql, useMutation} from "@apollo/client";
+
+const UPDATE_STATUS = gql`
+    mutation updateStatus($id: String!, $status: String!) {
+        updateStatus(id: $id, status: $status) {
+            id
+            status
+        }
+    }`
 
 export default function AdminSingleOrder({
                                              id,
@@ -13,7 +24,8 @@ export default function AdminSingleOrder({
                                              orderedProducts,
                                              totalPrice,
                                              status,
-                                             index
+                                             index,
+                                             refresh
                                          }) {
     const iconRemap = {
         '[NIEGAZ]': {
@@ -83,11 +95,16 @@ export default function AdminSingleOrder({
             </div>
         }
     };
+
+    const [updateStatus, {error}] = useMutation(UPDATE_STATUS)
+
     return (
         <div
             className={ClassNames('w-full md:w-[43rem] border-2 gap-1 border-gray-500 rounded-lg flex flex-col my-2 p-6',
                 `${index % 2 === 0 && 'bg-neutral-100'}`,
                 `${status === 'canceled' && 'bg-red-200'}`,
+                `${status === 'confirmed' && 'bg-blue-100'}`,
+                `${status === 'sent' && 'bg-amber-100'}`,
                 `${status === 'completed' && 'bg-green-300'}`
             )}>
             <div className='flex flex-col gap-1 md:flex-row w-full justify-between  text-sm md:text-[16px]'>
@@ -121,22 +138,26 @@ export default function AdminSingleOrder({
                         <p className='font-semibold overflow-x-auto w-fit whitespace-nowrap'>{date}</p>
                     </div>
                     <div className='flex gap-1 w-full md:text-end'>Status:
-                        <p className='font-semibold overflow-x-auto'>{status}</p>
+                        <div className='font-semibold overflow-x-auto'>
+                            <p className='h-full'>{remapStatuses(statuses, status)}</p>
+                        </div>
                     </div>
                 </div>
 
             </div>
             <div className='flex flex-col md:flex-row w-full'>
-                <div className='flex flex-col min-w-[20rem] gap-1 md:gap-4 text-sm md:text-[16px]'>
+                <div className='flex flex-col md:min-w-[20rem] gap-1 md:gap-4 text-sm md:text-[16px]'>
                     <div className='flex gap-1'>Klient: <p className='font-semibold overflow-x-auto'>{name}</p></div>
-                    <div className='flex gap-1'>Email: <p className='font-semibold overflow-x-auto max-w-[16rem]'>{email}</p></div>
+                    <div className='flex gap-1'>Email: <p
+                        className='font-semibold overflow-x-auto max-w-[16rem]'>{email}</p></div>
                     <div className='flex gap-1'>Telefon: <p className='font-semibold overflow-x-auto'>{phone}</p></div>
                     <div className='flex gap-1 whitespace-nowrap'>Kod pocztowy: <p
                         className='font-semibold overflow-x-auto'>{zip}</p>
                     </div>
-                    <div className='flex gap-1'>Adres: <p className='font-semibold overflow-x-auto max-w-[16rem]'>{address}</p></div>
+                    <div className='flex gap-1'>Adres: <p
+                        className='font-semibold overflow-x-auto max-w-[16rem]'>{address}</p></div>
                 </div>
-                <div className='min-w-[20rem]'>
+                <div className='md:min-w-[20rem]'>
                     <p className='text-sm md:text-[16px] pt-5 md:pt-0'>Zamówione produkty:</p>
                     <div className="flex  w-full flex-col items-center justify-start text-start">
                         <div className='flex w-full flex-col items-start gap-2 '>
@@ -188,6 +209,73 @@ export default function AdminSingleOrder({
                     </div>
                     <p className='text-end font-bold text-lg'>Cena: {totalPrice} zł</p>
                 </div>
+            </div>
+            <div className='font-semibold flex flex-col md:flex-row pt-4 justify-between gap-3 md:gap-0'>
+                <button className={ClassNames('hover:saturate-50 border-2 border-gray-600 p-2 md:p-5 rounded-lg',
+                    status === "in-progress" && 'bg-gray-400')}
+                        onClick={() => {
+                            updateStatus({
+                                variables: {
+                                    "id": id,
+                                    "status": "in-progress"
+                                }
+                            });
+                            refresh(prevState => !prevState)
+                        }}>
+                    <p>W toku</p>
+                </button>
+                <button className={ClassNames('hover:saturate-50 border-2 border-gray-600 p-2 md:p-5 rounded-lg',
+                    status === "canceled" && 'bg-red-400')}
+                        onClick={() => {
+                            updateStatus({
+                                variables: {
+                                    "id": id,
+                                    "status": "canceled"
+                                }
+                            });
+                            refresh(prevState => !prevState)
+                        }}>
+                    <p>Anulowane</p>
+                </button>
+                <button className={ClassNames('hover:saturate-50 border-2 border-gray-600 p-2 md:p-5 rounded-lg',
+                    status === "confirmed" && 'bg-blue-400')}
+                        onClick={() => {
+                            updateStatus({
+                                variables: {
+                                    "id": id,
+                                    "status": "confirmed"
+                                }
+                            });
+                            refresh(prevState => !prevState)
+                        }}>
+                    <p>Zaakceptowane</p>
+                </button>
+                <button className={ClassNames('hover:saturate-50 border-2 border-gray-600 p-2 md:p-5 rounded-lg',
+                    status === "sent" && 'bg-green-400')}
+                        onClick={() => {
+                            updateStatus({
+                                variables: {
+                                    "id": id,
+                                    "status": "sent"
+                                }
+                            });
+                            refresh(prevState => !prevState)
+                        }}>
+                    <p>Wysłane</p>
+                </button>
+                <button className={ClassNames('hover:saturate-50 border-2 border-gray-600 p-2 md:p-5 rounded-lg',
+                    status === "completed" && 'bg-orange-500')}
+                        onClick={() => {
+                            updateStatus({
+                                variables: {
+                                    "id": id,
+                                    "status": "completed"
+                                }
+                            });
+                            refresh(prevState => !prevState)
+                        }}>
+                    <p>Dostarczone</p>
+                </button>
             </div>
         </div>
     )

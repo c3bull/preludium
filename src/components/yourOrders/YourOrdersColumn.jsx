@@ -3,6 +3,8 @@ import {imageUrl} from "../utils/Image";
 import React, {useState} from 'react';
 import {gql, useMutation} from "@apollo/client";
 import {CancelOrderModal} from "../modals/CancelOrderModal";
+import {remapStatuses} from "../common/remap";
+import {statuses} from "../common/statuses";
 
 
 const DELETE_ORDER = gql`
@@ -61,19 +63,26 @@ export default function YourOrdersColumn({
                     </div>
                 )}
                 {onClickDelete && (
-                    <div>
-                        {item.status === "canceled" ?
-                            <div>anulowane</div> :
-                            <img
-                                className='cursor-pointer'
-                                src={imageUrl('icons/cancel.webp')}
-                                width='16px'
-                                height='16px'
-                                alt='anuluj zamówienie'
+                    <div className='w-full h-full'>
+                        <p className={ClassNames('h-full',
+                            item.status === 'canceled' && 'text-red-500',
+                            item.status === 'sent' && 'text-primary',
+                            item.status === 'completed' && 'text-green-600',
+                            item.status === 'confirmed' && 'text-blue-500',
+                        )}>{item.status && remapStatuses(statuses, item.status)}</p>
+                        {item.status === "in-progress" &&
+                            <div
+                                className='mx-4 h-full hover:bg-red-500 duration-200 border-gray-800 border-2 my-1 justify-center flex rounded-lg items-center gap-1 cursor-pointer bg-red-400'
                                 onClick={() => {
                                     setShowCancelConfirmation(true)
-                                }}
-                            />
+                                }}>
+                                <p>Anuluj</p>
+                                <img
+                                    className='cursor-pointer w-4 h-4'
+                                    src={imageUrl('icons/cancel.webp')}
+                                    alt='anuluj zamówienie'
+                                />
+                            </div>
                         }
                     </div>
                 )}

@@ -54,7 +54,7 @@ const YourOrdersPage = () => {
         <div>
             <div
                 className='mx-4 flex h-auto min-h-[50vh] flex-col items-center pt-32 pb-12 md:px-10 lg:pt-32 lg:pb-16 xl:pt-48 xl:pb-32'>
-                <div className='hidden lg:grid lg:grid-cols-[50px_150px_450px_100px_120px_95px] lg:gap-2'>
+                <div className='hidden lg:grid lg:grid-cols-[50px_150px_420px_100px_120px_125px] lg:gap-2'>
                     <YourOrdersHeader
                         title='Lp.'
                         icon={<div className='w-4 h-4 flex items-center'>
@@ -111,10 +111,10 @@ const YourOrdersPage = () => {
                         </div>}
                     />
                     <YourOrdersHeader
-                        title='Anuluj'
+                        title='Status'
                         icon={<div className='w-4 h-4 flex items-center'>
                             <img
-                                src={imageUrl('icons/cancel.webp')}
+                                src={imageUrl('icons/GrStatusUnknown.png')}
                                 width='16px'
                                 height='16px'
                                 alt='data zamówienia'
@@ -128,10 +128,10 @@ const YourOrdersPage = () => {
                             myOrders.slice(0).reverse().map((item, index) => {
                                 return (
                                     // <div className='my-3 flex lg:my-0' key={index}>
-                                    <div className={`my-3 flex gap-2 ${item.status === "canceled" && 'opacity-20'}`} key={index}>
+                                    <div className={`my-3 flex gap-2 ${item.status === "canceled" && 'opacity-50'}`} key={index}>
                                         <div
                                             className={ClassNames(
-                                                'w-full lg:grid lg:grid-cols-[50px_150px_450px_100px_120px_95px] lg:gap-2',
+                                                'w-full lg:grid lg:grid-cols-[50px_150px_420px_100px_120px_125px] lg:gap-2',
                                                 `${index % 2 === 0 && 'bg-neutral-100'}`
                                             )}
                                         >
