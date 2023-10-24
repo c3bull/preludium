@@ -21,6 +21,7 @@ export default function Navbar() {
     const username = !isExp && decodeToken(localStorage.getItem('token')).name;
     const usersurname = !isExp && decodeToken(localStorage.getItem('token')).surname;
     const userId = !isExp && decodeToken(localStorage.getItem('token')).userId;
+    const role = !isExp && decodeToken(localStorage.getItem('token')).role;
 
     const navigate = useNavigate();
 
@@ -188,6 +189,26 @@ export default function Navbar() {
                                                         </div>
                                                     </Link>
                                                 </Menu.Item>
+                                                {role === 'admin' && <Menu.Item>
+                                                    <Link to='/administrator'>
+                                                        <div
+                                                            className='block cursor-pointer rounded border-hidden px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'>
+                                                            <div className='flex items-center'>
+                                                                <div className='flex items-center' aria-hidden='true'>
+                                                                    <img
+                                                                        src={imageUrl('icons/MdAdminPanelSettings.png')}
+                                                                        width='13px'
+                                                                        height='13px'
+                                                                        alt='twoje zamówienia'
+                                                                    />
+                                                                </div>
+                                                                <p className='pl-1 font-medium'>
+                                                                    Panel Admina
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </Menu.Item>}
                                                 <Menu.Item>
                                                     <div
                                                         className='cursor-pointer block rounded border-hidden px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'

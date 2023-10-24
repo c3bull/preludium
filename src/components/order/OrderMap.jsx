@@ -5,12 +5,12 @@ import {imageUrl} from "../utils/Image";
 export default function OrderMap() {
     return (
         <>
-            <div className="flex items-center justify-center">
+            <div className="pt-14 flex items-center justify-center">
                 <div className="inline-block items-center justify-center border-b border-black px-3 pt-20">
-                    <p className="text-center text-2xl font-semibold uppercase text-red-600">
+                    <p className="text-center text-sm  md:text-2xl font-semibold uppercase text-red-600">
                         rozwozimy produkty w promieniu 250 km od Krakowa
                     </p>
-                    <p className="text-center text-md font-semibold uppercase text-red-600">
+                    <p className="text-center text-xs md:text-[16px] font-semibold uppercase text-red-600">
                         wyłączając rejon południowy (Zakopane, Nowy Targ, Myślenice, Nowy Sącz i okolice - w te miejsca produkty rozwozi producent)
                     </p>
                     <Collapsible

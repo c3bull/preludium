@@ -9,7 +9,7 @@ export function BasketModal(props) {
     return (
         <Modal
             classes="items-center justify-center overflow-auto"
-            hfit="h-fit w-auto"
+            hfit="h-fit w-full"
             closeModal={onClick}
         >
             <div className="flex flex-col sm:w-96">
@@ -57,7 +57,7 @@ export function BasketModal(props) {
                 </p>
                 <div className="flex justify-center">
                     <div
-                        className="flex h-full max-h-44 w-full flex-col gap-4  overflow-auto scrollbar-thin scrollbar-thumb-primary">
+                        className="flex h-full max-h-44 w-full flex-col gap-4   scrollbar-thin scrollbar-thumb-primary">
                         {data}
                     </div>
                 </div>

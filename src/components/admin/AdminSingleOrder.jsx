@@ -24,6 +24,7 @@ export default function AdminSingleOrder({
                                              orderedProducts,
                                              totalPrice,
                                              status,
+                                             customerId,
                                              index,
                                              refresh
                                          }) {
@@ -108,6 +109,8 @@ export default function AdminSingleOrder({
                 `${status === 'completed' && 'bg-green-300'}`
             )}>
             <div className='flex flex-col gap-1 md:flex-row w-full justify-between  text-sm md:text-[16px]'>
+                <div className='flex flex-col '>
+
                 <div className='flex gap-1'>
                     <p className='whitespace-nowrap'>ID Zamówienia:</p>
                     <p className='font-semibold overflow-x-auto'>{id}</p>
@@ -131,7 +134,31 @@ export default function AdminSingleOrder({
                         </div>
                     </div>
                 </div>
+                <div className='flex gap-1'>
+                    <p className='whitespace-nowrap'>ID Klienta:</p>
+                    <p className='font-semibold overflow-x-auto'>{customerId}</p>
+                    <div
+                        className="cursor-pointer flex  justify-center pt-0.5 md:pt-[5px]"
+                        onClick={() => {
+                            {
+                                if (typeof customerId === 'string') {
+                                    navigator.clipboard.writeText(customerId);
+                                }
+                            }
+                        }}
+                    >
+                        <div
+                            className='w-4 h-4 flex items-center mb-1 border-transparent duration-100 hover:scale-110 active:border'>
+                            <img
+                                src={imageUrl('icons/AiOutlineCopy.webp')}
+                                className='w-4 h-4'
+                                alt='kopiuj'
+                            />
+                        </div>
+                    </div>
+                </div>
 
+                </div>
                 <div className='flex flex-col gap-1'>
                     {/*<p className='w-full py-2 md:py-0 md:text-end whitespace-nowrap font-semibold'>{date}</p>*/}
                     <div className='flex gap-1 w-full md:text-end'>Data:

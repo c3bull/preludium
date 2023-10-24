@@ -23,6 +23,7 @@ const GET_ALL_ORDERS = gql`
         zip
         address
         status
+        customerId
     }
   }
 `;
@@ -58,6 +59,7 @@ export default function AdminOrders() {
                             zip={item.zip}
                             totalPrice={item.totalPrice}
                             status={item.status}
+                            customerId={item.customerId}
                             index={index}
                             refresh={setRefresh}
                         />

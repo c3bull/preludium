@@ -138,7 +138,7 @@ export function CancelOrderModal(props) {
                     address: '',
                 }}
                 // validationSchema={formSchema}
-                onSubmit={ (values) => {
+                onSubmit={(values) => {
                     // sendEmail();
                     updateStatus({
                         variables: {
@@ -156,8 +156,12 @@ export function CancelOrderModal(props) {
                     <Form>
                         <div className="flex h-auto flex-col sm:pt-0">
                             <div className=" flex w-full flex-col gap-4 overflow-auto text-center">
-                                <p className="text-sm sm:text-lg">
-                                    Czy na pewno chcesz anulować poniższe zamówienie?
+                                <p className="text-sm sm:text-lg flex flex-col md:flex-row items-center justify-center">
+                                    <p className='whitespace-nowrap'>Czy na pewno chcesz</p>
+                                    <div className='flex'>
+                                        <p className='mx-1.5 text-red-600 font-bold'>anulować</p>
+                                        <p className='whitespace-nowrap'> poniższe zamówienie?</p>
+                                    </div>
                                 </p>
                             </div>
                             <div className="flex justify-center">

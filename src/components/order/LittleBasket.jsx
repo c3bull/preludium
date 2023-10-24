@@ -9,7 +9,7 @@ export default function LittleBasket({setShowBasket}) {
             onClick={() => setShowBasket()}
         >
             <div
-                className='h-16 w-16 px-1 pt-1 w-full items-center text-center justify-center'>
+                className='h-16 w-16 px-1 pt-1 items-center text-center justify-center'>
                 <img
                     src={imageUrl('icons/RiShoppingBasket2LineWhite.webp')}
                     width='60px'

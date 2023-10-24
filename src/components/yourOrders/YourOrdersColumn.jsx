@@ -63,8 +63,8 @@ export default function YourOrdersColumn({
                     </div>
                 )}
                 {onClickDelete && (
-                    <div className='w-full h-full'>
-                        <p className={ClassNames('h-full',
+                    <div className='w-full h-full relative'>
+                        <p className={ClassNames('h-full text-center',
                             item.status === 'canceled' && 'text-red-500',
                             item.status === 'sent' && 'text-primary',
                             item.status === 'completed' && 'text-green-600',
@@ -72,13 +72,12 @@ export default function YourOrdersColumn({
                         )}>{item.status && remapStatuses(statuses, item.status)}</p>
                         {item.status === "in-progress" &&
                             <div
-                                className='mx-4 h-full hover:bg-red-500 duration-200 border-gray-800 border-2 my-1 justify-center flex rounded-lg items-center gap-1 cursor-pointer bg-red-400'
+                                className='absolute right-0 top-0 h-full hover:scale-110 duration-200 border-gray-800 justify-center rounded-lg items-center cursor-pointer'
                                 onClick={() => {
                                     setShowCancelConfirmation(true)
                                 }}>
-                                <p>Anuluj</p>
                                 <img
-                                    className='cursor-pointer w-4 h-4'
+                                    className='cursor-pointer w-5 h-5 mr-1 mt-0.5'
                                     src={imageUrl('icons/cancel.webp')}
                                     alt='anuluj zamówienie'
                                 />

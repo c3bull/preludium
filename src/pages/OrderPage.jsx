@@ -232,8 +232,8 @@ const Order = () => {
                             }
 
                             return (
-                                <div className='mx-3 flex border-b border-black' key={item.id}>
-                                    <div>
+                                <div className='mx-3 mr-8 sm:mr-3 flex border-b border-black' key={item.id}>
+                                    <div className='min-w-full sm:min-w-fit'>
                                         <div
                                             className='flex items-center overflow-x-auto whitespace-nowrap uppercase scrollbar-thin scrollbar-thumb-gray-400 sm:w-full'>
                                             <p className='pl-1 pb-0.5'>

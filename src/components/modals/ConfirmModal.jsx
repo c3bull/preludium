@@ -23,8 +23,8 @@ export function ConfirmModal(props) {
     } = props;
 
     const MAKE_ORDER = gql`
-    mutation makeOrder($orderedProducts: [OrderedProductsInputType!], $placementDate: String!, $dateInMs: String!, $totalPrice: String!, $email: String!, $name: String!, $phone: String!, $zip: String!, $address: String!, $status: String!) {
-        makeOrder(orderedProducts: $orderedProducts, placementDate: $placementDate, dateInMs: $dateInMs, totalPrice: $totalPrice, email: $email, name: $name, phone: $phone, zip: $zip, address: $address, status: $status) {
+    mutation makeOrder($orderedProducts: [OrderedProductsInputType!], $placementDate: String!, $dateInMs: String!, $totalPrice: String!, $email: String!, $name: String!, $phone: String!, $zip: String!, $address: String!, $status: String!, $customerId: String!) {
+        makeOrder(orderedProducts: $orderedProducts, placementDate: $placementDate, dateInMs: $dateInMs, totalPrice: $totalPrice, email: $email, name: $name, phone: $phone, zip: $zip, address: $address, status: $status, customerId: $customerId) {
             orderedProducts {
                 amount
                 hint
@@ -39,6 +39,7 @@ export function ConfirmModal(props) {
         phone
         zip
         address
+        customerId
         }
     }`
 
@@ -46,6 +47,10 @@ export function ConfirmModal(props) {
 
     const isExp = isExpired(localStorage.getItem('token'))
     const userEmail = !isExp && decodeToken(localStorage.getItem('token')).email;
+    const customerId = !isExp && decodeToken(localStorage.getItem('token')).userId;
+    const customerName = !isExp && decodeToken(localStorage.getItem('token')).name;
+    const customerSurname = !isExp && decodeToken(localStorage.getItem('token')).surname;
+
     const formSchema = Yup.object().shape({
         name: Yup.string().required('Pole obowiązkowe'),
         phone: Yup.string()
@@ -91,7 +96,7 @@ export function ConfirmModal(props) {
         >
             <Formik
                 initialValues={{
-                    name: '',
+                    name: `${customerName} ${customerSurname}` ,
                     phone: '',
                     zipcode: '',
                     address: '',
@@ -113,6 +118,7 @@ export function ConfirmModal(props) {
                             "zip": values.zipcode,
                             "address": values.address,
                             "status": "in-progress",
+                            "customerId": customerId,
                         }
                     })
                     onClickClose();
