@@ -36,7 +36,7 @@ export default function AdminUsers() {
     const isExp = isExpired(localStorage.getItem('token'))
     const userRole = !isExp && decodeToken(localStorage.getItem('token')).role;
     const {loading, error, data: allUsers, refetch, fetchMore} = useQuery(GET_ALL_USERS, {
-        variables: {"first": (fetchedUsers.edges ? fetchCount * 5 : 5), "afterCursor": null}
+        variables: {"first": (fetchedUsers.edges ? fetchCount * 6 : 6), "afterCursor": null}
     });
     const [refresh, setRefresh] = useState(false)
 
@@ -49,26 +49,26 @@ export default function AdminUsers() {
     }, [allUsers, refresh]);
 
     return (
-        !isExp && userRole === "admin" ? <div className='flex flex-col items-center pt-20 md:pt-32 px-4 lg:px-20'>
+        !isExp && userRole === "admin" ? <div className='flex flex-col items-center pt-20 md:pt-32 px-4'>
                 <Breadcrumbs/>
-
-                {fetchedUsers.edges && fetchedUsers.edges.map((item, index) => (
-
-                        <AdminSingleUser
-                            key={index}
-                            id={item.node.id}
-                            email={item.node.email}
-                            name={item.node.name}
-                            surname={item.node.surname}
-                            role={item.node.role}
-                            index={index}
-                            refresh={setRefresh}
-                        />
-                    )
-                )}
+                <div className='2xl:grid grid-cols-2 gap-4 mb-5 mt-5'>
+                    {fetchedUsers.edges && fetchedUsers.edges.map((item, index) => (
+                            <AdminSingleUser
+                                key={index}
+                                id={item.node.id}
+                                email={item.node.email}
+                                name={item.node.name}
+                                surname={item.node.surname}
+                                role={item.node.role}
+                                index={index}
+                                refresh={setRefresh}
+                            />
+                        )
+                    )}
+                </div>
                 <div>
-                    {loadMore && fetchedUsers.edges && fetchedUsers.edges.length >= 5 && <button
-                        className='bg-primary rounded mt-3 mb-5 p-5 hover:scale-105 duration-100 text-white font-semibold uppercase'
+                    {loadMore && fetchedUsers.edges && fetchedUsers.edges.length >= 6 && <button
+                        className='bg-primary rounded mb-5 p-5 hover:scale-105 duration-100 text-white font-semibold uppercase'
                         onClick={() => {
                             const {endCursor, hasNextPage} = fetchedUsers.pageInfo;
                             fetchMore({

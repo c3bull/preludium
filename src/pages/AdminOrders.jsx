@@ -48,7 +48,7 @@ export default function AdminOrders() {
     const isExp = isExpired(localStorage.getItem('token'))
     const userRole = !isExp && decodeToken(localStorage.getItem('token')).role;
     const {loading, error, data: allOrders, refetch, fetchMore} = useQuery(GET_ALL_ORDERS, {
-        variables: {"first": (myOrders.edges ? fetchCount * 5 : 5), "afterCursor": null}
+        variables: {"first": (myOrders.edges ? fetchCount * 6 : 6), "afterCursor": null}
     });
     const [refresh, setRefresh] = useState(false)
     useEffect(() => {
@@ -60,31 +60,33 @@ export default function AdminOrders() {
     }, [allOrders, refresh]);
 
     return (
-        !isExp && userRole === "admin" ? <div className='flex flex-col items-center pt-20 md:pt-32 px-4 lg:px-20'>
+        !isExp && userRole === "admin" ? <div className='flex flex-col items-center pt-20 md:pt-32 px-4'>
                 <Breadcrumbs/>
-                {myOrders.edges && myOrders.edges.map((item, index) => (
-                        // console.log("hej")
-                        <AdminSingleOrder
-                            key={index}
-                            id={item.node.id}
-                            orderedProducts={item.node.orderedProducts}
-                            address={item.node.address}
-                            date={item.node.placementDate}
-                            email={item.node.email}
-                            name={item.node.name}
-                            phone={item.node.phone}
-                            zip={item.node.zip}
-                            totalPrice={item.node.totalPrice}
-                            status={item.node.status}
-                            customerId={item.node.customerId}
-                            index={index}
-                            refresh={setRefresh}
-                        />
-                    )
-                )}
+                <div className='2xl:grid grid-cols-2 gap-4 mb-5 mt-5'>
+                    {myOrders.edges && myOrders.edges.map((item, index) => (
+                            // console.log("hej")
+                            <AdminSingleOrder
+                                key={index}
+                                id={item.node.id}
+                                orderedProducts={item.node.orderedProducts}
+                                address={item.node.address}
+                                date={item.node.placementDate}
+                                email={item.node.email}
+                                name={item.node.name}
+                                phone={item.node.phone}
+                                zip={item.node.zip}
+                                totalPrice={item.node.totalPrice}
+                                status={item.node.status}
+                                customerId={item.node.customerId}
+                                index={index}
+                                refresh={setRefresh}
+                            />
+                        )
+                    )}
+                </div>
                 <div>
-                    {loadMore && myOrders.edges && myOrders.edges.length >= 5  && <button
-                        className='bg-primary rounded mt-3 mb-5 p-5 hover:scale-105 duration-100 text-white font-semibold uppercase'
+                    {loadMore && myOrders.edges && myOrders.edges.length >= 6 && <button
+                        className='bg-primary rounded mb-5 p-5 hover:scale-105 duration-100 text-white font-semibold uppercase'
                         onClick={() => {
                             const {endCursor, hasNextPage} = myOrders.pageInfo;
                             fetchMore({

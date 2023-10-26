@@ -101,7 +101,7 @@ export default function AdminSingleOrder({
 
     return (
         <div
-            className={ClassNames('w-full md:w-[43rem] border-2 gap-1 border-gray-500 rounded-lg flex flex-col my-2 p-6',
+            className={ClassNames('w-full md:w-[43rem] border-2 gap-1 border-gray-500 rounded-lg flex flex-col my-2 2xl:my-0 p-6',
                 `${index % 2 === 0 && 'bg-neutral-100'}`,
                 `${status === 'canceled' && 'bg-red-200'}`,
                 `${status === 'confirmed' && 'bg-blue-200'}`,
