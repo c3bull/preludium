@@ -246,8 +246,7 @@ export default function AdminSingleOrder({
                                     "id": id,
                                     "status": "in-progress"
                                 }
-                            });
-                            refresh(prevState => !prevState)
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
                         }}>
                     <p>W toku</p>
                 </button>
@@ -259,8 +258,7 @@ export default function AdminSingleOrder({
                                     "id": id,
                                     "status": "canceled"
                                 }
-                            });
-                            refresh(prevState => !prevState)
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
                         }}>
                     <p>Anulowane</p>
                 </button>
@@ -272,34 +270,31 @@ export default function AdminSingleOrder({
                                     "id": id,
                                     "status": "confirmed"
                                 }
-                            });
-                            refresh(prevState => !prevState)
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
                         }}>
                     <p>Zaakceptowane</p>
                 </button>
                 <button className={ClassNames('hover:saturate-50 border-2 border-gray-600 p-2 md:p-5 rounded-lg',
-                    status === "sent" && 'bg-green-400')}
+                    status === "sent" && 'bg-orange-500')}
                         onClick={() => {
                             updateStatus({
                                 variables: {
                                     "id": id,
                                     "status": "sent"
                                 }
-                            });
-                            refresh(prevState => !prevState)
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
                         }}>
                     <p>Wysłane</p>
                 </button>
                 <button className={ClassNames('hover:saturate-50 border-2 border-gray-600 p-2 md:p-5 rounded-lg',
-                    status === "completed" && 'bg-orange-500')}
+                    status === "completed" && 'bg-green-500')}
                         onClick={() => {
                             updateStatus({
                                 variables: {
                                     "id": id,
                                     "status": "completed"
                                 }
-                            });
-                            refresh(prevState => !prevState)
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
                         }}>
                     <p>Dostarczone</p>
                 </button>
