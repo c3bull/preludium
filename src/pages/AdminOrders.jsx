@@ -65,6 +65,7 @@ export default function AdminOrders() {
                 {myOrders.edges && myOrders.edges.map((item, index) => (
                         // console.log("hej")
                         <AdminSingleOrder
+                            key={index}
                             id={item.node.id}
                             orderedProducts={item.node.orderedProducts}
                             address={item.node.address}
@@ -82,7 +83,7 @@ export default function AdminOrders() {
                     )
                 )}
                 <div>
-                    {loadMore && <button
+                    {loadMore && myOrders.edges && myOrders.edges.length >= 5  && <button
                         className='bg-primary rounded mt-3 mb-5 p-5 hover:scale-105 duration-100 text-white font-semibold uppercase'
                         onClick={() => {
                             const {endCursor, hasNextPage} = myOrders.pageInfo;

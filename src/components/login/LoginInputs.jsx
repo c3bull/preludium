@@ -1,7 +1,7 @@
 import {ConfirmModalSingleInput} from "../modals/ConfirmModalSingleInput";
 
 
-export default function LoginInputs({errors, showErrors}) {
+export default function LoginInputs({errors, showErrors, passwordError, emailError}) {
     return (
         <div className="flex flex-col w-full md:pr-2 gap-2">
             <ConfirmModalSingleInput
@@ -9,6 +9,7 @@ export default function LoginInputs({errors, showErrors}) {
                 errors={errors.email}
                 width="w-full"
                 placeholder="adres@email.com"
+                emailError={emailError}
                 showErrors={false}
             />
             <ConfirmModalSingleInput
@@ -18,6 +19,7 @@ export default function LoginInputs({errors, showErrors}) {
                 width="w-full"
                 placeholder="••••••••"
                 showErrors={false}
+                passwordError={passwordError}
             />
             {/*<div className="flex items-center">*/}
             {/*    <Field*/}

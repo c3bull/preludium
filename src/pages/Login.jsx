@@ -1,11 +1,12 @@
 import {imageUrl} from "../components/utils/Image";
-import React from "react";
+import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Form, Formik} from "formik";
 import * as Yup from "yup";
 import {gql, useMutation} from "@apollo/client";
 import LoginInputs from "../components/login/LoginInputs";
 import LoginLabels from "../components/login/LoginLabels";
+import ErrorsHandler from "../components/common/ErrorsHandler";
 
 export default function Login() {
     const LOGIN_USER = gql`
@@ -16,7 +17,9 @@ export default function Login() {
     }`
 
     const [loginUser, {error}] = useMutation(LOGIN_USER)
-
+    const [errorMessage, setErrorMessage] = useState('')
+    const [emailError, setEmailError] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
     const navigate = useNavigate();
     const goToRegister = () => {
         navigate("/rejestracja");
@@ -56,20 +59,31 @@ export default function Login() {
                                     }
                                 }).then((response) => {
                                     localStorage.setItem('token', response.data.loginUser.token);
-                                }).then(goToOrder)
+                                }).then(goToOrder).catch(e => {
+                                    if (e.message.includes("401")) {
+                                        setEmailError(false)
+                                        setPasswordError(true)
+                                        setErrorMessage("Nieprawidłowe hasło")
+                                    }else if(e.message.includes("404")){
+                                        setEmailError(true)
+                                        setPasswordError(false)
+                                        setErrorMessage("Nie ma takiego użytkownika")
+                                    }
+                                })
                             }}
                         >
                             {({errors}) => (
                                 <Form>
                                     <div className="flex h-auto flex-col sm:pt-0">
                                         <div className="flex justify-center">
-                                            <div className="flex w-full flex-row items-center justify-center pt-2 pb-8">
+                                            <div className="flex w-full flex-row items-center justify-center pt-2">
                                                 <LoginLabels/>
-                                                <LoginInputs errors={errors} showErrors={true}/>
+                                                <LoginInputs errors={errors} showErrors={true} emailError={emailError} passwordError={passwordError}/>
                                             </div>
                                         </div>
                                         <div
                                             className="mt-3 px-5 sm:px-0 w-full justify-center items-center flex flex-col gap-2">
+                                            <ErrorsHandler message={errorMessage}/>
                                             <button
                                                 type="submit"
                                                 className="px-2 flex w-full items-center justify-center rounded bg-primary p-2 font-semibold uppercase text-white sm:w-full sm:px-10 sm:py-4"

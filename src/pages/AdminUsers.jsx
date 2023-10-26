@@ -55,6 +55,7 @@ export default function AdminUsers() {
                 {fetchedUsers.edges && fetchedUsers.edges.map((item, index) => (
 
                         <AdminSingleUser
+                            key={index}
                             id={item.node.id}
                             email={item.node.email}
                             name={item.node.name}
@@ -66,7 +67,7 @@ export default function AdminUsers() {
                     )
                 )}
                 <div>
-                    {loadMore && <button
+                    {loadMore && fetchedUsers.edges && fetchedUsers.edges.length >= 5 && <button
                         className='bg-primary rounded mt-3 mb-5 p-5 hover:scale-105 duration-100 text-white font-semibold uppercase'
                         onClick={() => {
                             const {endCursor, hasNextPage} = fetchedUsers.pageInfo;

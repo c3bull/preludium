@@ -1,7 +1,7 @@
 import {ConfirmModalSingleInput} from "../modals/ConfirmModalSingleInput";
 
 
-export default function RegisterInputs({errors, showErrors}) {
+export default function RegisterInputs({errors, showErrors, emailError}) {
     return (
         <div className="flex flex-col w-full md:pr-2 gap-2">
             <ConfirmModalSingleInput
@@ -10,6 +10,7 @@ export default function RegisterInputs({errors, showErrors}) {
                 width="w-full"
                 placeholder="adres@email.com"
                 showErrors={showErrors}
+                emailError={emailError}
             />
             <ConfirmModalSingleInput
                 name="name"

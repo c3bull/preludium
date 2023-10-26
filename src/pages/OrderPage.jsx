@@ -142,11 +142,8 @@ const Order = () => {
         let finalPrice = 0;
         for (let i = 0; i < data.product.length; i++) {
             const productData = data.product[i];
-            // console.log(productData.category)
             const amount = selectedProductsAmount[i];
-            // console.log('a ',selectedProductsAmount[i])
             finalPrice += amount * (productData.price);
-            // discount()
         }
         return finalPrice;
     }
@@ -167,8 +164,6 @@ const Order = () => {
         let waterDiscount = 0;
         for (let i = 0; i < data.product.length; i++) {
             const productData = data.product[i];
-            // console.log('sap ', productData)
-
             const amount = selectedProductsAmount[i];
             if (productData.category === "non_carb_drink") {
                 let times = 0;
@@ -206,8 +201,6 @@ const Order = () => {
                 times = Math.floor(allWater / 24)
                 waterDiscount = -1 * (times * 4)
             }
-            // console.log('a ', amount)
-            // discount += amount * (productData.price / 100);
         }
         discount = nonCarbDrinksDiscount + carbDrinksDiscount + teaDiscount + juicesDiscount + bogusDiscount + waterDiscount;
         console.log('disc ', discount)
@@ -236,9 +229,9 @@ const Order = () => {
                                     <div className='min-w-full sm:min-w-fit'>
                                         <div
                                             className='flex items-center overflow-x-auto whitespace-nowrap uppercase scrollbar-thin scrollbar-thumb-gray-400 sm:w-full'>
-                                            <p className='pl-1 pb-0.5'>
+                                            <div className='pl-1 pb-0.5'>
                                                 {iconRemap[item.hint]?.icon}
-                                            </p>
+                                            </div>
                                             <p className='px-2'>{item.name}</p>
                                         </div>
                                     </div>

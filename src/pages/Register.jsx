@@ -7,6 +7,7 @@ import RegisterLabels from "../components/login/RegisterLabels";
 import RegisterInputs from "../components/login/RegisterInputs";
 import {gql, useMutation} from "@apollo/client";
 import {RegistrationModal} from "../components/modals/RegistrationModal";
+import ErrorsHandler from "../components/common/ErrorsHandler";
 
 export default function Register() {
     const REGISTER_USER = gql`
@@ -23,6 +24,8 @@ export default function Register() {
 
     const [registerUser, {error}] = useMutation(REGISTER_USER)
     const [showRegistrationModal, setShowRegistrationModal] = useState(-1);
+    const [errorMessage, setErrorMessage] = useState('')
+    const [emailError, setEmailError] = useState(false)
 
     const navigate = useNavigate();
     const goToLogin = () => {
@@ -69,21 +72,29 @@ export default function Register() {
                                         "role": "client",
                                         "registerDateInMs": Date.now().toString(),
                                     }
-                                })
-                                setShowRegistrationModal(1)
-                                setTimeout(() => goToLogin(), 3000);
+                                }).then(()=>{
+                                    setShowRegistrationModal(1)
+                                    setTimeout(() => goToLogin(), 3000);
 
+                                }).catch(e => {
+                                    if (e.message.includes("400")) {
+                                        setEmailError(true)
+                                        setErrorMessage("Podany email jest już zajęty")
+                                    }
+                                })
                             }}
                         >
                             {({errors}) => (
                                 <Form>
                                     <div className="flex h-auto flex-col sm:pt-0">
                                         <div className="flex justify-center">
-                                            <div className="flex w-full flex-row items-center justify-center pt-2 pb-8">
+                                            <div className="flex w-full flex-row items-center justify-center pt-2 pb-3">
                                                 <RegisterLabels/>
-                                                <RegisterInputs errors={errors} showErrors={true}/>
+                                                <RegisterInputs errors={errors} showErrors={true} emailError={emailError}/>
                                             </div>
                                         </div>
+                                        <ErrorsHandler message={errorMessage}/>
+
                                         <div
                                             className="mt-3 px-5 sm:px-0 w-full justify-center items-center flex flex-col gap-2">
                                             <button
