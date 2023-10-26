@@ -1,9 +1,7 @@
-import { Field } from 'formik';
-
 import { ConfirmModalSingleInput} from "./ConfirmModalSingleInput";
 
 
-export default function ConfirmModalInputs({ errors, showErrors }) {
+export default function ConfirmModalInputs({ errors }) {
     return (
         <div className="flex flex-col gap-2">
             <ConfirmModalSingleInput

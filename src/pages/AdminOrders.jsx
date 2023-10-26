@@ -47,7 +47,7 @@ export default function AdminOrders() {
     const [loadMore, setLoadMore] = useState(true);
     const isExp = isExpired(localStorage.getItem('token'))
     const userRole = !isExp && decodeToken(localStorage.getItem('token')).role;
-    const {loading, error, data: allOrders, refetch, fetchMore} = useQuery(GET_ALL_ORDERS, {
+    const {loading, data: allOrders, refetch, fetchMore} = useQuery(GET_ALL_ORDERS, {
         variables: {"first": (myOrders.edges ? fetchCount * 6 : 6), "afterCursor": null}
     });
     const [refresh, setRefresh] = useState(false)
@@ -57,7 +57,7 @@ export default function AdminOrders() {
         if (allOrders) {
             refetch()
         }
-    }, [allOrders, refresh]);
+    }, [allOrders, refresh, loading, refetch]);
 
     return (
         !isExp && userRole === "admin" ? <div className='flex flex-col items-center pt-20 md:pt-32 px-4'>

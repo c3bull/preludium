@@ -1,4 +1,3 @@
-import ContactIconsSm from "../components/contact/ContactIconsSm";
 import ContactWays from "../components/contact/ContactWays";
 import {imageUrl} from "../components/utils/Image";
 import React from 'react';

@@ -26,7 +26,7 @@ export function CancelOrderModal(props) {
     } = props;
     // const [deleteOrder, {error}] = useMutation(DELETE_ORDER)
 
-    const [updateStatus, {error}] = useMutation(UPDATE_STATUS)
+    const [updateStatus] = useMutation(UPDATE_STATUS)
 
     const isExp = isExpired(localStorage.getItem('token'))
     const userEmail = !isExp && decodeToken(localStorage.getItem('token')).email;
@@ -138,8 +138,8 @@ export function CancelOrderModal(props) {
                     address: '',
                 }}
                 // validationSchema={formSchema}
-                onSubmit={(values) => {
-                    // sendEmail();
+                onSubmit={() => {
+                    sendEmail();
                     updateStatus({
                         variables: {
                             "id": identificator,
@@ -148,11 +148,10 @@ export function CancelOrderModal(props) {
                     })
 
                     refresh(prevState => !prevState)
-                    // onClickCancel();
                     onClickClose();
                 }}
             >
-                {({errors}) => (
+                {() => (
                     <Form>
                         <div className="flex h-auto flex-col sm:pt-0">
                             <div className=" flex w-full flex-col gap-4 overflow-auto text-center">

@@ -43,7 +43,7 @@ export function ConfirmModal(props) {
         }
     }`
 
-    const [makeOrder, {error}] = useMutation(MAKE_ORDER)
+    const [makeOrder] = useMutation(MAKE_ORDER)
 
     const isExp = isExpired(localStorage.getItem('token'))
     const userEmail = !isExp && decodeToken(localStorage.getItem('token')).email;
@@ -105,7 +105,7 @@ export function ConfirmModal(props) {
                 onSubmit={(values) => {
                     console.log('date ', parseInt(Date.now().toString()))
                     console.log('vals ',values)
-                    // sendEmail(values);
+                    sendEmail(values);
                     makeOrder({
                         variables: {
                             "orderedProducts": orderedProducts,

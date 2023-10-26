@@ -38,7 +38,7 @@ const YourOrdersPage = () => {
     const isExp = isExpired(localStorage.getItem('token'))
     const userEmail = !isExp && decodeToken(localStorage.getItem('token')).email;
 
-    const {loading, error, data: yourOrders, refetch} = useQuery(GET_YOUR_ORDERS, {
+    const {loading, data: yourOrders, refetch} = useQuery(GET_YOUR_ORDERS, {
         variables: {email: userEmail},
     });
 
@@ -47,7 +47,7 @@ const YourOrdersPage = () => {
         if (yourOrders) {
             refetch()
         }
-    }, [yourOrders, refresh]);
+    }, [yourOrders, refresh, loading, refetch]);
 
     return (
         <div>
@@ -127,7 +127,8 @@ const YourOrdersPage = () => {
                             myOrders.slice(0).reverse().map((item, index) => {
                                 return (
                                     // <div className='my-3 flex lg:my-0' key={index}>
-                                    <div className={`my-3 flex gap-2 ${item.status === "canceled" && 'opacity-50'}`} key={index}>
+                                    <div className={`my-3 flex gap-2 ${item.status === "canceled" && 'opacity-50'}`}
+                                         key={index}>
                                         <div
                                             className={ClassNames(
                                                 'w-full lg:grid lg:grid-cols-[50px_150px_420px_100px_120px_125px] lg:gap-2',

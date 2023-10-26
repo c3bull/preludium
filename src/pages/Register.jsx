@@ -22,7 +22,7 @@ export default function Register() {
         }
     }`
 
-    const [registerUser, {error}] = useMutation(REGISTER_USER)
+    const [registerUser] = useMutation(REGISTER_USER)
     const [showRegistrationModal, setShowRegistrationModal] = useState(-1);
     const [errorMessage, setErrorMessage] = useState('')
     const [emailError, setEmailError] = useState(false)
@@ -32,7 +32,7 @@ export default function Register() {
         navigate("/zaloguj");
     };
     const formSchema = Yup.object().shape({
-        email: Yup.string().required('Pole obowiązkowe').matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
+        email: Yup.string().required('Pole obowiązkowe').matches(/^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
         name: Yup.string().required('Pole obowiązkowe').min(3),
         surname: Yup.string().required('Pole obowiązkowe').min(2),
         password: Yup.string().required('Password is required').min(6),

@@ -1,18 +1,17 @@
 import {ClassNames} from "../utils/UtilFunctions";
 import {imageUrl} from "../utils/Image";
 import React, {useState} from 'react';
-import {gql, useMutation} from "@apollo/client";
 import {CancelOrderModal} from "../modals/CancelOrderModal";
 import {remapStatuses} from "../common/remap";
 import {statuses} from "../common/statuses";
 
 
-const DELETE_ORDER = gql`
-    mutation deleteOrder($id: String!) {
-        deleteOrder(id: $id) {
-            id
-        }
-    }`
+// const DELETE_ORDER = gql`
+//     mutation deleteOrder($id: String!) {
+//         deleteOrder(id: $id) {
+//             id
+//         }
+//     }`
 
 export default function YourOrdersColumn({
                                              icon,
@@ -26,7 +25,7 @@ export default function YourOrdersColumn({
                                              date,
                                              refresh
                                          }) {
-    const [deleteOrder, {error}] = useMutation(DELETE_ORDER)
+    // const [deleteOrder] = useMutation(DELETE_ORDER)
     const [showCancelConfirmation, setShowCancelConfirmation] = useState(false)
 
     return (
@@ -45,10 +44,8 @@ export default function YourOrdersColumn({
                     <div
                         className="cursor-pointer pt-1"
                         onClick={() => {
-                            {
-                                if (typeof value === 'string') {
-                                    navigator.clipboard.writeText(value);
-                                }
+                            if (typeof value === 'string') {
+                                navigator.clipboard.writeText(value);
                             }
                         }}
                     >
@@ -91,16 +88,6 @@ export default function YourOrdersColumn({
                         onClickClose={() => {
                             // setShowBasket(false);
                             setShowCancelConfirmation(false);
-                        }}
-                        onClickCancel={() => {
-                            {
-                                deleteOrder({
-                                    variables: {
-                                        "id": value
-                                    }
-                                }).then(r => window.location.reload(false))
-                            }
-                            // saveOrderToDb();
                         }}
                         item={item}
                         identificator={value}

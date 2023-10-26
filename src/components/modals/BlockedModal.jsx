@@ -15,7 +15,7 @@ export function BlockedModal(props) {
         }
     }`
 
-    const [logoutUser, {error}] = useMutation(LOGOUT_USER)
+    const [logoutUser] = useMutation(LOGOUT_USER)
 
     const isExp = isExpired(localStorage.getItem('token'))
     const userId = !isExp && decodeToken(localStorage.getItem('token')).userId;

@@ -17,7 +17,7 @@ function useOutsideAlerter(ref, close) {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [ref]);
+    }, [ref, close]);
 }
 
 export default function Modal(props) {

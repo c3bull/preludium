@@ -16,7 +16,7 @@ export default function Login() {
         }
     }`
 
-    const [loginUser, {error}] = useMutation(LOGIN_USER)
+    const [loginUser] = useMutation(LOGIN_USER)
     const [errorMessage, setErrorMessage] = useState('')
     const [emailError, setEmailError] = useState(false)
     const [passwordError, setPasswordError] = useState(false)
@@ -29,7 +29,7 @@ export default function Login() {
         navigate("/zamow");
     };
     const formSchema = Yup.object().shape({
-        email: Yup.string().required('Pole obowiązkowe').matches(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
+        email: Yup.string().required('Pole obowiązkowe').matches(/^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/),
     });
 
     return (

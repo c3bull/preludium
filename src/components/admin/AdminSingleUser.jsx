@@ -1,8 +1,8 @@
 import {ClassNames} from "../utils/UtilFunctions";
-import React, {useState} from "react";
+import React from "react";
 import {imageUrl} from "../utils/Image";
 import {remapStatuses} from "../common/remap";
-import {roles, statuses} from "../common/statuses";
+import {roles} from "../common/statuses";
 import {gql, useMutation} from "@apollo/client";
 
 const UPDATE_ROLE = gql`
@@ -22,76 +22,8 @@ export default function AdminSingleUser({
                                             refresh,
                                             index,
                                         }) {
-    const iconRemap = {
-        '[NIEGAZ]': {
-            icon: <div
-                className='flex w-4 h-4 mt-0.5'>
-                <img
-                    src={imageUrl('icons/GiWaterSplash.webp')}
-                    width='16px'
-                    height='16px'
-                    alt='napój niegazowany'
-                />
-            </div>
-        },
-        '[GAZ]': {
-            icon: <div
-                className='flex w-4 h-4 mt-0.5'>
-                <img
-                    src={imageUrl('icons/RiBubbleChartLine.webp')}
-                    width='16px'
-                    height='16px'
-                    alt='napój gazowany'
-                />
-            </div>
-        },
-        '[SOK]': {
-            icon: <div
-                className='flex w-4 h-4 mt-0.5'>
-                <img
-                    src={imageUrl('icons/GiManualJuicer.webp')}
-                    width='16px'
-                    height='16px'
-                    alt='sok / nektar'
-                />
-            </div>
-        },
-        '[B]': {
-            icon: <div
-                className='flex w-4 h-4 mt-0.5'>
-                <img
-                    src={imageUrl('icons/FaCarrot.webp')}
-                    width='16px'
-                    height='16px'
-                    alt='Boguś'
-                />
-            </div>
-        },
-        '[HERBATA]': {
-            icon: <div
-                className='flex w-4 h-4 mt-0.5'>
-                <img
-                    src={imageUrl('icons/FaTeapot.webp')}
-                    width='16px'
-                    height='16px'
-                    alt='Boguś'
-                />
-            </div>
-        },
-        '[WODA]': {
-            icon: <div
-                className='flex w-4 h-4 mt-0.5'>
-                <img
-                    src={imageUrl('icons/MdWaterDrop.webp')}
-                    width='16px'
-                    height='16px'
-                    alt='woda źródlana'
-                />
-            </div>
-        }
-    };
 
-    const [updateRole, {error}] = useMutation(UPDATE_ROLE)
+    const [updateRole] = useMutation(UPDATE_ROLE)
     return (
         <div
             className={ClassNames('w-full md:w-[43rem] border-2 gap-1 border-gray-500 rounded-lg flex flex-col my-2 2xl:my-0 p-6',
@@ -107,10 +39,8 @@ export default function AdminSingleUser({
                     <div
                         className="cursor-pointer flex  justify-center pt-0.5 md:pt-[5px]"
                         onClick={() => {
-                            {
-                                if (typeof id === 'string') {
-                                    navigator.clipboard.writeText(id);
-                                }
+                            if (typeof id === 'string') {
+                                navigator.clipboard.writeText(id);
                             }
                         }}
                     >
@@ -138,7 +68,8 @@ export default function AdminSingleUser({
             <div className='flex flex-col md:flex-row w-full'>
                 <div className='flex flex-col md:min-w-[20rem] gap-1 text-sm md:text-[16px]'>
                     <div className='flex gap-1'>Imię: <p className='font-semibold overflow-x-auto'>{name}</p></div>
-                    <div className='flex gap-1'>Nazwisko: <p className='font-semibold overflow-x-auto'>{surname}</p></div>
+                    <div className='flex gap-1'>Nazwisko: <p className='font-semibold overflow-x-auto'>{surname}</p>
+                    </div>
                     <div className='flex gap-1'>Email: <p
                         className='font-semibold overflow-x-auto max-w-[16rem]'>{email}</p></div>
                 </div>

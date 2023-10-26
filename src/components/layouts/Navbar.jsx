@@ -15,7 +15,7 @@ export default function Navbar() {
         }
     }`
 
-    const [logoutUser, {error}] = useMutation(LOGOUT_USER)
+    const [logoutUser] = useMutation(LOGOUT_USER)
 
     const isExp = isExpired(localStorage.getItem('token'))
     const username = !isExp && decodeToken(localStorage.getItem('token')).name;
