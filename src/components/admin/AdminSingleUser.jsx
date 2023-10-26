@@ -1,5 +1,5 @@
 import {ClassNames} from "../utils/UtilFunctions";
-import React from "react";
+import React, {useState} from "react";
 import {imageUrl} from "../utils/Image";
 import {remapStatuses} from "../common/remap";
 import {roles, statuses} from "../common/statuses";
@@ -92,7 +92,6 @@ export default function AdminSingleUser({
     };
 
     const [updateRole, {error}] = useMutation(UPDATE_ROLE)
-
     return (
         <div
             className={ClassNames('w-full md:w-[43rem] border-2 gap-1 border-gray-500 rounded-lg flex flex-col my-2 p-6',
@@ -153,8 +152,7 @@ export default function AdminSingleUser({
                                     "id": id,
                                     "role": "client"
                                 }
-                            });
-                            refresh(prevState => !prevState)
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
                         }}>
                     <p>Klient</p>
                 </button>
@@ -166,8 +164,8 @@ export default function AdminSingleUser({
                                     "id": id,
                                     "role": "blocked"
                                 }
-                            });
-                            refresh(prevState => !prevState)
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
+
                         }}>
                     <p>Zablokowany</p>
                 </button>
@@ -179,8 +177,7 @@ export default function AdminSingleUser({
                                     "id": id,
                                     "role": "admin"
                                 }
-                            });
-                            refresh(prevState => !prevState)
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
                         }}>
                     <p>Administrator</p>
                 </button>

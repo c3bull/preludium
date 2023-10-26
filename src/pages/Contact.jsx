@@ -7,66 +7,24 @@ const Contact = () => {
     return (
         <div>
             <div className='flex items-center justify-center pt-20 sm:pt-32'>
-                <div className='flex flex-col items-center justify-center gap-2 sm:hidden'>
-                    <p className='px-2 pb-2 text-center font-medium uppercase'>
-                        Kliknij na odpowiednią ikonę, aby przejść do interesującej cię formy
-                        kontaktu.
-                    </p>
-                    <ContactIconsSm
-                        title='Email'
-                        icon={<div className='flex items-center p-0.5'>
-                            <img
-                                src={imageUrl('icons/MdOutgoingMail.webp')}
-                                width='30px'
-                                height='30px'
-                                alt='wyślij email'
-                            />
-                        </div>}
-                        href='mailto:napojefantic.krakow@gmail.com'
-                        target='_blank'
-                    />
-                    <ContactIconsSm
-                        title='Messenger'
-                        icon={<div className='flex items-center p-0.5'>
-                            <img
-                                src={imageUrl('icons/RiMessengerLine.webp')}
-                                width='30px'
-                                height='30px'
-                                alt='napisz na Messenegrze'
-                            />
-                        </div>}
-                        href='https://m.me/preludiumMessenger'
-                        target='_blank'
-                    />
-                    <ContactIconsSm
-                        title='Telefon'
-                        icon={<div className='flex items-center p-0.5'>
-                            <img
-                                src={imageUrl('icons/AiOutlinePhone.webp')}
-                                width='30px'
-                                height='30px'
-                                alt='zadzwoń'
-                            />
-                        </div>}
-                        href='tel:123523223'
-                    />
-                </div>
-
-                <div className='hidden max-w-2xl flex-col gap-6 sm:flex sm:w-2/3 '>
+                <div className='max-w-2xl flex-col gap-6 flex sm:w-2/3 '>
                     <p className='hidden text-center font-medium uppercase'>
                         Kliknij na odpowiednią ikonę, aby przejść do interesującej cię formy
                         kontaktu.
                     </p>
 
                     <ContactWays
-                        href='mailto:napojefantic.krakow@gmail.com'
                         title='Email'
-                        name='napojefantic.krakow@gmail.com'
-                        icon={<div className='flex items-center p-0.5'>
+                        name='preludium.sg@gmail.com'
+                        href='mailto:preludium.sg@gmail.com'
+                        name2='napojefantic.krakow@gmail.com'
+                        href2='mailto:napojefantic.krakow@gmail.com'
+                        name3='elixirium.am@gmail.com'
+                        href3='mailto:elixirium.am@gmail.com'
+                        icon={<div className='flex items-center'>
                             <img
                                 src={imageUrl('icons/MdOutgoingMail.webp')}
-                                width='30px'
-                                height='30px'
+                                className=''
                                 alt='wyślij email'
                             />
                         </div>}
@@ -76,26 +34,27 @@ const Contact = () => {
                         href='https://m.me/preludiumMessenger'
                         title='Messenger'
                         name='Preludium'
-                        icon={<div className='flex items-center p-0.5'>
+                        icon={<div className='flex items-center'>
                             <img
                                 src={imageUrl('icons/RiMessengerLine.webp')}
-                                width='30px'
-                                height='30px'
+                                className=''
                                 alt='napisz na Messengerze'
                             />
                         </div>}
                         target='_blank'
                     />
                     <ContactWays
-                        href='tel:123523223'
                         title='Telefon'
                         name='12 352 32 23'
+                        href='tel:123523223'
                         name2='500 776 150'
-                        icon={<div className='flex items-center p-0.5'>
+                        href2='tel:500776150'
+                        name3='500 776 494'
+                        href3='tel:500776494'
+                        icon={<div className='flex items-center'>
                             <img
                                 src={imageUrl('icons/AiOutlinePhone.webp')}
-                                width='30px'
-                                height='30px'
+                                className=''
                                 alt='zadzwoń'
                             />
                         </div>}
