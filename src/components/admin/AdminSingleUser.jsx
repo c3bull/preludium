@@ -35,7 +35,7 @@ export default function AdminSingleUser({
             <div className='flex flex-col gap-1 md:flex-row w-full justify-between  text-sm md:text-[16px]'>
                 <div className='flex gap-1'>
                     <p className='whitespace-nowrap'>ID Użytkownika:</p>
-                    <p className='font-semibold overflow-x-auto max-w-[5rem] sm:max-w-full'>{id}</p>
+                    <p className='font-semibold overflow-x-auto max-w-[5rem] sm:max-w-full '>{id}</p>
                     <div
                         className="cursor-pointer flex  justify-center pt-0.5 md:pt-[5px]"
                         onClick={() => {
