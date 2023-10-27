@@ -66,8 +66,8 @@ export function ConfirmModal(props) {
 
     const sendEmail = (values) => {
         emailjs.send(
-            'service_4iq6nqv',
-            'template_fpws0iq',
+            process.env.REACT_APP_SERVICE_ID,
+            process.env.REACT_APP_TEMPLATE_ID_ORDER,
             {
                 subject: 'Zamówienie',
                 name: values.name,
@@ -83,7 +83,7 @@ export function ConfirmModal(props) {
                 date: format(new Date(), 'dd/MM/yyyy, H:mm:ss'),
                 sum: `${sum.toFixed(2)} zł`,
             },
-            'CNpreU7L2ExeCgd97'
+            process.env.REACT_APP_PUBLIC_KEY
         );
     };
 

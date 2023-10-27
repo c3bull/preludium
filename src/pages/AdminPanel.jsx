@@ -7,7 +7,6 @@ export default function AdminPanel() {
     const navigate = useNavigate();
     const isExp = isExpired(localStorage.getItem('token'))
     const userRole = !isExp && decodeToken(localStorage.getItem('token')).role;
-
     const goToOrders = () => {
         navigate("/administrator/zamowienia");
     };

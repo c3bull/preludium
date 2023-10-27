@@ -33,8 +33,8 @@ export function CancelOrderModal(props) {
 
     const sendEmail = () => {
         emailjs.send(
-            'service_4iq6nqv',
-            'template_39zfjjs',
+            process.env.REACT_APP_SERVICE_ID,
+            process.env.REACT_APP_TEMPLATE_ID_CANCEL,
             {
                 subject: 'Anulowanie zamówienia',
                 id: identificator,
@@ -51,7 +51,7 @@ export function CancelOrderModal(props) {
                 date: date,
                 sum: `${price} zł`,
             },
-            'CNpreU7L2ExeCgd97'
+            process.env.REACT_APP_PUBLIC_KEY
         );
     };
 
