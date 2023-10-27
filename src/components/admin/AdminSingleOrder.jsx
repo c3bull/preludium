@@ -113,9 +113,9 @@ export default function AdminSingleOrder({
 
                     <div className='flex gap-1'>
                         <p className='whitespace-nowrap'>ID Zamówienia:</p>
-                        <p className='font-semibold overflow-x-auto'>{id}</p>
+                        <p className='font-semibold overflow-x-auto max-w-[5rem] sm:max-w-full'>{id}</p>
                         <div
-                            className="cursor-pointer flex  justify-center pt-0.5 md:pt-[5px]"
+                            className="cursor-pointer flex  justify-center pt-0.5 md:pt-[5px] "
                             onClick={() => {
                                 if (typeof id === 'string') {
                                     navigator.clipboard.writeText(id);
@@ -134,7 +134,7 @@ export default function AdminSingleOrder({
                     </div>
                     <div className='flex gap-1'>
                         <p className='whitespace-nowrap'>ID Klienta:</p>
-                        <p className='font-semibold overflow-x-auto'>{customerId}</p>
+                        <p className='font-semibold overflow-x-auto max-w-[7rem] sm:max-w-full'>{customerId}</p>
                         <div
                             className="cursor-pointer flex  justify-center pt-0.5 md:pt-[5px]"
                             onClick={() => {
