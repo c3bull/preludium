@@ -1,18 +1,19 @@
 import {ClassNames} from "../utils/UtilFunctions";
 
 export default function BottleModalTableLabels({bottleData}) {
+    console.log('bd ', bottleData.tableLabels[0])
     return (
         <div className="font-semibold">
             {[
-                bottleData.tableLabels.wartoscOdzywcza,
-                bottleData.tableLabels.wartoscEnergetyczna,
-                bottleData.tableLabels.tluszcz,
-                bottleData.tableLabels.wTymKwasyNasycone,
-                bottleData.tableLabels.weglowodany,
-                bottleData.tableLabels.wTymCukry,
-                bottleData.tableLabels.bialko,
-                bottleData.tableLabels.sol,
-                bottleData.tableLabels.witaminaC,
+                bottleData.tableLabels[0].wartoscOdzywcza,
+                bottleData.tableLabels[0].wartoscEnergetyczna,
+                bottleData.tableLabels[0].tluszcz,
+                bottleData.tableLabels[0].wTymKwasyNasycone,
+                bottleData.tableLabels[0].weglowodany,
+                bottleData.tableLabels[0].wTymCukry,
+                bottleData.tableLabels[0].bialko,
+                bottleData.tableLabels[0].sol,
+                bottleData.tableLabels[0].witaminaC,
             ]
                 .filter((value) => !!value)
                 .map((label, index) => (
@@ -27,54 +28,54 @@ export default function BottleModalTableLabels({bottleData}) {
                     </p>
                 ))}
 
-            {bottleData.tableLabels.kationy && (
-                <p className="w-full bg-cyan-300 pl-2">{bottleData.tableLabels.kationy}</p>
+            {bottleData.tableLabels[0].kationy && (
+                <p className="w-full bg-cyan-300 pl-2">{bottleData.tableLabels[0].kationy}</p>
             )}
-            {bottleData.tableLabels.wapniowy && (
+            {bottleData.tableLabels[0].wapniowy && (
                 <p className="w-full pl-2">
-                    {bottleData.tableLabels.wapniowy} Ca<sup>2+</sup>
+                    {bottleData.tableLabels[0].wapniowy} Ca<sup>2+</sup>
                 </p>
             )}
-            {bottleData.tableLabels.magnezowy && (
+            {bottleData.tableLabels[0].magnezowy && (
                 <p className="w-full bg-cyan-300 pl-2">
-                    {bottleData.tableLabels.magnezowy} Mg<sup>2+</sup>
+                    {bottleData.tableLabels[0].magnezowy} Mg<sup>2+</sup>
                 </p>
             )}
-            {bottleData.tableLabels.sodowy && (
+            {bottleData.tableLabels[0].sodowy && (
                 <p className="w-full pl-2">
-                    {bottleData.tableLabels.sodowy} Na<sup>+</sup>
+                    {bottleData.tableLabels[0].sodowy} Na<sup>+</sup>
                 </p>
             )}
-            {bottleData.tableLabels.potasowy && (
+            {bottleData.tableLabels[0].potasowy && (
                 <p className="w-full bg-cyan-300 pl-2">
-                    {bottleData.tableLabels.potasowy} K<sup>+</sup>
+                    {bottleData.tableLabels[0].potasowy} K<sup>+</sup>
                 </p>
             )}
-            {bottleData.tableLabels.aniony && <p className="w-full pl-2">{bottleData.tableLabels.aniony}</p>}
-            {bottleData.tableLabels.wodoroweglanowy && (
+            {bottleData.tableLabels[0].aniony && <p className="w-full pl-2">{bottleData.tableLabels[0].aniony}</p>}
+            {bottleData.tableLabels[0].wodoroweglanowy && (
                 <p className="w-full bg-cyan-300 pl-2">
-                    {bottleData.tableLabels.wodoroweglanowy} HCO<sub>3</sub>
+                    {bottleData.tableLabels[0].wodoroweglanowy} HCO<sub>3</sub>
                     <sup>-</sup>
                 </p>
             )}
-            {bottleData.tableLabels.siarczanowy && (
+            {bottleData.tableLabels[0].siarczanowy && (
                 <p className="w-full pl-2">
-                    {bottleData.tableLabels.siarczanowy} SO<sub>4</sub>
+                    {bottleData.tableLabels[0].siarczanowy} SO<sub>4</sub>
                     <sup>2-</sup>
                 </p>
             )}
-            {bottleData.tableLabels.chlorkowy && (
+            {bottleData.tableLabels[0].chlorkowy && (
                 <p className="w-full bg-cyan-300 pl-2">
-                    {bottleData.tableLabels.chlorkowy} Cl<sup>-</sup>
+                    {bottleData.tableLabels[0].chlorkowy} Cl<sup>-</sup>
                 </p>
             )}
-            {bottleData.tableLabels.fluorkowy && (
+            {bottleData.tableLabels[0].fluorkowy && (
                 <p className="w-full pl-2">
-                    {bottleData.tableLabels.fluorkowy} F<sup>-</sup>
+                    {bottleData.tableLabels[0].fluorkowy} F<sup>-</sup>
                 </p>
             )}
-            {bottleData.tableLabels.suma && (
-                <p className="w-full bg-cyan-300 pl-2">{bottleData.tableLabels.suma}</p>
+            {bottleData.tableLabels[0].suma && (
+                <p className="w-full bg-cyan-300 pl-2">{bottleData.tableLabels[0].suma}</p>
             )}
         </div>
     );

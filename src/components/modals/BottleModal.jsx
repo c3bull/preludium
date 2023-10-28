@@ -19,7 +19,7 @@ export function BottleModal(props) {
                         <BottleModalTableLabels bottleData={data}/>
                         <BottleModalTableValues bottleData={data}/>
                     </div>
-                    {data.tableValues.witaminaC &&
+                    {data.tableValues[0].witaminaC &&
                         <p className='pt-5'>*Referencyjna wartość spożycia dla przeciętnej <br/>
                             osoby dorosłej (8 400 kJ/2 000 kcal)</p>}
                 </div>

@@ -5,15 +5,15 @@ export default function BottleModalTableValues({bottleData}) {
     return (
         <div className="select-none font-semibold">
             {[
-                bottleData.tableValues.wartoscOdzywcza,
-                bottleData.tableValues.wartoscEnergetyczna,
-                bottleData.tableValues.tluszcz,
-                bottleData.tableValues.wTymKwasyNasycone,
-                bottleData.tableValues.weglowodany,
-                bottleData.tableValues.wTymCukry,
-                bottleData.tableValues.bialko,
-                bottleData.tableValues.sol,
-                bottleData.tableValues.witaminaC,
+                bottleData.tableValues[0].wartoscOdzywcza,
+                bottleData.tableValues[0].wartoscEnergetyczna,
+                bottleData.tableValues[0].tluszcz,
+                bottleData.tableValues[0].wTymKwasyNasycone,
+                bottleData.tableValues[0].weglowodany,
+                bottleData.tableValues[0].wTymCukry,
+                bottleData.tableValues[0].bialko,
+                bottleData.tableValues[0].sol,
+                bottleData.tableValues[0].witaminaC,
             ]
                 .filter((value) => !!value)
                 .map((productValue, index) => {
@@ -30,17 +30,17 @@ export default function BottleModalTableValues({bottleData}) {
                     )
                 })}
             {[
-                bottleData.tableValues.kationy,
-                bottleData.tableValues.wapniowy,
-                bottleData.tableValues.magnezowy,
-                bottleData.tableValues.sodowy,
-                bottleData.tableValues.potasowy,
-                bottleData.tableValues.aniony,
-                bottleData.tableValues.wodoroweglanowy,
-                bottleData.tableValues.siarczanowy,
-                bottleData.tableValues.chlorkowy,
-                bottleData.tableValues.fluorkowy,
-                bottleData.tableValues.suma,
+                bottleData.tableValues[0].kationy,
+                bottleData.tableValues[0].wapniowy,
+                bottleData.tableValues[0].magnezowy,
+                bottleData.tableValues[0].sodowy,
+                bottleData.tableValues[0].potasowy,
+                bottleData.tableValues[0].aniony,
+                bottleData.tableValues[0].wodoroweglanowy,
+                bottleData.tableValues[0].siarczanowy,
+                bottleData.tableValues[0].chlorkowy,
+                bottleData.tableValues[0].fluorkowy,
+                bottleData.tableValues[0].suma,
             ]
                 .filter((value) => !!value)
                 .map((productValue, index) => (

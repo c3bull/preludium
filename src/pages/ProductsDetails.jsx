@@ -41,7 +41,7 @@ function Page() {
     const r = urlRemap[category];
 
     return (
-        <div>
+        <div className='min-h-[50vh]'>
             <ProductsLayout
                 className={r.columns}
                 categoryUrl={r.link}

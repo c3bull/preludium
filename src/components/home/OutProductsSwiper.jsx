@@ -6,20 +6,20 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import SectionHeader from "../common/SectionHeader";
 import {imageUrl} from "../utils/Image";
 import {gql, useQuery} from "@apollo/client";
+import allProductsData from "../../data/allProducts";
 
-
-const GET_ALL_PRODUCTS = gql`
-  query GetProducts {
-    product {
-      id
-    bottle
-    number
-    }
-  }
-`;
+// const GET_ALL_PRODUCTS = gql`
+//   query GetProducts {
+//     product {
+//       id
+//     bottle
+//     number
+//     }
+//   }
+// `;
 
 export default function OurProductsSwiper({goToProducts}) {
-    const {data} = useQuery(GET_ALL_PRODUCTS);
+    // const {data} = useQuery(GET_ALL_PRODUCTS);
 
     return (
         <div className="m-0 flex justify-center">
@@ -41,7 +41,7 @@ export default function OurProductsSwiper({goToProducts}) {
                     loop={true}
                     speed={500}
                 >
-                    {data && shuffle(data.product).map((item) => {
+                    {shuffle(allProductsData).map((item) => {
                         return (
                             <SwiperSlide key={item.id}>
                                 <img
