@@ -6,7 +6,7 @@ export default function FooterCustomerService() {
     return (
         <div className="flex flex-col items-center justify-center gap-2 p-1 text-center sm:mx-16 sm:items-start sm:gap-4 sm:text-left">
             <p className="font-bold text-gray-800">DZIAŁ OBSŁUGI KLIENTA</p>
-            <div className="flex flex-col gap-3">
+            <div className="text-start flex flex-col gap-3">
                 <div className="flex">
                     <div className='mr-2 flex items-center'>
                         <img
@@ -15,7 +15,7 @@ export default function FooterCustomerService() {
                             alt='adres'
                         />
                     </div>
-                    ul. Pod Pomnikiem 14, 30-898 Kraków
+                    ul. Pod Pomnikiem 14, 30-898 Kraków (siedziba)
                 </div>
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>
@@ -25,7 +25,7 @@ export default function FooterCustomerService() {
                             alt='adres2'
                         />
                     </div>
-                    ul. Blokowa 9, 31-752 Kraków
+                    ul. Blokowa 9, 31-752 Kraków (sklep)
                 </div>
                 <div className="flex items-center">
                     <div className='mr-2 flex items-center'>

@@ -23,8 +23,8 @@ export function ConfirmModal(props) {
     } = props;
 
     const MAKE_ORDER = gql`
-    mutation makeOrder($orderedProducts: [OrderedProductsInputType!], $placementDate: String!, $dateInMs: String!, $totalPrice: String!, $email: String!, $name: String!, $phone: String!, $zip: String!, $address: String!, $status: String!, $customerId: String!) {
-        makeOrder(orderedProducts: $orderedProducts, placementDate: $placementDate, dateInMs: $dateInMs, totalPrice: $totalPrice, email: $email, name: $name, phone: $phone, zip: $zip, address: $address, status: $status, customerId: $customerId) {
+    mutation makeOrder($orderedProducts: [OrderedProductsInputType!], $placementDate: String!, $dateInMs: String!, $totalPrice: String!, $email: String!, $name: String!, $phone: String!, $zip: String!, $address: String!, $status: String!, $customerId: String!, $notes: String!) {
+        makeOrder(orderedProducts: $orderedProducts, placementDate: $placementDate, dateInMs: $dateInMs, totalPrice: $totalPrice, email: $email, name: $name, phone: $phone, zip: $zip, address: $address, status: $status, customerId: $customerId, notes: $notes) {
             orderedProducts {
                 amount
                 hint
@@ -40,6 +40,7 @@ export function ConfirmModal(props) {
         zip
         address
         customerId
+        notes
         }
     }`
 
@@ -119,6 +120,7 @@ export function ConfirmModal(props) {
                             "address": values.address,
                             "status": "in-progress",
                             "customerId": customerId,
+                            "notes": "",
                         }
                     })
                     onClickClose();

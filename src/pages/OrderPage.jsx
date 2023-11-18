@@ -346,19 +346,19 @@ const Order = () => {
                 <div className='grid gap-6 px-10 pt-8 pb-16 2xl:grid-cols-[70%_minmax(30%,1fr)]'>
                     <OrderMap/>
                     <OrderCategoryLayout
-                        title='Napoje niegazowane'
-                        category='non_carb_drink'
-                        alt='butelka niegazowana'
+                        title='woda źródlana'
+                        category='water'
+                        alt='butelka woda'
                         appendProductAmount={appendProductAmount}
                         selectedProductsAmount={selectedProductsAmount}
-                        classes='lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-3'
+                        classes='lg:grid-cols-3'
                         icon={<div
                             className='flex items-center'>
                             <img
-                                src={imageUrl('icons/GiWaterSplash.webp')}
+                                src={imageUrl('icons/MdWaterDrop.webp')}
                                 width='17px'
                                 height='17px'
-                                alt='napoje niegazowane'
+                                alt='wody źródlane'
                             />
                         </div>}
                     />
@@ -391,7 +391,24 @@ const Order = () => {
                         </div>}
                     />
                     <div/>
-
+                    <OrderCategoryLayout
+                        title='Napoje niegazowane'
+                        category='non_carb_drink'
+                        alt='butelka niegazowana'
+                        appendProductAmount={appendProductAmount}
+                        selectedProductsAmount={selectedProductsAmount}
+                        classes='lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-3'
+                        icon={<div
+                            className='flex items-center'>
+                            <img
+                                src={imageUrl('icons/GiWaterSplash.webp')}
+                                width='17px'
+                                height='17px'
+                                alt='napoje niegazowane'
+                            />
+                        </div>}
+                    />
+                    <div/>
                     <OrderCategoryLayout
                         title='soki i nektary'
                         category='juices'
@@ -444,25 +461,6 @@ const Order = () => {
                                 width='19px'
                                 height='19px'
                                 alt='Bogusie'
-                            />
-                        </div>}
-                    />
-                    <div/>
-
-                    <OrderCategoryLayout
-                        title='woda źródlana'
-                        category='water'
-                        alt='butelka woda'
-                        appendProductAmount={appendProductAmount}
-                        selectedProductsAmount={selectedProductsAmount}
-                        classes='lg:grid-cols-3'
-                        icon={<div
-                            className='flex items-center'>
-                            <img
-                                src={imageUrl('icons/MdWaterDrop.webp')}
-                                width='17px'
-                                height='17px'
-                                alt='wody źródlane'
                             />
                         </div>}
                     />

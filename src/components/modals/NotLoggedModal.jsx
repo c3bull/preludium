@@ -23,7 +23,7 @@ export function NotLoggedModal(props) {
                 </div>
                 <div className='mt-3 flex justify-end gap-2'>
                     <button
-                        className='flex w-full items-center justify-center rounded bg-primary px-6 py-4 font-semibold uppercase text-white'
+                        className='drop-shadow-[0_0px_10px_rgba(0,0,0,0.5)] flex w-full items-center justify-center rounded bg-primary px-6 py-4 font-semibold uppercase text-white'
                         onClick={goToLogin}
                     >
                         <div

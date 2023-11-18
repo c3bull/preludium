@@ -6,14 +6,14 @@ export default function PricesSideButtons() {
         <div className='fixed left-[2%] top-[30%]'>
             <div className='flex flex-col gap-5'>
                 <div>
-                    <a href={'#non_carb_drink'}>
+                    <a href={'#water'}>
                         <div
                             className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
                             <img
-                                src={imageUrl('icons/GiWaterSplash.webp')}
+                                src={imageUrl('icons/MdWaterDrop.webp')}
                                 width='32px'
                                 height='32px'
-                                alt='przewiń do niegazowanych'
+                                alt='przewiń do wody'
                             />
                         </div>
                     </a>
@@ -27,6 +27,19 @@ export default function PricesSideButtons() {
                                 width='32px'
                                 height='32px'
                                 alt='przewiń do gazowanych'
+                            />
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <a href={'#non_carb_drink'}>
+                        <div
+                            className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
+                            <img
+                                src={imageUrl('icons/GiWaterSplash.webp')}
+                                width='32px'
+                                height='32px'
+                                alt='przewiń do niegazowanych'
                             />
                         </div>
                     </a>
@@ -66,19 +79,6 @@ export default function PricesSideButtons() {
                                 width='32px'
                                 height='32px'
                                 alt='przewiń do Bogusiów'
-                            />
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a href={'#water'}>
-                        <div
-                            className='h-12 w-12 rounded-full border-2 border-primary bg-white p-2.5 text-logob duration-200 hover:bg-primary'>
-                            <img
-                                src={imageUrl('icons/MdWaterDrop.webp')}
-                                width='32px'
-                                height='32px'
-                                alt='przewiń do wody'
                             />
                         </div>
                     </a>

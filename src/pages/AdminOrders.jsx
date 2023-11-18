@@ -27,6 +27,7 @@ const GET_ALL_ORDERS = gql`
         address
         status
         customerId
+        notes
       }
       cursor
     }
@@ -78,6 +79,7 @@ export default function AdminOrders() {
                                 totalPrice={item.node.totalPrice}
                                 status={item.node.status}
                                 customerId={item.node.customerId}
+                                notes={item.node.notes}
                                 index={index}
                                 refresh={setRefresh}
                             />

@@ -29,15 +29,20 @@ const PricesPage = () => {
                 <div className="flex w-2/3 flex-col justify-center">
                     <div className="grid gap-6 pt-14 pb-16">
                         <Prices
-                            category="non_carb_drink"
-                            title="napoje niegazowane"
-                            color="via-orange-100"
-                            classes="xl:grid-cols-4"
+                            category="water"
+                            title="woda źródlana"
+                            color="via-cyan-100"
                         />
                         <Prices
                             category="carb_drink"
                             title="napoje gazowane"
                             color="via-yellow-100"
+                            classes="xl:grid-cols-4"
+                        />
+                        <Prices
+                            category="non_carb_drink"
+                            title="napoje niegazowane"
+                            color="via-orange-100"
                             classes="xl:grid-cols-4"
                         />
                         <Prices
@@ -55,11 +60,6 @@ const PricesPage = () => {
                             category="tea"
                             title="herbata"
                             color="via-orange-100"
-                        />
-                        <Prices
-                            category="water"
-                            title="woda źródlana"
-                            color="via-cyan-100"
                         />
                     </div>
                 </div>

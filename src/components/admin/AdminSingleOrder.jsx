@@ -1,5 +1,5 @@
 import {ClassNames} from "../utils/UtilFunctions";
-import React from "react";
+import React, {useState} from "react";
 import {imageUrl} from "../utils/Image";
 import {remapStatuses} from "../common/remap";
 import {statuses} from "../common/statuses";
@@ -10,6 +10,14 @@ const UPDATE_STATUS = gql`
         updateStatus(id: $id, status: $status) {
             id
             status
+        }
+    }`
+
+const UPDATE_NOTES = gql`
+    mutation updateNotes($id: String!, $notes: String!) {
+        updateNotes(id: $id, notes: $notes) {
+            id
+            notes
         }
     }`
 
@@ -25,6 +33,7 @@ export default function AdminSingleOrder({
                                              totalPrice,
                                              status,
                                              customerId,
+                                             notes,
                                              index,
                                              refresh
                                          }) {
@@ -97,7 +106,10 @@ export default function AdminSingleOrder({
         }
     };
 
+    const [newNotes, setNewNotes] = useState(notes)
+
     const [updateStatus] = useMutation(UPDATE_STATUS)
+    const [updateNotes] = useMutation(UPDATE_NOTES)
 
     return (
         <div
@@ -232,6 +244,30 @@ export default function AdminSingleOrder({
                     </div>
                     <p className='text-end font-bold text-lg'>Cena: {totalPrice} zł</p>
                 </div>
+            </div>
+            <div className='w-full bg-neutral-200 rounded mt-5'>
+                <div className='relative'>
+                    <p className='p-2 font-semibold text-center'>Notatki</p>
+                    <img
+                        className={ClassNames(newNotes !== notes ? 'absolute top-0 right-0 h-10 w-10 p-2 cursor-pointer hover:scale-105 duration-100' : 'hidden')}
+                        src={imageUrl('icons/FaRegSave.png')}
+                        alt='Zapisz'
+                        onClick={() => {
+                            updateNotes({
+                                variables: {
+                                    "id": id,
+                                    "notes": newNotes
+                                }
+                            }).then(setTimeout(() => refresh(prevState => !prevState), 50));
+                        }}
+                    />
+                </div>
+                <textarea
+                    className='min-h-[5rem] italic max-h-56 w-full font-semibold flex flex-col md:flex-row p-2 justify-between gap-3 md:gap-0'
+                    onChange={(e) => setNewNotes(e.target.value)}
+                    spellCheck={false}>
+                {notes}
+                </textarea>
             </div>
             <div className='font-semibold flex flex-col md:flex-row pt-4 justify-between gap-3 md:gap-0'>
                 <button className={ClassNames('hover:saturate-50 border-2 border-gray-600 p-2 md:p-5 rounded-lg',

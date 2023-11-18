@@ -8,7 +8,7 @@ const About = () => {
                 <div className="flex w-2/3 items-center justify-center">
                     <div className="flex flex-col items-center justify-center pt-32 pb-16 text-center">
                         <div className="xl:w-3/4">
-                            <p className="pb-12 text-left text-sm sm:text-lg">
+                            <p className="pb-12 text-left text-sm sm:text-lg drop-shadow-[0_3px_5px_rgba(0,0,0,0.3)]">
                                 Nasza firma oferuje dostawy pełnego asortymentu produktów firmy <b>Fantic</b> - uznanego
                                 producenta - rodzinnej firmy istniejącej od
                                 1957 roku. Współpracujmy również z firmą <b>Elixirium</b>, która także zajmuje się
@@ -17,7 +17,7 @@ const About = () => {
                                 detalicznych. Zapewniamy dostawy na potrzeby dużych imprez
                                 plenerowych jak i okolicznościowych spotkań rodzinnych. Szeroka
                                 oferta naszych produktów z pewnością zadowoli nawet najbardziej
-                                wybrednych odbiorców!
+                                wymagających odbiorców!
                             </p>
                         </div>
                         <div className='flex flex-col lg:flex-row gap-10'>
